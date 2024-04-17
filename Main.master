@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Main" %>
+<%@ Register Src="~/Controls/HeaderLoad.ascx" TagPrefix="uc1" TagName="HeaderLoad" %><!DOCTYPE html>
+<html lang="vi-vn">
+<head runat="server">
+ <title runat="server" visible="false"></title>
+<%--<title><%=Utils.QuoteRemove(Utils.HtmlDecode(SEOUtilities.Get_MetaTitle)) %></title>
+
+<meta name="keywords" content="<%=Utils.QuoteRemove(Utils.HtmlDecode(SEOUtilities.Get_MetaKeyword)) %>" />
+<meta name="description" content="<%= Utils.QuoteRemove(Utils.HtmlDecode(SEOUtilities.Get_MetaDescription)) %>" />
+<link rel="alternate" href="<%= C.ROOT_URL %>" hreflang="vi-vn" />
+<link rel="canonical" href="<%= SEO.canonical %>" />
+<link rel="shortcut icon" href="<%= ConfigWeb.Icon %>" />
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<% if (!Utils.IsNullOrEmpty(SEO.content_share_facebook))
+        Response.Write(SEO.content_share_facebook);%>
+<%=Utils.LoadUserControl("~/Controls/HeaderLoad.ascx") %>--%>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <%= ConfigWeb.CodeBody %>
+    <%=Utils.LoadUserControl("~/Controls/HeaderTop.ascx") %>
+    <%=Utils.LoadUserControl("~/Controls/WidgetSticky.ascx") %>
+    <main class="main">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </main>
+    <%=Utils.LoadUserControl("~/Controls/WidgetServices.ascx") %>
+    <%=Utils.LoadUserControl("~/Controls/Footer.ascx") %>
+    <%=Utils.LoadUserControl("~/Controls/WidgetPopup.ascx") %>
+    <%=Utils.LoadUserControl("~/Controls/FooterLoad.ascx") %>
+</body>
+</html>

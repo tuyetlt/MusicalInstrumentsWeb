@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /themes/
+Disallow: /Bin/
+Disallow: /assets/
+Disallow: /upload
+Disallow: /zop/
+Disallow: /qsj/
+Disallow: /rna/
+Disallow: /muv/
+Disallow: /?key=
+Allow: /
+
+Sitemap: https://nhaccutiendat.vn/sitemap.xml

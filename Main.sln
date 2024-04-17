@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "gui Tuyet", ".", "{BB7B0329-2AD3-4B2F-BA17-ABA32D1718F3}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57042"
+		Debug.AspNetCompiler.PhysicalPath = "..\gui Tuyet\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57042\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57042"
+		Release.AspNetCompiler.PhysicalPath = "..\gui Tuyet\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57042\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57042"
+		SlnRelativePath = "..\gui Tuyet\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB7B0329-2AD3-4B2F-BA17-ABA32D1718F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7B0329-2AD3-4B2F-BA17-ABA32D1718F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BD99D9B-0979-4C6F-BA45-34F8A4ED01D9}
+	EndGlobalSection
+EndGlobal
