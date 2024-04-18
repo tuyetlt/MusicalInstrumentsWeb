@@ -62,9 +62,7 @@
 }
 
 
-footer .fo1 .info .item img {
-    width: 50px;
-}
+
 
 .floor-menu-fixed li img {
     width: 28px;
@@ -88,15 +86,7 @@ footer .fo1 .info .item ul li a {
     background: none;
 }
 
-footer .fo1 .info .item ul i {
-    background: #fff;
-    color: #016da0;
-    border-radius: 100px;
-    font-size: 22px;
-    width: 22px;
-    height: 22px;
-    padding: 7px;
-}
+
 
 .section1 .menu_cate ul li span {
     position: initial;
@@ -141,27 +131,6 @@ footer .fo1 .info .item ul i {
 .owl_product_hot .img {
     width: auto;
     height: auto;
-}
-
-footer .fo1 .info .item div {
-    margin-top: 20px;
-    padding: 0 20px;
-}
-
-footer .fo1 .info .item div {
-    text-align: left;
-}
-
-footer .fo1 .info .item:last-of-type div {
-    text-align: center;
-}
-
-footer .fo1 .info .item div p {
-    margin-bottom: 10px;
-}
-
-footer .fo1 .info .item div a {
-    color: #fff;
 }
 
 .section1 .menu_cate ul li:hover .title img {

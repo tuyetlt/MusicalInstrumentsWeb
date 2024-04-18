@@ -9,7 +9,7 @@ public partial class Controls_NewsCategory : System.Web.UI.UserControl
 {
     public DataRow drCat, drNews;
     public DataTable dtCat, dtNews, dtRef;
-    public int ID, RootID, _totalArticle, _totalPage, _pageSize = 5;
+    public int ID, RootID, _totalArticle, _totalPage, _pageSize = 10;
     public string caturl;
 
     protected void Page_Load(object sender, EventArgs e)
