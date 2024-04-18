@@ -72,7 +72,7 @@ $(document).ready(function () {
         nav: true,
         autoplay: true,
         dots: false,
-        autoplayTimeout: 400000,
+        autoplayTimeout: 5000,
         autoplayHoverPause: true,
         responsive: {
             0: {

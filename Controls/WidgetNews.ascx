@@ -17,7 +17,7 @@
                 {
                     int count = 0;
             %>
-            <div class="list_blog">
+            <%-- %><div class="list_blog">
                 <div class="insider">
 
                     <% for (int i = 0; i < 4 && i < dtNews.Rows.Count; i++)
@@ -35,12 +35,12 @@
                     <%  count++;
                         } %>
                 </div>
-            </div>
+            </div>--%>
             <div class="list_blog_info">
                 <div class="insider">
 
 
-                    <% for (int i = count; i < 12 && i < dtNews.Rows.Count; i++)
+                    <% for (int i = count; i < 8 && i < dtNews.Rows.Count; i++)
                         { %>
                     <article>
                         <div class="cont">
@@ -51,6 +51,12 @@
                             </div>
                             <div class="info">
                                 <h3><a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>"><%= dtNews.Rows[i]["Name"].ToString() %></a></h3>
+                                <div class="cnt-except">
+                                    <%= dtNews.Rows[i]["Description"].ToString() %>
+                                </div>
+                                <a class="btn btn-read-more" href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>">
+                                    Xem thêm
+                                </a>
                             </div>
                         </div>
                     </article>

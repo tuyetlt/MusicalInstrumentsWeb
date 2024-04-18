@@ -3,9 +3,9 @@
       <div class="menu">
         <ul class="nav-list">
           <li class="nav-item category">
-            <a class="nav-link" href="#"
+              <h2><a class="nav-link" href="#"
               ><i class="fas fa-bars"></i> Danh mục sản phẩm</a
-            >
+            ></h2>
             <div class="over-lay"></div>
             <ul class="sub-menu">
               <li class="sub-menu-item">

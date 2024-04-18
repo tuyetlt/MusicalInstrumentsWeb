@@ -1,6 +1,61 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Footer.ascx.cs" Inherits="Controls_Footer" %>
 <%@ Import Namespace="System.Data" %>
 <footer>
+    <div class="fo2">
+        <div class="in">
+             <div class="info">
+                <div class="item">
+                    <div class="cnt-desc-ft">
+                        <h3>Nhạc cụ Tiến Đạt</h3>
+                        <p>Hơn 20 năm kinh nghiệm phân phối Thiết bị Âm thanh & phụ kiện Đàn Organ, Guitar, Piano, Ukulele, trống, phụ kiện  các hãng Yamaha, Casio, Roland, Kawai, ...</p>
+                    </div>
+                    <div class="cnt-item">
+                         <i class="fad fa-map-marker-check"></i>
+                         <div>
+                             <%= ConfigWeb.Footer_Address %>
+                         </div>
+                    </div>
+                    <div class="cnt-item">
+                        <i class="fad fa-phone-office"></i>
+                        <div>
+                            <%= ConfigWeb.Footer_Phone %>
+                        </div>
+                    </div>
+                    <div class="cnt-item">
+                        <i class="far fa-link"></i>
+                        <div>
+                            <p>WEBSITE</p>
+                            <p><%= ConfigWeb.SiteUrl %></p>
+                            <p>E-MAIL</p>
+                            <p><%= ConfigWeb.Email %></p>
+                        </div>
+                    </div>
+                      <div class="insider">
+                          <div class="img_logo">
+                              <a href="<%= C.ROOT_URL %>">
+                                  <img src="<%= ConfigWeb.LogoFooter %>" alt="<%= ConfigWeb.MetaTitle %>"></a>
+                          </div>
+                          <%--<h2><%= ConfigWeb.SiteName %></h2>--%>
+                          <p>
+                              <a href="http://online.gov.vn/Home/WebDetails/15750" target="_blank" rel="nofollow">
+                                  <img src="/assets/images/dathongbaobocongthuong.png" alt="Đã thông báo bộ công thương" style="width: 200px; margin-top: 10px" />
+                              </a>
+                          </p>
+                          <%--<p>
+                              Nhập địa chỉ <strong>E-mail</strong> để nhận được thông báo
+                    mới nhất!
+                          </p>
+                          <form action="" method="post">
+                              <input type="text" placeholder="Địa chỉ E-mail" />
+                              <button type="submit">
+                                  <i class="fal fa-long-arrow-right"></i>
+                              </button>
+                          </form>--%>
+                      </div>
+                </div>
+             </div>
+        </div>
+    </div>
     <div class="fo1">
         <div class="container">
             <div class="in">
@@ -12,11 +67,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <i class="fad fa-map-marker-check"></i>
-
-                        <div>
-                            <%= ConfigWeb.Footer_Address %>
-                        </div>
+                       
                     </div>
                     <div class="item">
                         <i class="far fa-link"></i>
@@ -104,7 +155,7 @@
                             </div>
                             <% } %>
                         </div>
-                        <h4>Chấp nhận thanh toán</h4>
+                        <div class="cnt-h4">Chấp nhận thanh toán</div>
                         <div class="social">
                             <img src="/themes/img/payment.png" alt="Payment method" />
                         </div>

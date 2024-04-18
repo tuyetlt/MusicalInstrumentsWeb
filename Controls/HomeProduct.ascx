@@ -77,7 +77,7 @@
                     <a href="<%= linkDetail %>">
                         <img src="<%= Utils.GetFirstImageInGallery_Json(drProduct["Gallery"].ToString(), 200, 200) %>" alt="<%= drProduct["Name"].ToString() %>" />
 
-                        <h4><%= drProduct["Name"].ToString() %></h4>
+                        <h3><%= drProduct["Name"].ToString() %></h3>
                         <span class="price"><%= Price %>
                         </span>
                         <span class="old-price"><%= Price1 %>

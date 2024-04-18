@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item">
+            <div class="item item-update">
                 <div class="menu">
                     <ul>
                         <%
@@ -61,6 +61,20 @@
                         <% }
                                 }
                             }%></ul>
+                </div>
+                <div class="content-hotline">
+                    <a href="#">
+                        <div class="cnt-social-header">
+                            <div class="icon-social">
+                                <img src="/themes/image/hotline.png" alt="Alternate Text" />
+                            </div>
+                            <div class="cnt-hotline">
+                                <h3>Hotline - Zalo</h3>
+                                <span>0123456789</span>
+                                <span>0123456789</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <%} %>
