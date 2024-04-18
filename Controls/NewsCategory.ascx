@@ -32,12 +32,19 @@
                                 noffollow = @" rel=""nofollow""";
                 %>
                 <div class="item">
-                    <div class="img">
-                        <a href="<%= linkDetail %>" <%= noffollow %>>
-                            <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 200, 150) %>" alt="<%= drNews["Name"].ToString() %>" /></a>
+                    <div class="cnt-item-article">
+                        <div class="img">
+                            <a href="<%= linkDetail %>" <%= noffollow %>>
+                                <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 200, 150) %>" alt="<%= drNews["Name"].ToString() %>" /></a>
+                        </div>
+                        <div class="contet-blog">
+                            <h3><a href="<%= linkDetail %>"><%= drNews["Name"].ToString() %></a></h3>
+                            <div class="desc">
+                                <p><%= drNews["Description"].ToString() %></p>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <h3><a href="<%= linkDetail %>"><%= drNews["Name"].ToString() %></a></h3>
-                    <p><%= drNews["Description"].ToString() %></p>
                 </div>
                 <%
                         }
@@ -72,7 +79,7 @@
             </div>
             <input type="hidden" min="1" id="pages" value="<%= _totalPage %>" />
             <input type="hidden" min="1" id="curpage" value="1" />
-            <input type="hidden" id="delta" min="1" max="5" value="2" />
+            <input type="hidden" id="delta" min="1" max="10" value="2" />
             <%} %>
         </div>
         <div class="right">

@@ -3,3 +3,4 @@
 <%= Utils.LoadUserControl("~/Controls/WidgetSlider.ascx") %>
 <%= Utils.LoadUserControl("~/Controls/HomeProduct.ascx") %>
 <%= Utils.LoadUserControl("~/Controls/WidgetNews.ascx") %>
+<%= Utils.LoadUserControl("~/Controls/WidgetRegister.ascx") %>

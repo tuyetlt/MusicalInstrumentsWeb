@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="banner-right">
+    <div class="banner-right zzz">
         <div class="img-banner pd-b">
             <img src="themes/img/background2.jpg" alt="" />
         </div>
