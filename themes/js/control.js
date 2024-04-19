@@ -68,8 +68,8 @@ $(document).ready(function () {
     //slide homepage
     $('#owl_home_slide').owlCarousel({
         loop: true,
-        margin: 13,
         nav: true,
+        margin: 10,
         autoplay: true,
         dots: false,
         autoplayTimeout: 5000,
@@ -81,8 +81,9 @@ $(document).ready(function () {
             600: {
                 items: 1
             },
-            1000: {
-                items: 1
+            1024: {
+                items: 1,
+                
             }
         }
     });

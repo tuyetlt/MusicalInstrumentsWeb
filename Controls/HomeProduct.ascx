@@ -9,7 +9,7 @@
         {
             foreach (DataRow dr_1 in dtWidget_1.Rows)
             {
-                DataTable dtWidget_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,ParentID,Link,PositionMenuFlag,LinkTypeMenuFlag,Image_2,Icon", string.Format("ParentID={0} AND {1} AND {2}", dr_1["ID"], string.Format("PositionMenuFlag & {0} <> 0", (int)PositionMenuFlag.MenuSubMainHome), Utils.CreateFilterHide), "Sort", 1, 5);
+                DataTable dtWidget_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,ParentID,Link,PositionMenuFlag,LinkTypeMenuFlag,Image_2,Icon", string.Format("ParentID={0} AND {1} AND {2}", dr_1["ID"], string.Format("PositionMenuFlag & {0} <> 0", (int)PositionMenuFlag.MenuSubMainHome), Utils.CreateFilterHide), "Sort", 1, 4);
     %>
     <div class="home-product" id="sec_<%= dr_1["ID"] %>">
         <div class="title">
