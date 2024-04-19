@@ -1497,6 +1497,7 @@ input.input_newsletter {
     font-size: 14px;
     border-radius:12px;
     border:1px solid #f1f1f1;
+    height:46px;
 }
 
 button.btn_newsletter {
