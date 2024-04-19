@@ -162,7 +162,7 @@
                                  <img src="/themes/image/banner/vanchuyen.jpg" alt="Alternate Text" />
                              </div>
                         </div>
-                    <div class="in">
+                   <%-- <div class="in">
                         <div class="list_blog_slider">
                             <div class="insider">
                                 <%
@@ -191,7 +191,7 @@
                                     } %>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
