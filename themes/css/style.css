@@ -3372,6 +3372,16 @@ main .news-detail .container .left .list-social-detail-post ul li a i.fa-google-
         margin-left:0;
         margin-right:0;
     }
+    .list_blog_reale .cont .img {
+        width: 50%;
+       
+    }
+    .list_blog_reale .cont .info{
+        padding:0;
+    }
+    .product-new h2{
+        padding:0;
+    }
 } 
     @keyframes marquee {
         0% {
