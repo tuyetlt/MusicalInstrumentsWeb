@@ -62,7 +62,7 @@
                     </article>
                     <% 
                             if (Utils.isMobileBrowser)
-                                Response.Write("<div class=\"clear\" style=\"height:10px\"></div>");
+                                Response.Write("");
                         }
 
 

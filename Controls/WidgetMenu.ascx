@@ -23,7 +23,8 @@
                 </div>
                 <span class="text"><%= dr_1["Name"].ToString() %></span>
             </div>
-        </a><%
+        </a>
+        <%-- <%
             int subMenu = (int)PositionMenuFlag.MenuSubMainHome;
 
             string filter2 = string.Format("(Hide is null OR Hide=0) AND PositionMenuFlag & {0} <> 0", subMenu);
@@ -50,7 +51,7 @@
 
                 Response.Write(@"</div>");
             }
-        %>
+        %>--%>
         <%
             int subMenu2 = (int)PositionMenuFlag.MenuSubMainHome2;
 
@@ -58,14 +59,14 @@
             DataTable dt_sub2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,SeoFlags,AttrMenuFlag,LinkTypeMenuFlag,Icon,Link,Image_3", string.Format("ParentID={0} AND {1}", dr_1["ID"], filter3), "Sort");
             if (Utils.CheckExist_DataTable(dt_sub2))
             {
-                Response.Write(@"<div class=""option"">");
+                /*Response.Write(@"<div class=""option"">");
                 int count = 0;
                 foreach (DataRow dr_sub2 in dt_sub2.Rows)
                 {
-                     string noffollow3= string.Empty;
-                                        int SeoFlagINT3 = ConvertUtility.ToInt32(dr_sub2["SeoFlags"]);
-                                        if (SeoFlagINT3 == (int)SeoFlag.Nofollow)
-                                            noffollow3 = @" rel=""nofollow""";
+                    string noffollow3 = string.Empty;
+                    int SeoFlagINT3 = ConvertUtility.ToInt32(dr_sub2["SeoFlags"]);
+                    if (SeoFlagINT3 == (int)SeoFlag.Nofollow)
+                        noffollow3 = @" rel=""nofollow""";
 
                     string comma = "";
                     if (count > 0)
@@ -74,13 +75,14 @@
                     Response.Write(string.Format(@"{0}<a{1} class=""option-link"" href=""{2}"">{3}</a>", comma, noffollow3, Utils.CreateCategoryLink(dr_sub2["LinkTypeMenuFlag"], dr_sub2["FriendlyUrl"], dr_sub2["Link"]), dr_sub2["Name"].ToString()));
                     count++;
                 }
-                Response.Write(@"</div>");
+                Response.Write(@"</div>");*/
             }
             string background_css = string.Empty;
             if (!string.IsNullOrEmpty(dr_1["Image_3"].ToString()))
             {
                 background_css = string.Format(@" style=""background-image: url('{0}')""", dr_1["Image_3"].ToString());
-            } %><div class="category-content" <%= background_css %>>
+            } %>
+        <div class="category-content" <%= background_css %>>
             <div class="content">
                 <%
                     int flagStyle1 = (int)PositionMenuFlag.Style1;
@@ -191,7 +193,7 @@
             }
         }
     %>
-    <li class="sub-menu-item">
-        <a class="category-item" href="<%= C.ROOT_URL %>/sitemap.html">Xem tất cả</a>
+    <li class="sub-menu-item cnt-read-more">
+        <a class="category-item" href="<%= C.ROOT_URL %>/sitemap.html">Xem tất cả <i class="fal fa-arrow-right"></i></a>
     </li>
 </ul>
