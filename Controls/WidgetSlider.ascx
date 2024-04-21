@@ -79,7 +79,7 @@
                             </div>
                         </div>
 
-                        <%
+                        <%-- %><%
                             if (C.DOMAIN_BANNER_DISPLAY != "mayvesinh.vn" && C.DOMAIN_BANNER_DISPLAY != "mayhutbui.vn")
                             {
                             %>
@@ -128,7 +128,7 @@
                                 }
                             %>--%>
 
-                              <%
+                             <%-- %> <%
                                   string filter1 = string.Format("Flags & {0} <> 0", (int)BannerPositionFlag.RightSlider);
 
                                   DataTable dt1 = SqlHelper.SQLToDataTable(C.BANNER_TABLE, "", filter1, "Sort", 1, 10);
@@ -138,17 +138,31 @@
                                       {
                                           string link = ConvertUtility.ToString(dr["Link"]);
                             %>
+                            <div class="">
                             <a href="<%= link %>">
                                 <img src="<%= dr["Image_1"] %>" alt="<%= dr["Alt"] %>" />
                             </a>
-
+                            </div>
                             <% }
                                 } %>
                         </div>
 
-                        <% } %>
-                    </div>
-                    <div class="in">
+                        <% } %>--%>
+                        <div class="banner">
+                            <div class="item-images">
+                            <img src="/themes/image/banner/baohanh.jpg" alt="Alternate Text" />
+                            </div>
+                            <div class="item-images">
+                                <img src="/themes/image/banner/daily.jpg" alt="Alternate Text" />
+                            </div>
+                            <div class="item-images">
+                                <img src="/themes/image/banner/laisuat.jpg" alt="Alternate Text" />
+                            </div>
+                            <div class="item-images">
+                                 <img src="/themes/image/banner/vanchuyen.jpg" alt="Alternate Text" />
+                             </div>
+                        </div>
+                   <%-- <div class="in">
                         <div class="list_blog_slider">
                             <div class="insider">
                                 <%
@@ -177,7 +191,7 @@
                                     } %>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
