@@ -10,24 +10,24 @@
             <div class="clear"></div>
             <div class="title-detail"><%= ConvertUtility.ToString(dr["Name"]) %></div>
             <div class="feedback">
-    <div class="rating">
-        <input type="radio" name="rating" id="rating-5" data-value="5">
-        <label for="rating-5"></label>
-        <input type="radio" name="rating" id="rating-4" data-value="4">
-        <label for="rating-4"></label>
-        <input type="radio" name="rating" id="rating-3" data-value="3">
-        <label for="rating-3"></label>
-        <input type="radio" name="rating" id="rating-2" data-value="2">
-        <label for="rating-2"></label>
-        <input type="radio" name="rating" id="rating-1" data-value="1">
-        <label for="rating-1"></label>
-        <div class="emoji-wrapper">
-            <div class="emoji">
-              4/5
+            <div class="rating">
+                <input type="radio" name="rating" id="rating-5" data-value="5">
+                <label for="rating-5"></label>
+                <input type="radio" name="rating" id="rating-4" data-value="4">
+                <label for="rating-4"></label>
+                <input type="radio" name="rating" id="rating-3" data-value="3">
+                <label for="rating-3"></label>
+                <input type="radio" name="rating" id="rating-2" data-value="2">
+                <label for="rating-2"></label>
+                <input type="radio" name="rating" id="rating-1" data-value="1">
+                <label for="rating-1"></label>
+                <div class="emoji-wrapper">
+                    <div class="emoji">
+                      4/5
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
             <p class="description">
                 <%= ConvertUtility.ToString(dr["Description"]) %>
