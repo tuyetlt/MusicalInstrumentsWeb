@@ -76,7 +76,7 @@
         //Chuyển link
         //routes.MapPageRoute("chuyen link", "{url}.aspx", "~/Default.aspx", true, new RouteValueDictionary { { "m", "chuyenlink" } });
         //routes.MapPageRoute("chuyen link mayhutbui", "tin/{caturl}/{urltin}.aspx", "~/Default.aspx", true, new RouteValueDictionary { { "m", "chuyenlink" } });
-        //routes.MapPageRoute("chuyen link tag", "tag/{tagurl}.aspx", "~/Default.aspx", true, new RouteValueDictionary { { "m", "chuyenlink" } });
+        routes.MapPageRoute("test", "test/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "footer" } });
 
 
         //Admin
