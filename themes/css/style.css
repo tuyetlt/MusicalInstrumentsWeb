@@ -2905,6 +2905,71 @@ main .news-detail .container .left .list-social-detail-post ul li a i.fa-google-
     border-radius: 7px;
     color: #fff;
 }
+.content-comment-view{
+    padding:30px 0;
+}
+.sort-name-cm {
+    padding: 2px 5px;
+    background-color: #b2b2b2;
+    color: #fff;
+    border-radius: 2px;
+}
+.ava-name {
+    font-weight: bold;
+    word-break: break-word;
+}
+.comment-item-star .rated {
+    color: #ffb909;
+}
+.comment-user-body {
+    margin: 15px 10px 10px 20px;
+}
+.comment-ask {
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+.comment-user-body input[type="radio"],.comment-user-body input[type="checkbox"] {
+    display: none;
+}
+.rep-comment, .rep-comment ~ label {
+    display: inline-block;
+    margin-right: 20px;
+    color: #0071c4;
+    cursor: pointer;
+}
+.relate-comment{
+    display:flex;
+}
+.like-comment .fa-thumbs-o-up {
+    margin-right: 5px;
+}
+a.review-like {
+    color: #0071c4;
+    margin-left: 4px;
+    display: inline-block;
+    float: right;
+}
+.time-comment {
+    color: #b5b5b5;
+    margin-left: 20px;
+}
+.comment-ask-box.member-rep {
+    padding: 10px;
+    background-color: #eee;
+    margin-top: 15px;
+}
+.show-replied{
+    padding:7px 0;
+}
+.ava-name.user-staff {
+    color: #da251c;
+}
+.main .news-detail .container .left a.review-like {
+    color: #0071c4;
+    margin-left: 4px;
+    display: inline-block;
+    float: right;
+}
 @media (max-width:1700px) and (min-width:1024px) {
     footer .fo1 .info .item .in {
         flex-wrap: wrap;
