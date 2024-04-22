@@ -572,7 +572,7 @@
                         {
                     %>
                     <div class="Ad-special">
-                        <h5 class="title">Quà tặng</h5>
+                        <div class="title">Quà tặng</div>
                         <ul class="Ad-special-list">
                             <%= dr["Gift"].ToString() %>
                         </ul>
@@ -588,7 +588,7 @@
                             {
                     %>
                     <div class="Ad-special">
-                        <h5 class="title">Quà tặng khi mua đàn Piano điện</h5>
+                        <div class="title">Quà tặng khi mua đàn Piano điện</div>
                         <div class="Ad-special-list">
 
                             <img src="/upload/banner/tangtainghe.jpg" alt="Tặng tai nghe" />
@@ -601,15 +601,47 @@
                 <div class="container-sticky">
                     <%=Utils.LoadUserControl("~/Controls/WidgetSupport.ascx") %>
                 </div>
+
             </div>
             <div class="clear"></div>
+            <div class="box-content-comment">
+                 <form id="frmrating" class="form_rating" action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+                    <div class="comment-post">
+                        <div class="clear"></div>
+                        <input type="text" value='' name="articleid" id="txtArticleID" style="display: none" />
+                        <input type="text" id="hdfRating" name="hdfRating" style="display: none" />
+                        <div class="box-comment">
+                            <div class="title-cmt">
+                                Bình luận
+                            </div>
+                            <div class="box-name-phone">
+                                <div>
+                                    <input type="text" name="name" id="name" placeholder="Tên" required />
+                                </div>
+                                <div>
+                                     <input type="text" name="phone" id="name" placeholder="Số điện thoại" required />
+                                </div>
+                            </div>
+            
+                            <div style="padding: 5px 0">
+                                <textarea name="comment" id="comment" placeholder="Nội dung" rows="5" required></textarea>
+                            </div>
+
+                            <div id="dvCaptchaComment">
+                            </div>
+                            <input id="btnSubmitComment" type="submit" value="Gửi đánh giá" />
+                         </div>
+                    </div>
+                </form>
+            </div>
+           <div class="clear"></div>
             <%if (ConvertUtility.ToInt32(PageInfo.CategoryID) > 0)
                 { %>
 
             <div class="heading">
-                <h2 class="title">
+                <div class="title">
                     <span>Sản phẩm cùng danh mục</span>
-                </h2>
+                </div>
             </div>
             <div class="clear"></div>
             <div class="product-list">
@@ -631,7 +663,7 @@
                             <img src="<%= Utils.GetFirstImageInGallery_Json(drProduct["Gallery"].ToString(), 300, 300) %>" alt="<%= drProduct["Name"].ToString() %>" />
                         </div>
                         <div class="cont">
-                            <h4 class="name"><%= drProduct["Name"].ToString() %></h4>
+                            <div class="name"><%= drProduct["Name"].ToString() %></div>
                             <div class="info">
 
                                 <ins><%= SqlHelper.GetPrice(ConvertUtility.ToInt32(drProduct["ID"]), "Price") %></ins>

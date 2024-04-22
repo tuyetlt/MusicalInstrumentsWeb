@@ -3,7 +3,7 @@
 
 
 <div class="contact">
-    <h5 class="title">Tư vấn mua hàng</h5>
+    <div class="title">Tư vấn mua hàng</div>
     <ul class="contact-list">
         <%
             string filter = string.Format("ParentID=0 AND Flags & {0} <> 0", (int)BaseTableFlag.Support);
