@@ -104,7 +104,7 @@
             </span>
         </div>
         <% } %>
-        <a href="javascript:;" id="th-oncustomer-customchat">
+        <a href="javascript:;" id="th-oncustomer-customchat" rel="nofollow">
             <img src="/themes/img/icon-contact<%= themes %>/chat.png" alt="Chat" />
             <br />
             Chat nhanh
