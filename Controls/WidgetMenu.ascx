@@ -154,8 +154,8 @@
                             string link = Utils.CreateCategoryLink(dr_3["LinkTypeMenuFlag"], dr_3["FriendlyUrl"], dr_3["Link"]);
                 %>
                 <div class="container-link style2">
-                    <a <%= Utils.CreateCategory_Target(dr_3["AttrMenuFlag"]) %> href="<%= link %>"<%= noffollow6 %>>
-                        <img src="<%= icon %>" alt="<%= dr_3["Name"].ToString() %>" /></a>
+                   <%-- <a <%= Utils.CreateCategory_Target(dr_3["AttrMenuFlag"]) %> href="<%= link %>"<%= noffollow6 %>>
+                        <img src="<%= icon %>" alt="<%= dr_3["Name"].ToString() %>" /></a>--%>
                     <div class="container-title">
                         <p class="title">
                             <a href="<%= link %>"><%= dr_3["Name"].ToString() %></a>

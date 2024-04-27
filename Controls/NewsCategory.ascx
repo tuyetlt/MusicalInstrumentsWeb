@@ -19,7 +19,7 @@
     <div class="container">
         <div class="left">
             <h1><%= catName %></h1>
-            <div class="article-list">
+            <div class="article-list"  id="content-container">
                 <%
                     if (Utils.CheckExist_DataTable(dtNews))
                     {
@@ -35,14 +35,13 @@
                     <div class="cnt-item-article">
                         <div class="img">
                             <a href="<%= linkDetail %>" <%= noffollow %>>
-                                <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 200, 150) %>" alt="<%= drNews["Name"].ToString() %>" /></a>
+                                <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 280, 215, "crop") %>" alt="<%= drNews["Name"].ToString() %>" /></a>
                         </div>
                         <div class="contet-blog">
                             <h3><a href="<%= linkDetail %>"><%= drNews["Name"].ToString() %></a></h3>
                             <div class="desc">
                                 <p><%= drNews["Description"].ToString() %></p>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -80,6 +79,7 @@
             <input type="hidden" min="1" id="pages" value="<%= _totalPage %>" />
             <input type="hidden" min="1" id="curpage" value="1" />
             <input type="hidden" id="delta" min="1" max="10" value="2" />
+            <input type="hidden" id="modul"value="article" />
             <%} %>
         </div>
         <div class="right">
@@ -91,6 +91,26 @@
         <div class="clear"></div>
     </div>
 </article>
+
+<script id="product-template" type="text/template">
+     <div class="item">
+     <div class="cnt-item-article">
+         <div class="img">
+             <a href="{{Link}}">
+                 <img src="{{Image}}" alt="{{Name}}" /></a>
+         </div>
+         <div class="contet-blog">
+             <h3><a href="{{Link}}">{{Name}}</a></h3>
+             <div class="desc">
+                 <p>{{Description}}</p>
+             </div>
+         </div>
+     </div>
+ </div>
+</script>
+
+
+
 
 <script type="application/ld+json">
 {

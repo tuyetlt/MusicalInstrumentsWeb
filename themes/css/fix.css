@@ -789,7 +789,7 @@ footer .fo1 .info .item > i {
 
 .product-item .percent-sale, .section-product .percent-sale {
     text-decoration: none;
-    background: #f2b502;
+    background: #a70000;
     margin-left: 1em;
     padding: 0.3em;
     padding-left: 1em;
@@ -1290,7 +1290,9 @@ label.star {
 }
 
 
-
+.section1 .item .nav-item.category .sub-menu-item {
+    border-bottom: 1px dotted #9d9d9d;
+}
 
 
 

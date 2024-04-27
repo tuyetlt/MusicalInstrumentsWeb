@@ -15,10 +15,6 @@
                 {
                     foreach (DataRow drParent in dtParent.Rows)
                     {
-
-
-
-
         %>
 
         <li class="contact-item">
