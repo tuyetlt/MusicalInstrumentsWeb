@@ -6,8 +6,12 @@
             <div class="info">
                 <div class="item">
                     <div class="cnt-desc-ft">
-                        <h3><%= ConfigWeb.SiteName %></h3>
+                        <!-- <div class="title-box">Nhạc cụ Tiến Đạt</div>
+                        <p>Hơn 20 năm kinh nghiệm phân phối Thiết bị Âm thanh & phụ kiện Đàn Organ, Guitar, Piano, Ukulele, trống, phụ kiện  các hãng Yamaha, Casio, Roland, Kawai, ...</p> -->
+
+                        <div class="title-box"><%= ConfigWeb.SiteName %></div>
                         <%= ConfigWeb.FooterDescription %>
+
                     </div>
                     <div class="cnt-item">
                         <div class="cnt-icon-up">
@@ -155,10 +159,10 @@
                                     <div class="social-up">
                                         <ul>
                                             <li>
-                                                <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                                                <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"> <img src="/assets/images/facebook.png" alt="face" /></a>
                                             </li>
                                             <li>
-                                                <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"><i class="fab fa-youtube"></i></a>
+                                                <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"> <img src="/assets/images/youtube.png" alt="youtube" /></a>
                                             </li>
                                            <%-- <li>
                                                 <a href="#"><i class="fab fa-instagram"></i></a>

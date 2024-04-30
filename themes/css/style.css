@@ -1866,7 +1866,6 @@ footer .fo1 {
             footer .fo1 .info .item p {
                 margin: 0;
                 color: #FFF;
-                font-size: 16px
             }
 
 footer .ft-up {
@@ -1878,11 +1877,13 @@ footer .ft-up {
         align-items: flex-start;
     }
 
-    footer .ft-up .cnt-desc-ft h3 {
+    footer .ft-up .cnt-desc-ft .title-box {
         font-size: 20px;
         line-height: 1.3;
         text-transform: uppercase;
         color: #fff;
+        font-weight:700;
+        padding-bottom:20px;
     }
 
     footer .ft-up .cnt-desc-ft p {
@@ -2786,15 +2787,13 @@ body .main .news-detail .container .left {
     width: 100%;
     padding-left: 20px;
 }
-
-.form_rating .comment-post {
+/*.form_rating .comment-post {
     width: 100%;
     float: initial;
-}
-
-.list-social-detail-post {
-    display: flex;
-    align-items: center;
+}*/
+.list-social-detail-post{
+    display:flex;
+    align-items:center;
 }
 
     .list-social-detail-post .icon-share {
@@ -2882,6 +2881,19 @@ main .news-detail .container .left .list-social-detail-post ul li a i.fa-google-
     padding: 10px 25px;
     font-size: 16px;
     height: auto;
+    
+}
+footer .fo1 .info .item .in.in-top .item {
+    width: 50%;
+}
+.main .news-list .right aside .category-new {
+    overflow: hidden;
+    background: #ad2f2f;
+    color: #fff;
+    padding: 5px 10px;
+    text-transform: none;
+    margin: 0;
+    font-weight: 700;
 }
 
 .product-new {
@@ -3150,11 +3162,11 @@ a.review-like {
     footer .fo1 .info .item {
         margin-bottom: 30px;
     }
-
-    .owl_multi_product .img {
-        width: 100%;
-        height: auto
-    }
+       
+        .owl_multi_product .img {
+            width: 100%;
+            height: auto
+        }
 
     .owl_product_hot .info del {
         font-size: 12px
