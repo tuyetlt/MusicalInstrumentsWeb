@@ -3387,7 +3387,14 @@ public class Utils
         return _return;
     }
 
-
+    public static string GetNoFollow(object Flag)
+    {
+        string nofollow = string.Empty;
+        int SeoFlagINT = ConvertUtility.ToInt32(Flag);
+        if (SeoFlagINT == (int)SeoFlag.Nofollow)
+            nofollow = @" rel=""nofollow""";
+        return nofollow;
+    }
 
     public static string CheckDomain
     {

@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>http://localhost:60684/sitemap/danh-muc-san-pham.xml</loc>
+    <loc>https://nhaccutiendat.vn/sitemap/danh-muc-san-pham.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>http://localhost:60684/sitemap/danh-muc-tin-tuc.xml</loc>
+    <loc>https://nhaccutiendat.vn/sitemap/danh-muc-tin-tuc.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>http://localhost:60684/sitemap/noi-dung.xml</loc>
+    <loc>https://nhaccutiendat.vn/sitemap/noi-dung.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>http://localhost:60684/sitemap/san-pham.xml</loc>
+    <loc>https://nhaccutiendat.vn/sitemap/san-pham.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>http://localhost:60684/sitemap/tin-tuc.xml</loc>
+    <loc>https://nhaccutiendat.vn/sitemap/tin-tuc.xml</loc>
   </sitemap>
 </sitemapindex>

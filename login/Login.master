@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Login.master.cs" Inherits="login_Login" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Đăng nhập hệ thống</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script type="text/javascript" src="/assets/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/MotionCAPTCHA/jquery.motionCaptcha.0.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/js/MotionCAPTCHA/jquery.motionCaptcha.0.2.css" />
+    <link rel="stylesheet" type="text/css" href="/login/css/style.css" />
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <meta property='og:image' content='<%= C.ROOT_URL %>/login/images/login.jpg' />
+</head>
+<body>
+    <section class="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </section>
+    
+</body>
+</html>

@@ -46,7 +46,7 @@
                         <div class="cont">
                             <div class="img">
                                 <a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>">
-                                    <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 130, 100, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
+                                    <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 280, 215, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
                                 </a>
                             </div>
                             <div class="info">

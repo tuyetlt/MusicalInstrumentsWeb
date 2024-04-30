@@ -139,7 +139,7 @@
                             </div>
                             <%--<span class="sale">50%</span>--%>
                             <div class="cont">
-                                <h4 class="name"><%= drProduct["Name"].ToString() %></h4>
+                                <h3 class="name"><%= drProduct["Name"].ToString() %></h3>
                                 <div class="info">
 
                                     <ins><%= SqlHelper.GetPrice(drProduct, "Price") %></ins>
@@ -152,6 +152,9 @@
                                 </div>
                             </div>
                         </a>
+                        <div class="cnt-buy-now">
+                            <a href="<%= linkDetail %>">Xem thêm</a>
+                        </div>
                     </div>
                     <%}
                         } %>
