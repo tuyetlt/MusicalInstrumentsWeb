@@ -159,10 +159,10 @@
                                     <div class="social-up">
                                         <ul>
                                             <li>
-                                                <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                                                <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"> <img src="/assets/images/facebook.png" alt="face" /></a>
                                             </li>
                                             <li>
-                                                <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"><i class="fab fa-youtube"></i></a>
+                                                <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"> <img src="/assets/images/youtube.png" alt="youtube" /></a>
                                             </li>
                                            <%-- <li>
                                                 <a href="#"><i class="fab fa-instagram"></i></a>
