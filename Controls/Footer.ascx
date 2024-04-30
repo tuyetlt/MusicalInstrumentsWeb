@@ -60,11 +60,11 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="in">
-                        <div class="item-child">
-                            <div class="cnt-desc-ft">
+                    <div class="in  in-top">
+                        <div class="item">
+                            <div class="insider">
                                 <p>DANH MỤC SẢN PHẨM</p>
-                            </div>
+                            
                             <ul>
                                 <%
                                     string filter = string.Format("{0} AND {1}", Utils.CreateFilterHide, Utils.CreateFilterFlags(PositionMenuFlag.Main, "PositionMenuFlag"));
@@ -86,6 +86,7 @@
 
                                 %>
                             </ul>
+                                </div>
                         </div>
 
                         <%
@@ -95,10 +96,10 @@
                             if (Utils.CheckExist_DataTable(dt))
                             {
                         %>
-                        <div class="item-child">
-                            <div class="cnt-desc-ft">
+                        <div class="item">
+                            <div class="insider">
                                 <p><%=dt.Rows[0]["Name"].ToString() %></p>
-                            </div>
+                            
                             <ul>
 
                                 <% DataTable dt_0 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,LinkTypeMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID={0}", dt.Rows[0]["ID"]), "Sort", 1, 10);
@@ -110,6 +111,7 @@
                                 <% } %>
                             </ul>
                             <% } %>
+                                </div>
                         </div>
                     </div>
                     <div class="fo2">
