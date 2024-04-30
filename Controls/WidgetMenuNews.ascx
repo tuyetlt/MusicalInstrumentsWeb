@@ -4,7 +4,7 @@
 
 
 <aside>
-    <h3><i class="far fa-bars"></i>Danh mục tin</h3>
+    <div class="category-new"><i class="far fa-bars"></i>Danh mục tin</div>
     <ul>
         <%
             string filter = string.Format("(Hide is null OR Hide=0) AND LinkTypeMenuFlag & {0} <> 0 and PositionMenuFlag & {1} = 0", (int)LinkTypeMenuFlag.Article, (int)PositionMenuFlag.Bottom);

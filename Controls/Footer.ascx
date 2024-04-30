@@ -6,7 +6,7 @@
              <div class="info">
                 <div class="item">
                     <div class="cnt-desc-ft">
-                        <h3>Nhạc cụ Tiến Đạt</h3>
+                        <div class="title-box">Nhạc cụ Tiến Đạt</div>
                         <p>Hơn 20 năm kinh nghiệm phân phối Thiết bị Âm thanh & phụ kiện Đàn Organ, Guitar, Piano, Ukulele, trống, phụ kiện  các hãng Yamaha, Casio, Roland, Kawai, ...</p>
                     </div>
                     <div class="cnt-item">
@@ -68,48 +68,50 @@
                       </div>
                 </div>
                  <div class="item">
-                     <div class="in">
-                        <div class="item-child">
-                            <div class="cnt-desc-ft">
-                                    <h3>DANH MỤC SẢN PHẨM</h3>
-                            </div>
-                            <ul>
-                                <li><a href="http://localhost:57042/chinh-sach-va-quy-dinh-chung/">Chính sách và quy định chung</a></li>
+                     <div class="in in-top">
+                        <div class="item">
+                            <div class="insider">
+                                    <p>DANH MỤC SẢN PHẨM</p>
+                            
+                                    <ul>
+                                        <li><a href="http://localhost:57042/chinh-sach-va-quy-dinh-chung/">Chính sách và quy định chung</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-ban-hang-va-chat-luong-hang-hoa/">Chính sách bán hàng và chất lượng h.hóa</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-ban-hang-va-chat-luong-hang-hoa/">Chính sách bán hàng và chất lượng h.hóa</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-bao-mat-thong-tin/">Chính sách bảo mật thông tin</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-bao-mat-thong-tin/">Chính sách bảo mật thông tin</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-doi-tra-hang-hoa/">Chính sách Đổi - Trả hàng hóa</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-doi-tra-hang-hoa/">Chính sách Đổi - Trả hàng hóa</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-van-chuyen-giao-nhan-hang-hoa/">Chính sách vận chuyển, giao nhận h.hóa</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-van-chuyen-giao-nhan-hang-hoa/">Chính sách vận chuyển, giao nhận h.hóa</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-bao-hanh-san-pham/">Chính sách Bảo hành sản phẩm</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-bao-hanh-san-pham/">Chính sách Bảo hành sản phẩm</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-ho-tro-tra-gop/">Chính sách Hỗ trợ trả góp</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-ho-tro-tra-gop/">Chính sách Hỗ trợ trả góp</a></li>
            
-                            </ul>
+                                    </ul>
+                                </div>
                         </div>
-                        <div class="item-child">
-                            <div class="cnt-desc-ft">
-                                    <h3>THÔNG TIN NHẠC CỤ TIẾN ĐẠT</h3>
-                            </div>
-                            <ul>
-                                <li><a href="http://localhost:57042/chinh-sach-va-quy-dinh-chung/">Chính sách và quy định chung</a></li>
+                        <div class="item">
+                            <div class="insider">
+                                    <p>THÔNG TIN NHẠC CỤ TIẾN ĐẠT</p>
+                            
+                                    <ul>
+                                        <li><a href="http://localhost:57042/chinh-sach-va-quy-dinh-chung/">Chính sách và quy định chung</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-ban-hang-va-chat-luong-hang-hoa/">Chính sách bán hàng và chất lượng h.hóa</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-ban-hang-va-chat-luong-hang-hoa/">Chính sách bán hàng và chất lượng h.hóa</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-bao-mat-thong-tin/">Chính sách bảo mật thông tin</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-bao-mat-thong-tin/">Chính sách bảo mật thông tin</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-doi-tra-hang-hoa/">Chính sách Đổi - Trả hàng hóa</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-doi-tra-hang-hoa/">Chính sách Đổi - Trả hàng hóa</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-van-chuyen-giao-nhan-hang-hoa/">Chính sách vận chuyển, giao nhận h.hóa</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-van-chuyen-giao-nhan-hang-hoa/">Chính sách vận chuyển, giao nhận h.hóa</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-bao-hanh-san-pham/">Chính sách Bảo hành sản phẩm</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-bao-hanh-san-pham/">Chính sách Bảo hành sản phẩm</a></li>
            
-                                <li><a href="http://localhost:57042/chinh-sach-ho-tro-tra-gop/">Chính sách Hỗ trợ trả góp</a></li>
+                                        <li><a href="http://localhost:57042/chinh-sach-ho-tro-tra-gop/">Chính sách Hỗ trợ trả góp</a></li>
            
-                            </ul>
+                                    </ul>
+                                </div>
                         </div>
                      </div>
                       <div class="fo2">
@@ -160,13 +162,29 @@
                                         <div class="social-up">
                                             <ul>
                                                 <li>
-                                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/facebook.png" alt="face" />
+                                                    </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                                    <a href="#">
+                                                         <img src="/assets/images/zalo.png" alt="zalo" />
+                                                    </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/tiktok.png" alt="tiktok" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="/assets/images/youtube.png" alt="youtube" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="/assets/images/instagram.png" alt="instagram" />
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
