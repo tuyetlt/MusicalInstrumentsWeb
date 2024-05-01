@@ -6,7 +6,7 @@
         <div class="in">
             <% if (!Utils.isMobileBrowser)
                 { %>
-            <div class="item">
+            <div class="item item-pc">
                 <div class="logo">
                     <% if (PageInfo.CurrentControl == ControlCurrent.Home.ToString())
                         { %>
@@ -20,7 +20,7 @@
                         <img src="<%= C.ROOT_URL %><%= ConfigWeb.Logo %>" alt="<%= ConfigWeb.MetaTitle %>"></a><% } %>
                 </div>
             </div>
-            <div class="item">
+            <div class="item item-pc">
                 <div class="search">
                     <form method="GET" action="<%=C.ROOT_URL %>/tim-kiem.html" data-search="internal">
                         <input type="text" name="key" class="search_input" id="searchbox" autocomplete="off" placeholder="Tìm kiếm" />
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item item-update">
+            <div class="item item-update item-pc">
                 <div class="menu">
                     <ul>
                         <%
@@ -83,13 +83,13 @@
     </div>
     <% if (Utils.isMobileBrowser)
         { %>
-    <div class="item">
+    <div class="item item-mobile">
         <div class="logo">
             <a href="<%= C.ROOT_URL %>">
                 <img src="<%= ConfigWeb.Logo %>" alt="<%= ConfigWeb.MetaTitle %>"></a>
         </div>
     </div>
-    <div class="menu-mobile">
+    <div class="menu-mobile item-mobile">
         <div class="toggle_search">
             <i class="far fa-search"></i>
         </div>

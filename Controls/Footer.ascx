@@ -95,82 +95,57 @@
                             DataTable dt = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,LinkTypeMenuFlag,FriendlyUrl,Link", string.Format("ParentID=0 AND {0}", filterWidget), "Sort", 1, 3);
                             if (Utils.CheckExist_DataTable(dt))
                             {
+            
+
+                                for(int i = 0; i< dt.Rows.Count; i++)
+                                {
+                                    DataTable dt_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "Name,LinkTypeMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID={0}", dt.Rows[i]["ID"]), "Sort", 1, 10);
+                        %>
+
+
+                        <div class="item">
+                            <div class="insider">
+                                <p><%= dt.Rows[i]["Name"] %></p>
+                                <ul>
+                                    <% if (Utils.CheckExist_DataTable(dt_2))
+                                        {
+                                            foreach (DataRow dr_2 in dt_2.Rows)
+                                            {
+                                                string link = Utils.CreateCategoryLink(dr_2["LinkTypeMenuFlag"], dr_2["FriendlyUrl"], dr_2["Link"]);
+                                    %>
+                                    <li><a href="<%= link %>"<%=Utils.GetNoFollow(dr_2["SeoFlags"]) %>><%= dr_2["Name"] %></a></li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                        <%}
+                                }
+                            }
                         %>
                         <div class="item">
                             <div class="insider">
-                                <p><%=dt.Rows[0]["Name"].ToString() %></p>
-                            
-                            <ul>
-
-                                <% DataTable dt_0 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,LinkTypeMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID={0}", dt.Rows[0]["ID"]), "Sort", 1, 10);
-                                    foreach (DataRow dr_0 in dt_0.Rows)
-                                    {
-                                        string link = Utils.CreateCategoryLink(dr_0["LinkTypeMenuFlag"], dr_0["FriendlyUrl"], dr_0["Link"]);
-                                %>
-                                <li><a href="<%= link %>"<%=Utils.GetNoFollow(dr_0["SeoFlags"]) %>><%=dr_0["Name"].ToString() %></a></li>
-                                <% } %>
-                            </ul>
-                            <% } %>
+                                <div class="gg-map">
+                                    <iframe src="<%= ConfigWeb.MapLocation %>" width="100%" height="150" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                    <%  if (!string.IsNullOrEmpty(ConfigWeb.MapLocation1) && !string.IsNullOrEmpty(ConfigWeb.MapLocation2))
+                                        { %>
+                                    <div class="container-btn">
+                                        <a href="<%= ConfigWeb.MapLocation1 %>" class="btn-gg" target="_blank" rel="nofollow">Phía Bắc </a>
+                                        <a href="<%= ConfigWeb.MapLocation2 %>" class="btn-gg" target="_blank" rel="nofollow">Phía Nam </a>
+                                    </div>
+                                    <% } %>
                                 </div>
-                        </div>
-                    </div>
-                    <div class="fo2">
-                        <div class="in">
-                            <%
-                                if (Utils.CheckExist_DataTable(dt))
-                                {
-                                    
-
-                                    for(int i = 1; i< dt.Rows.Count; i++)
-                                    {
-                                        DataTable dt_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "Name,LinkTypeMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID={0}", dt.Rows[i]["ID"]), "Sort", 1, 10);
-                            %>
-
-
-                            <div class="item">
-                                <div class="insider">
-                                    <p><%= dt.Rows[i]["Name"] %></p>
+                                <div class="social-up">
                                     <ul>
-                                        <% if (Utils.CheckExist_DataTable(dt_2))
-                                            {
-                                                foreach (DataRow dr_2 in dt_2.Rows)
-                                                {
-                                                    string link = Utils.CreateCategoryLink(dr_2["LinkTypeMenuFlag"], dr_2["FriendlyUrl"], dr_2["Link"]);
-                                        %>
-                                        <li><a href="<%= link %>"<%=Utils.GetNoFollow(dr_2["SeoFlags"]) %>><%= dr_2["Name"] %></a></li>
-                                        <% } %>
+                                        <li>
+                                            <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"> <img src="/assets/images/facebook.png" alt="face" /></a>
+                                        </li>
+                                        <li>
+                                            <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"> <img src="/assets/images/youtube.png" alt="youtube" /></a>
+                                        </li>
+                                       <%-- <li>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </li>--%>
                                     </ul>
-                                </div>
-                            </div>
-                            <%}
-                                    }
-                                }
-                            %>
-                            <div class="item">
-                                <div class="insider">
-                                    <div class="gg-map">
-                                        <iframe src="<%= ConfigWeb.MapLocation %>" width="100%" height="150" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                                        <%  if (!string.IsNullOrEmpty(ConfigWeb.MapLocation1) && !string.IsNullOrEmpty(ConfigWeb.MapLocation2))
-                                            { %>
-                                        <div class="container-btn">
-                                            <a href="<%= ConfigWeb.MapLocation1 %>" class="btn-gg" target="_blank" rel="nofollow">Phía Bắc </a>
-                                            <a href="<%= ConfigWeb.MapLocation2 %>" class="btn-gg" target="_blank" rel="nofollow">Phía Nam </a>
-                                        </div>
-                                        <% } %>
-                                    </div>
-                                    <div class="social-up">
-                                        <ul>
-                                            <li>
-                                                <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"> <img src="/assets/images/facebook.png" alt="face" /></a>
-                                            </li>
-                                            <li>
-                                                <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"> <img src="/assets/images/youtube.png" alt="youtube" /></a>
-                                            </li>
-                                           <%-- <li>
-                                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                            </li>--%>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
