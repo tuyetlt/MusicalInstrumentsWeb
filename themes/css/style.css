@@ -1513,18 +1513,26 @@ a {
 .line_newsletter {
     position: relative;
     margin-bottom: 10px;
+    height:48px;
 }
-
-input.input_newsletter {
-    width: 100%;
-    padding: 7px 70px 6px 10px;
-    z-index: 2;
-    position: relative;
-    font-size: 14px;
-    border-radius: 12px;
-    border: 1px solid #f1f1f1;
-    height: 46px;
+#frm_newsletter .label_accept {
+    display:flex;
+    align-items:center;
 }
+    #frm_newsletter .label_accept input{
+        width:30px;
+        margin-right:5px;
+    }
+    input.input_newsletter {
+        width: 100%;
+        padding: 7px 70px 6px 10px;
+        z-index: 2;
+        position: relative;
+        font-size: 14px;
+        border-radius: 12px;
+        border: 1px solid #f1f1f1;
+        height: 46px;
+    }
 
 button.btn_newsletter {
     background-color: #921212;
