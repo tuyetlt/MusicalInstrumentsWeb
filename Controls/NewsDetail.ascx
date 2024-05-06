@@ -10,7 +10,7 @@
             </div>
             <div class="clear"></div>
             <div class="title-detail"><%= ConvertUtility.ToString(dr["Name"]) %></div>
-            <div class="feedback">
+            <%--<div class="feedback">
                 <div class="rating">
                     <input type="radio" name="rating" id="rating-5" data-value="5">
                     <label for="rating-5"></label>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <div class="goto-wrapper ftoc-head">
                 <div class="title-header-cate">
                     <div class="title-goto-wrapper">
