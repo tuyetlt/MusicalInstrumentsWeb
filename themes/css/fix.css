@@ -1003,34 +1003,6 @@ label.star {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23d8b11e' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
 }
 
-.emoji-wrapper {
-    text-align: center;
-    height: 100px;
-    overflow: hidden;
-    position: absolute;
-    top: -36px;
-    right: 15px;
-}
-
-    .emoji-wrapper:before,
-    .emoji-wrapper:after {
-        content: "";
-        height: 15px;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        z-index: 1;
-    }
-
-    .emoji-wrapper:before {
-        top: 0;
-        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 35%,rgba(255,255,255,0) 100%);
-    }
-
-    .emoji-wrapper:after {
-        bottom: 0;
-    }
-
 .emoji {
     display: flex;
     flex-direction: column;
@@ -1044,50 +1016,6 @@ label.star {
         height: 70px;
         flex-shrink: 0;
     }
-
-#rating-1:checked ~ .emoji-wrapper > .emoji {
-    transform: translateY(-100px);
-}
-
-#rating-2:checked ~ .emoji-wrapper > .emoji {
-    transform: translateY(-200px);
-}
-
-#rating-3:checked ~ .emoji-wrapper > .emoji {
-    transform: translateY(-300px);
-}
-
-#rating-4:checked ~ .emoji-wrapper > .emoji {
-    transform: translateY(-400px);
-}
-
-#rating-5:checked ~ .emoji-wrapper > .emoji {
-    transform: translateY(-500px);
-}
-
-#rating-1:hover ~ .emoji-wrapper > .emoji {
-    transform: translateY(-100px);
-}
-
-#rating-2:hover ~ .emoji-wrapper > .emoji {
-    transform: translateY(-200px);
-}
-
-#rating-3:hover ~ .emoji-wrapper > .emoji {
-    transform: translateY(-300px);
-}
-
-#rating-4:hover ~ .emoji-wrapper > .emoji {
-    transform: translateY(-400px);
-}
-
-#rating-5:hover ~ .emoji-wrapper > .emoji {
-    transform: translateY(-500px);
-}
-
-::placeholder {
-    color: rgba(199,199,199,1);
-}
 
 .avatar-post {
     width: 30%;
@@ -1337,13 +1265,15 @@ label.star {
     display: flex;
     width: 100%;
     overflow: hidden;
-    flex-direction: row-reverse;
     justify-content: flex-end;
     padding-bottom: 5px;
-    height: 55px;
-    padding-right: 77px;
+    height: 50px;
+    align-items: flex-end;
 }
-
+.emoji-wrapper{
+    position:absolute;
+    right:0;
+}
 .rating-0 {
     filter: grayscale(100%);
 }
@@ -1466,6 +1396,204 @@ textarea {
 }
 .ftoc-head .title-header-cate .icon-list{
     height:32px;
+}
+.commentpost:nth-of-type(odd) {
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+
+.commentpost {
+    padding: 15px 15px 0;
+    font-size: 1.1em;
+}
+
+
+
+.comment-list {
+    border: 1px solid #e8e8e8;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+
+    .comment-list .name a {
+        margin-left: 0px;
+        color: #888
+    }
+
+    .comment-list .audioname a {
+        color: #c77d35;
+        font-weight: bold;
+        margin-bottom: 3px;
+    }
+
+    .comment-list .font_date_comment {
+        font-size: 0.9em;
+        color: #a2a2a2
+    }
+
+    .comment-list .content p {
+        margin: 5px 0 0;
+        padding: 0
+    }
+
+
+.commentpost .avatar {
+    float: left;
+    margin-right: 10px;
+    width: 60px;
+    text-align: center;
+}
+
+    .commentpost .avatar img:first-child {
+        width: 60px;
+        height: 60px;
+        /*background: url(../img/no-avatar.png) 0 0 no-repeat transparent;*/
+        background-size: 60px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 5px;
+    }
+
+.commentpost .subcomment .avatar {
+    position: relative
+}
+
+    .commentpost .subcomment .avatar img:last-child {
+        /*position:absolute;
+    top:40px;
+    left:5px;
+    width:40px;*/
+        margin-bottom: 5px
+    }
+
+.subcomment {
+    margin-left: 50px;
+    border-top: 1px solid #eeeeee;
+    margin-top: 5px;
+    padding-top: 10px;
+    color: #888;
+}
+
+
+
+.comment-list .action {
+    text-align: right;
+    line-height: 30px;
+    color: #dbdbdb;
+}
+
+    .comment-list .action a {
+        color: #adadad;
+        font-size: 0.9em
+    }
+
+        .comment-list .action a i, .comment-list .action span {
+            margin-right: 2px;
+        }
+
+    .comment-list .action .like {
+        /*color: #d58d0b;*/
+    }
+
+.comment-list .header-comment-list {
+    background: #eaeaea;
+    color: #444;
+    line-height: 35px;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    border-top: 3px solid #e0850f
+}
+
+.comment-list .sort {
+    float: right;
+}
+
+    .comment-list .sort a {
+        margin-left: 10px;
+        line-height: 35px;
+        display: inline-block;
+        padding: 0 10px;
+        font-weight: bold;
+        color: #7b4f33;
+    }
+
+        .comment-list .sort a.selected {
+            background: #7b4f33;
+            color: #fff
+        }
+
+
+
+
+
+.comment-list .comment-title {
+    float: left;
+    font-weight: bold;
+}
+
+    .comment-list .comment-title span {
+        font-weight: normal;
+    }
+
+
+div .like {
+    display: inline-block;
+    cursor: pointer
+}
+
+a.liked, a.liked span, a.liked i {
+    color: #e07400 !important;
+    font-weight: bold;
+}
+
+
+
+
+.comment-right {
+    overflow: hidden
+}
+
+
+.comment-list .content {
+    padding: 7px 0 10px;
+}
+
+.comment-list .subcomment .content {
+    padding: 4px 0 0;
+}
+
+.form_rating input[type=text] {
+    height: 30px;
+    margin-bottom: 10px;
+}
+.comment-list .action a.comment_like.active {
+    color: #0069c5;
+}
+.form_rating input[type=submit] {
+    height: 35px;
+    display: block;
+    width: unset;
+    background: #3b90da;
+    color: #fff;
+    border: none;
+}
+.view_more_comment {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.view_more_comment a {
+    line-height: 35px;
+    padding: 0 20px;
+    display: inline-block;
+    width: unset;
+    background: #3b90da;
+    color: #fff;
+    border: none;
 }
 @media screen and (max-width: 992px) {
     .modal-content {
