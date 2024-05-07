@@ -1592,7 +1592,7 @@ a.liked, a.liked span, a.liked i {
     display: inline-block;
     width: unset;
     background: #3b90da;
-    color: #fff;
+    color: #fff!important;
     border: none;
 }
 @media screen and (max-width: 992px) {

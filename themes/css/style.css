@@ -1807,7 +1807,7 @@ button.btn_newsletter {
 .list_blog_reale .cont {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
     .list_blog_reale .cont h3 {
@@ -1820,7 +1820,7 @@ button.btn_newsletter {
 
     .list_blog_reale .cont .img {
         width: 20%;
-        margin-right: 15px;
+        margin-right: 10px;
     }
 
         .list_blog_reale .cont .img img {
@@ -1829,15 +1829,17 @@ button.btn_newsletter {
 
     .list_blog_reale .cont .info {
         width: 80%;
-        padding: 10px;
+        /*padding: 10px;*/
     }
-
-footer .fo1 {
-    width: 100%;
-    background: #7A0001;
-    padding: 50px 30px;
-    margin-top: 20px
-}
+        .list_blog_reale .cont .info a{
+            font-weight:600;
+        }
+        footer .fo1 {
+            width: 100%;
+            background: #7A0001;
+            padding: 50px 30px;
+            margin-top: 20px
+        }
 
     footer .fo1 .info {
         width: 100%;
@@ -2797,10 +2799,10 @@ footer .fo1 .info .fo2 .item {
     color: #fff;
 }
 
-body .main .news-detail .container .left {
+/*body .main .news-detail .container .left {
     width: 100%;
     padding-left: 20px;
-}
+}*/
 /*.form_rating .comment-post {
     width: 100%;
     float: initial;

@@ -414,6 +414,7 @@
                         likeHtml.html(value);
                     }
                 });
+                console.log('haha');
             });
         });
     });
@@ -552,7 +553,7 @@
     function DelComment(del, parentid) {
         if (confirm("Xóa bình luận?")) {
             $.ajax({
-                url: "ajax/ajax.aspx?control=comment",
+                url: "/ajax/ajax.aspx?control=comment",
                 type: "POST",
                 data: { action: "delete", delid: del, parent: parentid },
                 contentType: false,
@@ -591,7 +592,7 @@
         var n = d.getMilliseconds();
         ImgLoading(true);
         var xhr = $.ajax({
-            url: "/ajax/ajax.aspx",
+            url: "ajax/ajax.aspx",
             data: { control: "commentlistdetail", article: articleID, pi: PageIndex, ps: pagesize, t: n },
             success: function (html) {
                 if (html != "") {

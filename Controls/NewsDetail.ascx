@@ -10,25 +10,6 @@
             </div>
             <div class="clear"></div>
             <div class="title-detail"><%= ConvertUtility.ToString(dr["Name"]) %></div>
-            <%--<div class="feedback">
-                <div class="rating">
-                    <input type="radio" name="rating" id="rating-5" data-value="5">
-                    <label for="rating-5"></label>
-                    <input type="radio" name="rating" id="rating-4" data-value="4">
-                    <label for="rating-4"></label>
-                    <input type="radio" name="rating" id="rating-3" data-value="3">
-                    <label for="rating-3"></label>
-                    <input type="radio" name="rating" id="rating-2" data-value="2">
-                    <label for="rating-2"></label>
-                    <input type="radio" name="rating" id="rating-1" data-value="1">
-                    <label for="rating-1"></label>
-                    <div class="emoji-wrapper">
-                        <div class="emoji">
-                          4/5
-                        </div>
-                    </div>
-                </div>
-            </div>--%>
             <div class="goto-wrapper ftoc-head">
                 <div class="title-header-cate">
                     <div class="title-goto-wrapper">
@@ -78,198 +59,175 @@
             <%= Utils.LoadUserControl("~/Controls/WidgetComment.ascx") %>
             
         </div>
-        <%--<div class="right">
-            <div class="container-sticky">
-                <%=Utils.LoadUserControl("~/Controls/WidgetMenuNews.ascx") %>
-
-
-
-
-
-
-<%--                <%
-                    string TagsList = dr["TagIDList"].ToString().Trim(',');
-                    if (!Utils.IsNullOrEmpty(TagsList))
-                    {
-                        DataTable dtTag = SqlHelper.SQLToDataTable("tblCategories", "Name,FriendlyUrl", string.Format("ID IN ({0})", TagsList));
-                        if (dtTag != null && dtTag.Rows.Count > 0)
+                <div class="right">
+                <div class="container-sticky">
+                    <%--<%=Utils.LoadUserControl("~/Controls/WidgetMenuNews.ascx") %>--%>
+    <%--                <%
+                        string TagsList = dr["TagIDList"].ToString().Trim(',');
+                        if (!Utils.IsNullOrEmpty(TagsList))
                         {
-                %>
-                <div class="clear"></div>
-                <div class="entry-tags">
-                    <ul>
-
-                        <%
-                            foreach (DataRow drTag in dtTag.Rows)
+                            DataTable dtTag = SqlHelper.SQLToDataTable("tblCategories", "Name,FriendlyUrl", string.Format("ID IN ({0})", TagsList));
+                            if (dtTag != null && dtTag.Rows.Count > 0)
                             {
-                                string link = TextChanger.GetLinkRewrite_Category(drTag["FriendlyUrl"].ToString());
-                                string tagName = drTag["Name"].ToString();
-                        %>
-                        <li class="entry-tag-item"><a href="<%= link %>" title="<%= tagName %>"><%= tagName %></a></li>
-                        <%
-                            }
-                        %>
-                    </ul>
-                </div>
-                <div class="clear"></div>
-                <%
-                        }
-                    }
-                %>
-
-
-
-                <%
-                    string HashTagsList = dr["HashTagIDList"].ToString().Trim(',');
-                    if (!Utils.IsNullOrEmpty(HashTagsList))
-                    {
-                        DataTable dtHashTag = SqlHelper.SQLToDataTable("tblCategories", "ID,Name,FriendlyUrl", string.Format("ID IN ({0})", HashTagsList));
-                        if (dtHashTag != null && dtHashTag.Rows.Count > 0)
-                        {
-                            List<string> IDListTag = new List<string>();
-                            foreach (DataRow drHashTag in dtHashTag.Rows)
-                            {
-                                IDListTag.Add(drHashTag["ID"].ToString());
-                            }
-
-                            int countCheck = 1;
-
-                            //if (IDListTag != null && IDListTag.Count > 0)
-                            //{
-
-                            //    foreach (string TagCheck in IDListTag)
-                            //    {
-                            //        countCheck = SqlHelper.GetCount(C.ARTICLE_TABLE, string.Format("HashTagIDList like N'%,{0},%' AND ID<>{1}", TagCheck, dr["ID"]));
-                            //        if (countCheck > 0)
-                            //            continue;
-                            //    }
-                            //}
-
-
-                            if (countCheck > 0)
-                            {
-                                foreach (DataRow drHashTag in dtHashTag.Rows)
-                                {
-                                    DataTable dtArticle = SqlHelper.SQLToDataTable("tblArticle", "Name, FriendlyUrl", string.Format("HashTagIDList like N'%,{0},%' AND ID<>{1}", drHashTag["ID"], dr["ID"]), "ID DESC", 1, 10);
-                                    string linkTag = TextChanger.GetLinkRewrite_Category(drHashTag["FriendlyUrl"].ToString());
-                %>
-                <div class="clear"></div>
-                <div class="widget fix-widget3">
-                    <div class="widget-title3">
-                       
-                            <img class="ictags" src="/themes/img/ic-03.svg">
-                            <%= drHashTag["Name"].ToString() %>
-                    </div>
-                    <div class="widget-container">
+                    %>
+                    <div class="clear"></div>
+                    <div class="entry-tags">
                         <ul>
+
                             <%
-                                if (Utils.CheckExist_DataTable(dtArticle) && Utils.CheckExist_DataTable(dtArticle))
+                                foreach (DataRow drTag in dtTag.Rows)
                                 {
-                                    int count = 0;
-                                    foreach (System.Data.DataRow drArticleTag in dtArticle.Rows)
-                                    {
-                                        count++;
-                                        string linkDetail = TextChanger.GetLinkRewrite_Article(drArticleTag["FriendlyUrl"] + "");
-                                        string titleArtice = drArticleTag["Name"] + "";
+                                    string link = TextChanger.GetLinkRewrite_Category(drTag["FriendlyUrl"].ToString());
+                                    string tagName = drTag["Name"].ToString();
                             %>
-                            <li class="widget-news3">
-                                <span class="count123"><%= count %></span>
-                                <div class="description">
-                                    <span class="post-title-widget">
-                                        <a href="<%=linkDetail %>" title="<%=titleArtice %>"><%=titleArtice %></a>
-                                    </span>
-                                </div>
-                            </li>
-                            <%}
-                                }%>
+                            <li class="entry-tag-item"><a href="<%= link %>" title="<%= tagName %>"><%= tagName %></a></li>
+                            <%
+                                }
+                            %>
                         </ul>
                     </div>
-                </div>
-                <div class="clear"></div>
-                <%
+                    <div class="clear"></div>
+                    <%
+                            }
+                        }
+                    %>
 
+
+
+                    <%
+                        string HashTagsList = dr["HashTagIDList"].ToString().Trim(',');
+                        if (!Utils.IsNullOrEmpty(HashTagsList))
+                        {
+                            DataTable dtHashTag = SqlHelper.SQLToDataTable("tblCategories", "ID,Name,FriendlyUrl", string.Format("ID IN ({0})", HashTagsList));
+                            if (dtHashTag != null && dtHashTag.Rows.Count > 0)
+                            {
+                                List<string> IDListTag = new List<string>();
+                                foreach (DataRow drHashTag in dtHashTag.Rows)
+                                {
+                                    IDListTag.Add(drHashTag["ID"].ToString());
+                                }
+
+                                int countCheck = 1;
+
+                                //if (IDListTag != null && IDListTag.Count > 0)
+                                //{
+
+                                //    foreach (string TagCheck in IDListTag)
+                                //    {
+                                //        countCheck = SqlHelper.GetCount(C.ARTICLE_TABLE, string.Format("HashTagIDList like N'%,{0},%' AND ID<>{1}", TagCheck, dr["ID"]));
+                                //        if (countCheck > 0)
+                                //            continue;
+                                //    }
+                                //}
+
+
+                                if (countCheck > 0)
+                                {
+                                    foreach (DataRow drHashTag in dtHashTag.Rows)
+                                    {
+                                        DataTable dtArticle = SqlHelper.SQLToDataTable("tblArticle", "Name, FriendlyUrl", string.Format("HashTagIDList like N'%,{0},%' AND ID<>{1}", drHashTag["ID"], dr["ID"]), "ID DESC", 1, 10);
+                                        string linkTag = TextChanger.GetLinkRewrite_Category(drHashTag["FriendlyUrl"].ToString());
+                    %>
+                    <div class="clear"></div>
+                    <div class="widget fix-widget3">
+                        <div class="widget-title3">
+                       
+                                <img class="ictags" src="/themes/img/ic-03.svg">
+                                <%= drHashTag["Name"].ToString() %>
+                        </div>
+                        <div class="widget-container">
+                            <ul>
+                                <%
+                                    if (Utils.CheckExist_DataTable(dtArticle) && Utils.CheckExist_DataTable(dtArticle))
+                                    {
+                                        int count = 0;
+                                        foreach (System.Data.DataRow drArticleTag in dtArticle.Rows)
+                                        {
+                                            count++;
+                                            string linkDetail = TextChanger.GetLinkRewrite_Article(drArticleTag["FriendlyUrl"] + "");
+                                            string titleArtice = drArticleTag["Name"] + "";
+                                %>
+                                <li class="widget-news3">
+                                    <span class="count123"><%= count %></span>
+                                    <div class="description">
+                                        <span class="post-title-widget">
+                                            <a href="<%=linkDetail %>" title="<%=titleArtice %>"><%=titleArtice %></a>
+                                        </span>
+                                    </div>
+                                </li>
+                                <%}
+                                    }%>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <%
+
+                                    }
                                 }
                             }
                         }
-                    }
 
-                %>
-                <%=Utils.LoadUserControl("~/Controls/WidgetSupport.ascx") %>
-            </div>--%>
+                    %>--%>
+                    <%--<%=Utils.LoadUserControl("~/Controls/WidgetSupport.ascx") %>--%>
+                    <%if (ConvertUtility.ToInt32(PageInfo.CategoryID) > 0)
+                    { %>
+
+                    <div class="box-content-reale">
+                        <div class="contact">
+                            <div class="title">
+                                <span>Bài viết mới nhất</span>
+                            </div>
+                            <%
+                            string filter = string.Format("(Hide is null OR Hide=0) AND Flags & {0} <> 0", (int)ArticleFlag.HomeArticle);
+                            DataTable dtNews = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "FriendlyUrl, Name, Gallery, Description", filter, "EditedDate DESC", 1, 12);
+                            if (Utils.CheckExist_DataTable(dtNews))
+                            {
+                                int count = 0;
+                            %>
+                            <div class="list_blog_reale">
+                                    <div class="insider">
+                                        <% for (int i = count; i < 5 && i < dtNews.Rows.Count; i++)
+                                            { %>
+                                        <article>
+                                            <div class="cont">
+                                                <div class="img">
+                                                    <a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>">
+                                                        <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 130, 100, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <div><a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>"><%= dtNews.Rows[i]["Name"].ToString() %></a></div>
+                                                    <%--<div class="cnt-except">
+                                                        <%= dtNews.Rows[i]["Description"].ToString() %>
+                                                    </div> --%>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <% 
+                                                if (Utils.isMobileBrowser)
+                                                    Response.Write("");
+                                            }
+
+
+                                        %>
+                                    </div>
+                                </div>
+    
+                        </div>
+                        <%
+                        } 
+                        %>
+                    </div>
+
+
+                    <% } %>
+                </div>
         </div>
     </div>
 </article>
 <div class="clear"></div>
-<%if (ConvertUtility.ToInt32(PageInfo.CategoryID) > 0)
-    { %>
 
-<div class="box-content-reale">
-    <div class="container">
-    <h2 class="title">
-        <span>Bài viết mới nhất</span>
-    </h2>
-   <%
-    string filter = string.Format("(Hide is null OR Hide=0) AND Flags & {0} <> 0", (int)ArticleFlag.HomeArticle);
-    DataTable dtNews = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "FriendlyUrl, Name, Gallery, Description", filter, "EditedDate DESC", 1, 12);
-    if (Utils.CheckExist_DataTable(dtNews))
-    {
-        int count = 0;
-%>
-<%-- %><div class="list_blog">
-    <div class="insider">
-
-        <% for (int i = 0; i < 4 && i < dtNews.Rows.Count; i++)
-            {
-        %>
-        <a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>"><span class="img">
-            <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 300, 130, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" /></span>
-
-            <div class="caption">
-                <p class="text">
-                    <%= dtNews.Rows[i]["Name"].ToString() %>
-                </p>
-            </div>
-        </a>
-        <%  count++;
-            } %>
-    </div>
-</div>--%>
-<div class="list_blog_reale">
-        <div class="insider">
-            <% for (int i = count; i < 5 && i < dtNews.Rows.Count; i++)
-                { %>
-            <article>
-                <div class="cont">
-                    <div class="img">
-                        <a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>">
-                            <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 130, 100, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
-                        </a>
-                    </div>
-                    <div class="info">
-                        <h3><a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>"><%= dtNews.Rows[i]["Name"].ToString() %></a></h3>
-                        <div class="cnt-except">
-                            <%= dtNews.Rows[i]["Description"].ToString() %>
-                        </div> 
-                    </div>
-                </div>
-            </article>
-            <% 
-                    if (Utils.isMobileBrowser)
-                        Response.Write("");
-                }
-
-
-            %>
-        </div>
-    </div>
-    
-</div>
-<%
-    } %>
-</div>
-
-
-<% } %>
 <div class="product-new">
     <div class="title-product-new">
         <h2>Sản phẩm khuyến mãi trong tháng</h2>
