@@ -402,6 +402,7 @@
             var currButton = $(this);
             var likeHtml = $(this).find("span");
             $.getJSON('/ajax/ajax.aspx', { control: "comment", action: 'like', id: id, currLike: currLike, t: Math.random() }, function (data) {
+                console.log("second success");
                 $.each(data, function (key, value) {
                     if (key == "active") {
                         if (value == "true")
@@ -414,6 +415,7 @@
                         likeHtml.html(value);
                     }
                 });
+                console.log('haha');
             });
         });
     });
@@ -552,7 +554,7 @@
     function DelComment(del, parentid) {
         if (confirm("Xóa bình luận?")) {
             $.ajax({
-                url: "ajax/ajax.aspx?control=comment",
+                url: "/ajax/ajax.aspx?control=comment",
                 type: "POST",
                 data: { action: "delete", delid: del, parent: parentid },
                 contentType: false,
