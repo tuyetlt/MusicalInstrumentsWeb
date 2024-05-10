@@ -19,7 +19,9 @@ body {
 .container {
     max-width: 1200px;
     margin: auto;
-    position: relative
+    position: relative;
+    padding-left:15px;
+    padding-right:15px;
 }
 
 .section1 .menu_cate ul li span svg {
@@ -33,12 +35,12 @@ body {
     padding-bottom: 1px
 }
 
-    .sticky_mobi button {
-        background: none;
-        outline: none;
-        border: none;
-        font-size: 22px
-    }
+.sticky_mobi button {
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 22px
+}
 
 .sticky_mobi {
     padding-bottom: 4px;

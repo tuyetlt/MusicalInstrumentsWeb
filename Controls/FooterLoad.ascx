@@ -402,6 +402,7 @@
             var currButton = $(this);
             var likeHtml = $(this).find("span");
             $.getJSON('/ajax/ajax.aspx', { control: "comment", action: 'like', id: id, currLike: currLike, t: Math.random() }, function (data) {
+                console.log("second success");
                 $.each(data, function (key, value) {
                     if (key == "active") {
                         if (value == "true")
@@ -592,7 +593,7 @@
         var n = d.getMilliseconds();
         ImgLoading(true);
         var xhr = $.ajax({
-            url: "ajax/ajax.aspx",
+            url: "/ajax/ajax.aspx",
             data: { control: "commentlistdetail", article: articleID, pi: PageIndex, ps: pagesize, t: n },
             success: function (html) {
                 if (html != "") {
