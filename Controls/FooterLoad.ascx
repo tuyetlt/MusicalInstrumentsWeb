@@ -49,6 +49,16 @@
 <% var themes = ""; // "-" + ConfigWeb.Style.Replace(".css", ""); %>
 
 <div class="contactWidget">
+     <div class="item">
+         <div class="icon-menu-ft">
+             <label for="navbar-toggler" class="toggle_menu_ft">
+                <i class="far fa-bars"></i>
+            </label>
+            <input type="checkbox" class="navbar-input" name="" id="navbar-toggler" />
+         </div>
+         <br />
+         Menu
+     </div>
     <div class="item">
         <a href="javascript:;" id="callButton" rel="nofollow">
 
@@ -94,22 +104,7 @@
             Bản đồ
         </a>
     </div>
-    <div class="item">
-
-        <% if (IsTimeWorking)
-            { %>
-        <div class="bubble">
-            <span class="bubble-outer-dot">
-                <span class="bubble-inner-dot"></span>
-            </span>
-        </div>
-        <% } %>
-        <a href="javascript:;" id="th-oncustomer-customchat" rel="nofollow">
-            <img src="/themes/img/icon-contact<%= themes %>/chat.png" alt="Chat" />
-            <br />
-            Chat nhanh
-        </a>
-    </div>
+   
 
     <div id="telList" class="modal">
         <div class="modal-content">
