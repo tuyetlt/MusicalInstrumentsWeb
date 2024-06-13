@@ -11,7 +11,7 @@
                     <div class="box-img-product">
                         <div class="box-images">
                             <div class="container-carousel">
-                                <div class="carousel-img-product">
+                                <div class="carousel-img-product slider-for">
                                     <%
                                         if (!Utils.IsNullOrEmpty(dr["VideoGallery"]))
                                         {
@@ -63,7 +63,7 @@
                                     %>
                                 </div>
                             </div>
-                            <div class="thumbnail-child">
+                            <div class="thumbnail-child slider-nav">
 
                             <%
 
@@ -506,7 +506,7 @@
         </div>
         <div class="box-add">
             <div class="title-price">Tổng tiền</div>
-            <div class="price-all">20 000 000</div>
+            <div class="price-all">20 000 000đ</div>
              <div class="container-button">
                  <a href="javascript:;" id="btnSubmit_giohang" class="button btn-red">
                     Thêm vào giỏ hàng
@@ -529,7 +529,8 @@
                        <label for="piano_ydp">ĐÀN PIANO YAMAHA YDP 105B</label>
                      </div>
                     <div class="price">
-                           17.290.000 VNĐ
+                        <span class="price-real">20.350.000 VNĐ</span>
+                        <span class="price-sale">17.290.000 VNĐ</span>
                     </div>
                 </div>
                <div class="item-prd">

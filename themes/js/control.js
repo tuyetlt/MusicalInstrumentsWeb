@@ -583,12 +583,30 @@ $(document).ready(function () {
 
 
 
-    $(".carousel-img-product").slick({
+/*    $(".carousel-img-product").slick({
         dots: true,
         infinite: true,
         nextArrow: '<i class="slick-button-prev"></i>',
         prevArrow: '<i class="slick-button-next"></i>'
+    });*/
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
     });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        //centerMode: true,
+        focusOnSelect: true,
+        nextArrow: '<i class="slick-button-prev"></i>',
+        prevArrow: '<i class="slick-button-next"></i>'
+    });
+
     $("button.owl-prev").each(function (index, value) {
         $(this).html('<i class="button-prev"></i>');
     });
