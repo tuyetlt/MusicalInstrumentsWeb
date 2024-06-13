@@ -36,7 +36,7 @@
                         <div>
                             <input type="text" id="categoryid" name="categoryidlist" value="<%= Utils.CommaSQLRemove(dr["CategoryIDList"].ToString()) %>" style="display: none" />
                             <input type="text" id="categoryname" name="categorynamelist" value="<%= CatNameList %>" style="display: none" />
-                            <select id="drCategory" multiple data-level="1" name="itemSelect" style="width: 100%"></select>
+                            <select id="drArticleCategory" multiple data-level="1" name="itemSelect" style="width: 100%"></select>
                         </div>
                     </div>
                     <!-- NewsRelatedIDList -->
@@ -44,16 +44,9 @@
                         <div></div>
                         <div>
                             <input type="hidden" id="newsrelatedidlist" name="newsrelatedidlist" value="<%= dr["NewsRelatedIDList"].ToString()%>" />
-                            <%--<input type="text" id="newsrelatedidlist" name="newsrelatedidlist" value="710,711,712,713" />--%>
-
-
-
-
                             <input class="btnOpenPopup btn" type="button" value="Chọn tin liên quan" />
                             <input type="button" class="btn" id="btnButtonAutoClick" style="display: inline-block; visibility: hidden" onclick="callAjax()" value="load lại" />
-
                             <div class="clear"></div>
-
                             <div style="max-height: 300px; overflow-y: auto;">
                                 <div style="margin: 10px 0" id="Article-list-ajax">
                                 </div>

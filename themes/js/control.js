@@ -1683,31 +1683,34 @@ function addNavigationLinkForHeading(heading, currentSectionList) {
 }
 
 function buildTableOfContentsFromHeadings() {
-    const tocElement = document.querySelector(`#${tocId}`);
-    const main = document.querySelector("article");
-    if (!main) {
-        throw Error("A `main` tag section is required to query headings from.");
+    var detailPage = $(".news-detail");
+    if (detailPage.length) {
+        const tocElement = document.querySelector(`#${tocId}`);
+        const main = document.querySelector("article");
+        if (!main) {
+            throw Error("A `main` tag section is required to query headings from.");
+        }
+        headings = main.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        let previousHeading;
+        let currentSectionList = document.createElement("ul");
+        tocElement.appendChild(currentSectionList);
+
+        headings.forEach((heading, index) => {
+            currentSectionList = getProperListSection(
+                heading,
+                previousHeading,
+                currentSectionList
+            );
+            setIdFromContent(heading, index);
+            addNavigationLinkForHeading(heading, currentSectionList);
+
+            headingIds.push(heading.id);
+            headingIntersectionData[heading.id] = {
+                y: 0
+            };
+            previousHeading = heading;
+        });
     }
-    headings = main.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    let previousHeading;
-    let currentSectionList = document.createElement("ul");
-    tocElement.appendChild(currentSectionList);
-
-    headings.forEach((heading, index) => {
-        currentSectionList = getProperListSection(
-            heading,
-            previousHeading,
-            currentSectionList
-        );
-        setIdFromContent(heading, index);
-        addNavigationLinkForHeading(heading, currentSectionList);
-
-        headingIds.push(heading.id);
-        headingIntersectionData[heading.id] = {
-            y: 0
-        };
-        previousHeading = heading;
-    });
 }
 
 function updateActiveHeadingOnIntersection(entry) {
@@ -1751,12 +1754,15 @@ function observeHeadings() {
         .forEach((heading) => headerObserver.observe(heading));
 }
 
-window.addEventListener("load", (event) => {
-    buildTableOfContentsFromHeadings();
-    if ("IntersectionObserver" in window) {
-        observeHeadings();
-    }
-});
+var detailPage = $(".news-detail");
+if (detailPage.length) {
+    window.addEventListener("load", (event) => {
+        buildTableOfContentsFromHeadings();
+        if ("IntersectionObserver" in window) {
+            observeHeadings();
+        }
+    });
+}
 
 window.addEventListener("unload", (event) => {
     headerObserver.disconnect();

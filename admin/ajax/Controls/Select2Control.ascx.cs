@@ -126,6 +126,12 @@ public partial class admin_ajax_Controls_Select2Control : System.Web.UI.UserCont
         {
             filter += " AND Moduls=N'category'";
         }
+        else if (tableSql == "tblCategories" && moduls == "article")
+        {
+           filter += string.Format("AND LinkTypeMenuFlag & {0} <> 0", (int)LinkTypeMenuFlag.Article);
+        } 
+        
+
 
         if (multilevel == 0)
         {

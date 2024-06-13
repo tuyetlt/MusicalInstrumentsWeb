@@ -11,7 +11,6 @@
 
                         <div class="title-box"><%= ConfigWeb.SiteName %></div>
                         <%= ConfigWeb.FooterDescription %>
-
                     </div>
                     <div class="cnt-item">
                         <div class="cnt-icon-up">
@@ -51,7 +50,7 @@
                             <a href="<%= C.ROOT_URL %>">
                                 <img src="<%= ConfigWeb.LogoFooter %>" alt="<%= ConfigWeb.MetaTitle %>"></a>
                         </div>
-                       
+
                         <p>
                             <a href="http://online.gov.vn/Home/WebDetails/15750" target="_blank" rel="nofollow">
                                 <img src="/assets/images/dathongbaobocongthuong.png" alt="Đã thông báo bộ công thương" style="width: 200px; margin-top: 10px" />
@@ -61,43 +60,43 @@
                 </div>
                 <div class="item">
                     <div class="in  in-top">
-                        <div class="item">
+                        <%--<div class="item">
                             <div class="insider">
                                 <p>DANH MỤC SẢN PHẨM</p>
-                            
-                            <ul>
-                                <%
-                                    string filter = string.Format("{0} AND {1}", Utils.CreateFilterHide, Utils.CreateFilterFlags(PositionMenuFlag.Main, "PositionMenuFlag"));
-                                    DataTable dt_1 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,SeoFlags,AttrMenuFlag,Icon,LinkTypeMenuFlag,Link,Image_3", string.Format("ParentID=0 AND {0}", filter), "Sort", 1, C.MAX_ITEM_MENU);
-                                    if (Utils.CheckExist_DataTable(dt_1))
-                                    {
-                                        foreach (DataRow dr_1 in dt_1.Rows)
-                                        {
-                                            string link_1 = Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]);
-                                            string noffollow1 = string.Empty;
-                                            int SeoFlagINT = ConvertUtility.ToInt32(dr_1["SeoFlags"]);
-                                            if (SeoFlagINT == (int)SeoFlag.Nofollow)
-                                                noffollow1 = @" rel=""nofollow""";
-                                %>
-                                <li><a href="<%= link_1 %>" <%= Utils.CreateCategory_Target(dr_1["AttrMenuFlag"]) %><%= noffollow1 %>><%= dr_1["Name"].ToString() %></a></li>
-                                <%
-                                        }
-                                    }
 
-                                %>
-                            </ul>
-                                </div>
-                        </div>
+                                <ul>
+                                    <%
+                                        string filter = string.Format("{0} AND {1} AND {2}", Utils.CreateFilterHide, Utils.CreateFilterFlags(PositionMenuFlag.Bottom, "PositionMenuFlag"), Utils.CreateFilterFlags(PositionMenuFlag.Main, "PositionMenuFlag"));
+                                        DataTable dt_1 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,SeoFlags,AttrMenuFlag,Icon,LinkTypeMenuFlag,Link,Image_3", string.Format("{0}", filter), "Sort", 1, C.MAX_ITEM_MENU);
+                                        if (Utils.CheckExist_DataTable(dt_1))
+                                        {
+                                            foreach (DataRow dr_1 in dt_1.Rows)
+                                            {
+                                                string link_1 = Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]);
+                                                string noffollow1 = string.Empty;
+                                                int SeoFlagINT = ConvertUtility.ToInt32(dr_1["SeoFlags"]);
+                                                if (SeoFlagINT == (int)SeoFlag.Nofollow)
+                                                    noffollow1 = @" rel=""nofollow""";
+                                    %>
+                                    <li><a href="<%= link_1 %>" <%= Utils.CreateCategory_Target(dr_1["AttrMenuFlag"]) %><%= noffollow1 %>><%= dr_1["Name"].ToString() %></a></li>
+                                    <%
+                                            }
+                                        }
+
+                                    %>
+                                </ul>
+                            </div>
+                        </div>--%>
 
                         <%
                             int Bottom = (int)PositionMenuFlag.Bottom;
                             string filterWidget = string.Format("(Hide is null OR Hide=0) AND PositionMenuFlag & {0} <> 0", Bottom);
-                            DataTable dt = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,LinkTypeMenuFlag,FriendlyUrl,Link", string.Format("ParentID=0 AND {0}", filterWidget), "Sort", 1, 3);
+                            DataTable dt = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,LinkTypeMenuFlag,FriendlyUrl,Link", string.Format("ParentID=0 AND {0}", filterWidget), "Sort", 1, 4);
                             if (Utils.CheckExist_DataTable(dt))
                             {
-            
 
-                                for(int i = 0; i< dt.Rows.Count; i++)
+
+                                for (int i = 0; i < dt.Rows.Count; i++)
                                 {
                                     DataTable dt_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "Name,LinkTypeMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID={0}", dt.Rows[i]["ID"]), "Sort", 1, 10);
                         %>
@@ -113,7 +112,7 @@
                                             {
                                                 string link = Utils.CreateCategoryLink(dr_2["LinkTypeMenuFlag"], dr_2["FriendlyUrl"], dr_2["Link"]);
                                     %>
-                                    <li><a href="<%= link %>"<%=Utils.GetNoFollow(dr_2["SeoFlags"]) %>><%= dr_2["Name"] %></a></li>
+                                    <li><a href="<%= link %>" <%=Utils.GetNoFollow(dr_2["SeoFlags"]) %>><%= dr_2["Name"] %></a></li>
                                     <% } %>
                                 </ul>
                             </div>
@@ -124,6 +123,7 @@
                         %>
                         <div class="item">
                             <div class="insider">
+                                <p>Liên hệ với chúng tôi</p>
                                 <div class="gg-map">
                                     <iframe src="<%= ConfigWeb.MapLocation %>" width="100%" height="150" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                     <%  if (!string.IsNullOrEmpty(ConfigWeb.MapLocation1) && !string.IsNullOrEmpty(ConfigWeb.MapLocation2))
@@ -137,14 +137,22 @@
                                 <div class="social-up">
                                     <ul>
                                         <li>
-                                            <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank"> <img src="/assets/images/facebook.png" alt="face" /></a>
+                                            <a rel="nofollow" href="https://www.facebook.com/nhaccutiendat" target="_blank">
+                                                <img src="/assets/images/facebook.png" alt="facebook" /></a>
                                         </li>
                                         <li>
-                                            <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank"> <img src="/assets/images/youtube.png" alt="youtube" /></a>
+                                            <a rel="nofollow" href="https://www.facebook.com/tiendat.tongkho" target="_blank">
+                                                <img src="/assets/images/facebook.png" alt="fb" /></a>
                                         </li>
-                                       <%-- <li>
-                                            <a href="#"><i class="fab fa-instagram"></i></a>
-                                        </li>--%>
+                                        <li>
+                                            <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank">
+                                                <img src="/assets/images/youtube.png" alt="youtube" /></a>
+                                        </li>
+                                        <li>
+                                            <a rel="nofollow" href="https://www.tiktok.com/@nhaccu.tiendat" target="_blank">
+                                                <img src="/assets/images/tiktok.png" alt="tiktok" /></a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>

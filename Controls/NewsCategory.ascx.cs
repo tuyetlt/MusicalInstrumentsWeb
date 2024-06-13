@@ -8,9 +8,10 @@ using System.Web.UI.WebControls;
 public partial class Controls_NewsCategory : System.Web.UI.UserControl
 {
     public DataRow drCat, drNews;
-    public DataTable dtCat, dtNews, dtRef;
+    public DataTable dtCat, dtNews, dtRef, dtChild;
     public int ID, RootID, _totalArticle, _totalPage, _pageSize = 10;
     public string caturl;
+    public bool isChild = false;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -43,13 +44,22 @@ public partial class Controls_NewsCategory : System.Web.UI.UserControl
             dtCat = dtRef;
         else
            dtCat = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID, Name,FriendlyUrl,Image_1,MetaTitle,MetaKeyword,MetaDescription,SchemaRatingCount,SchemaRatingValue,SeoFlags,Canonical", string.Format("FriendlyUrl=N'{0}' AND {1}", caturl, Utils.CreateFilterHide));
+        
         if (Utils.CheckExist_DataTable(dtCat))
         {
             drCat = dtCat.Rows[0];
             PageInfo.CategoryID = ConvertUtility.ToInt32(drCat["ID"]);
-            string filterNews = string.Format(@"(CategoryIDList Like N'%,{0},%' OR CategoryaIDParentList Like N'%,{0},%') AND {1} AND StartDate<=getdate() AND {2}", drCat["ID"], Utils.CreateFilterDate, Utils.CreateFilterHide);
-            dtNews = SqlHelper.SQLToDataTable("tblArticle", "Gallery,Name,FriendlyUrl,Description,SeoFlags", filterNews, ConfigWeb.SortArticle, 1, _pageSize, out _totalArticle);
             
+            dtChild = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID, Name,FriendlyUrl,Image_1,MetaTitle,MetaKeyword,MetaDescription,SchemaRatingCount,SchemaRatingValue,SeoFlags,Canonical", "(Hide is null OR Hide=0) AND ParentID=" + drCat["ID"].ToString());
+            if(!Utils.CheckExist_DataTable(dtChild))
+            {
+                isChild = true;
+                string filterNews = string.Format(@"(CategoryIDList Like N'%,{0},%' OR CategoryaIDParentList Like N'%,{0},%') AND {1} AND StartDate<=getdate() AND {2}", drCat["ID"], Utils.CreateFilterDate, Utils.CreateFilterHide);
+                dtNews = SqlHelper.SQLToDataTable("tblArticle", "Gallery,Name,FriendlyUrl,Description,SeoFlags", filterNews, ConfigWeb.SortArticle, 1, _pageSize, out _totalArticle);
+            }
+            else
+                isChild = false;
+           
         }
         else
             dtNews = SqlHelper.SQLToDataTable("tblArticle", "Gallery,Name,FriendlyUrl,Description,SeoFlags", string.Format(@"{0} AND StartDate<=getdate() AND {1}", Utils.CreateFilterDate, Utils.CreateFilterHide), ConfigWeb.SortArticle, 1, _pageSize, out _totalArticle);

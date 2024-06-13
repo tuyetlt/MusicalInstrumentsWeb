@@ -1906,7 +1906,7 @@ footer .fo1 .info .item .cnt-item {
     padding-bottom: 20px;
     padding-top: 10px;
     padding-left: 10px;
-    max-width: 80%;
+   /* max-width: 80%;*/
 }
 
     footer .fo1 .info .item .cnt-item > div {

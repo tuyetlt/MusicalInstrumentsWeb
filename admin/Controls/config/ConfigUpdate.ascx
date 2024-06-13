@@ -175,7 +175,7 @@
                     <div class="form-group">
                         <div>Copyright </div>
                         <div>
-                            <textarea id="copyright" name="copyright" rows="3" class="ckeditor"><%= dr["FooterDescription"].ToString()%></textarea>
+                            <textarea id="copyright" name="copyright" rows="3" class="ckeditor"><%= dr["Copyright"].ToString()%></textarea>
                         </div>
                     </div>
 

@@ -12,7 +12,7 @@ public partial class Tool_CountProductByCategory : System.Web.UI.Page
     {
         //string filter = string.Format("LinkTypeMenuFlag & {0} <> 0", (int)LinkTypeMenuFlag.Product);
 
-        //DataTable dt = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "ID,Name,FriendlyUrl", "", "");
+        //DataTable dt = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "ID,Name,FriendlyUrl", " ID IN (861,860,229,99,851)", "");
         //foreach (DataRow dr in dt.Rows)
         //{
         //    DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", dr["FriendlyUrl"]));
@@ -25,18 +25,26 @@ public partial class Tool_CountProductByCategory : System.Web.UI.Page
 
 
 
-        //DataTable dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrl", "", "");
-        //foreach(DataRow drProduct in dtProduct.Rows)
-        //{
-        //    SqlHelper.Update_Url_Table(false, "product_detail", ConvertUtility.ToInt32(drProduct["ID"]), drProduct["Name"].ToString(), drProduct["FriendlyUrl"].ToString());
-        //}
+        DataTable dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrl", "ID IN (1551,1769)", "");
+        foreach (DataRow drProduct in dtProduct.Rows)
+        {
+            DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", drProduct["FriendlyUrl"]));
+            if (!Utils.CheckExist_DataTable(dtU))
+            {
+                SqlHelper.Update_Url_Table(false, "product_detail", ConvertUtility.ToInt32(drProduct["ID"]), drProduct["Name"].ToString(), drProduct["FriendlyUrl"].ToString());
+            }
+        }
 
-        //string filter = string.Format("(Hide is null OR Hide=0) AND LinkTypeMenuFlag & {0} <> 0", (int)LinkTypeMenuFlag.Article);
+        //string filter = string.Format("(Hide is null OR Hide=0) AND (LinkTypeMenuFlag & {0} <> 0 OR LinkTypeMenuFlag=0)", (int)LinkTypeMenuFlag.Product);
 
         //DataTable dtProduct = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl", filter, "");
         //foreach (DataRow drProduct in dtProduct.Rows)
         //{
-        //    SqlHelper.Update_Url_Table(false, "category_article", ConvertUtility.ToInt32(drProduct["ID"]), drProduct["Name"].ToString(), drProduct["FriendlyUrl"].ToString());
+        //    DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", drProduct["FriendlyUrl"]));
+        //    if (!Utils.CheckExist_DataTable(dtU))
+        //    {
+        //        SqlHelper.Update_Url_Table(false, "category_product", ConvertUtility.ToInt32(drProduct["ID"]), drProduct["Name"].ToString(), drProduct["FriendlyUrl"].ToString());
+        //    }
         //}
 
 

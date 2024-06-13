@@ -327,7 +327,9 @@ footer .fo1 {
 .section1 .item .nav-item.category .sub-menu-item .category-item {
     padding-left:6px;
 }
-
+footer .fo2 .item:nth-child(3) {
+    width: 30%
+}
 
 @media(max-width:1400px) {
     .leftbannertet, .rightbannertet {
