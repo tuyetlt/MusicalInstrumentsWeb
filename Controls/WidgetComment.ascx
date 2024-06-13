@@ -29,7 +29,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         <div class="clear"></div>
         <input type="text" value='<%= ArticleID %>' name="articleid" id="txtArticleID" style="display: none" />
         <input type="text" id="hdfRating" name="hdfRating" style="display: none" />
