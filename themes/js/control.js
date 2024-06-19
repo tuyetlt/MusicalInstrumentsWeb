@@ -580,7 +580,59 @@ $(document).ready(function () {
             },
         ],
     });
-
+    $('.list-partner-slide').slick({
+        loop: true,
+        nav: true,
+        margin: 10,
+        autoplay: true,
+        dots: false,
+        autoplaySpeed: 5000,
+        autoplayHoverPause: true,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        nextArrow: '<i class="slick-button-prev"></i>',
+        prevArrow: '<i class="slick-button-next"></i>',
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                    adaptiveHeight: true,
+                },
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    adaptiveHeight: true,
+                },
+            },
+            {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 420,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
 
 
 /*    $(".carousel-img-product").slick({

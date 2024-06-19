@@ -194,6 +194,36 @@
             </form>
         </div>
     </div>
+    <div class="list-menu-item-mb">
+        <div class="menu">
+            <ul>
+                <%
+                    if (1 == 1)
+                    {
+                        int menuFlag = (int)PositionMenuFlag.Top;
+                        string filter = string.Format("(Hide is null OR Hide=0) AND PositionMenuFlag & {0} <> 0", menuFlag);
+                        DataTable dt_1 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "Name,Icon,LinkTypeMenuFlag,AttrMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID=0 AND {0}", filter), "Sort");
+                        if (Utils.CheckExist_DataTable(dt_1))
+                        {
+                            foreach (DataRow dr_1 in dt_1.Rows)
+                            {
+                                string link = Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]);
+                                string noffollow = string.Empty;
+                                int SeoFlagINT = ConvertUtility.ToInt32(dr_1["SeoFlags"]);
+                                if (SeoFlagINT == (int)SeoFlag.Nofollow)
+                                    noffollow = @" rel=""nofollow""";
+                %><li>
+                    <a <%= Utils.CreateCategory_Target(dr_1["AttrMenuFlag"]) %> href="<%= link %>" <%= noffollow %>>
+                        <img src="<%= dr_1["Icon"].ToString() %>" alt="<%= dr_1["Name"].ToString() %>" />
+                        <span><%= dr_1["Name"].ToString() %></span>
+                    </a>
+                </li>
+                <% }
+                        }
+                    }%>
+            </ul>
+        </div>
+    </div>
     <%} %>
 </header>
 <div class="container" style="padding-top: 5px">
