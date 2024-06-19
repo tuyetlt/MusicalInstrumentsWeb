@@ -3387,7 +3387,14 @@ public class Utils
         return _return;
     }
 
-
+    public static string GetNoFollow(object Flag)
+    {
+        string nofollow = string.Empty;
+        int SeoFlagINT = ConvertUtility.ToInt32(Flag);
+        if (SeoFlagINT == (int)SeoFlag.Nofollow)
+            nofollow = @" rel=""nofollow""";
+        return nofollow;
+    }
 
     public static string CheckDomain
     {
@@ -3403,5 +3410,20 @@ public class Utils
             return C.DOMAIN_BANNER_DISPLAY;
         }
     }
+    public static string BadTextFilter(string input)
+    {
+        string[] badWords = new[] { "buồi", "lồn", "cặc", "dái", "sex", "bím", "đít", "địt", "đù má", "địt mẹ", "cứt", "đái", "tình dục", "dương vật", "âm đạo", "vcl", "fuck", "ass", "wtf", "script" };
+
+        var re = new Regex(
+            @"\b("
+            + string.Join("|", badWords.Select(word =>
+                string.Join(@"\s*", word.ToCharArray())))
+            + @")\b", RegexOptions.IgnoreCase);
+        return re.Replace(input, match =>
+        {
+            return new string('*', match.Length);
+        });
+    }
+
 }
 

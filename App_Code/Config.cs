@@ -107,7 +107,13 @@ public class Config
         get { return ConfigurationSettings.AppSettings["BANNER_TABLE"].ToString(); }
     }
 
-
+    public static string COMMENT_TABLE
+    {
+        get
+        {
+            return ConfigurationSettings.AppSettings["COMMENT_TABLE"].ToString();
+        }
+    }
 
     public static String CACHE_TIME_MINUTES
     {

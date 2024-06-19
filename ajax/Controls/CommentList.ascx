@@ -3,7 +3,7 @@
 <% for (int i = 0; i < dtComment.Rows.Count; i++)
     {
         string activeClass = string.Empty;
-         string avtMain = "/themes/images/no-avatar.png";
+         string avtMain = "/themes/image/no-avatar.png";
                 if (!string.IsNullOrWhiteSpace(dtComment.Rows[i]["Avatar"].ToString())) avtMain ="/upload/avatar/"+ dtComment.Rows[i]["Avatar"] + "";
 %>
 
@@ -55,7 +55,7 @@
         {
             for (int j = 0; j < dtSub.Rows.Count; j++)
             {
-                string avt = "/themes/images/no-avatar.png";
+                string avt = "/themes/image/no-avatar.png";
                 if (!string.IsNullOrWhiteSpace(dtSub.Rows[j]["Avatar"].ToString())) avt ="/upload/avatar/"+ dtSub.Rows[j]["Avatar"] + "";
     %>
     <div class="subcomment">
@@ -128,9 +128,9 @@
             }
         }
         var ps = 3;
-         var totalRow = parseInt($('#hdfTotal').val()); 
-        var totalPage = parseInt(totalRow / ps); 
-        if (totalPage<1)   $('.view_more_comment').hide();
+        var totalRow = parseInt($('#hdfTotal').val());
+        var totalPage = parseInt(totalRow / ps);
+        if (totalPage < 1) $('.view_more_comment').hide();
     });
 </script>
 

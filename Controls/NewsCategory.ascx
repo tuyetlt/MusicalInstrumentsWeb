@@ -18,8 +18,12 @@
 <article class="news-list">
     <div class="container">
         <div class="left">
+
+            <%if (isChild)
+                {  %>
             <h1><%= catName %></h1>
-            <div class="article-list">
+            <div class="clear"></div>
+            <div class="article-list" id="content-container">
                 <%
                     if (Utils.CheckExist_DataTable(dtNews))
                     {
@@ -35,14 +39,13 @@
                     <div class="cnt-item-article">
                         <div class="img">
                             <a href="<%= linkDetail %>" <%= noffollow %>>
-                                <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 200, 150) %>" alt="<%= drNews["Name"].ToString() %>" /></a>
+                                <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 280, 215, "crop") %>" alt="<%= drNews["Name"].ToString() %>" /></a>
                         </div>
                         <div class="contet-blog">
                             <h3><a href="<%= linkDetail %>"><%= drNews["Name"].ToString() %></a></h3>
                             <div class="desc">
                                 <p><%= drNews["Description"].ToString() %></p>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -80,7 +83,60 @@
             <input type="hidden" min="1" id="pages" value="<%= _totalPage %>" />
             <input type="hidden" min="1" id="curpage" value="1" />
             <input type="hidden" id="delta" min="1" max="10" value="2" />
+            <input type="hidden" id="modul" value="article" />
             <%} %>
+
+
+            <%--if not child--%>
+
+            <% }
+                else
+                {
+                    if (Utils.CheckExist_DataTable(dtChild))
+                    {
+                        foreach (DataRow drChild in dtChild.Rows)
+                        {
+            %>
+            <div class="title">
+             <a href="<%=TextChanger.GetLinkRewrite_CategoryArticle(drChild["FriendlyUrl"].ToString()) %>"><h2><%=drChild["Name"].ToString() %></h2></a>
+            <a href="<%=TextChanger.GetLinkRewrite_CategoryArticle(drChild["FriendlyUrl"].ToString()) %>" class="showall">Xem tất cả <i class="fad fa-external-link"></i></a></div>
+            <div class="clear"></div>
+            <div class="article-list">
+                <%
+                    string filterNews = string.Format(@"(CategoryIDList Like N'%,{0},%' OR CategoryaIDParentList Like N'%,{0},%') AND {1} AND StartDate<=getdate() AND {2}", drChild["ID"], Utils.CreateFilterDate, Utils.CreateFilterHide);
+                    DataTable dtNewChild = SqlHelper.SQLToDataTable("tblArticle", "Gallery,Name,FriendlyUrl,Description,SeoFlags", filterNews, ConfigWeb.SortArticle, 1, 4);
+                    if (Utils.CheckExist_DataTable(dtNewChild))
+                    {
+                        foreach (DataRow drNews in dtNewChild.Rows)
+                        {
+                            string linkDetail = TextChanger.GetLinkRewrite_Article(drNews["FriendlyUrl"].ToString());
+                            string noffollow = string.Empty;
+                            int SeoFlagINT = ConvertUtility.ToInt32(drNews["SeoFlags"]);
+                            if (SeoFlagINT == (int)SeoFlag.Nofollow)
+                                noffollow = @" rel=""nofollow""";
+                %>
+                <div class="item">
+                    <div class="cnt-item-article">
+                        <div class="img">
+                            <a href="<%= linkDetail %>" <%= noffollow %>>
+                                <img src="<%= Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString(), 400, 300, "crop") %>" alt="<%= drNews["Name"].ToString() %>" /></a>
+                        </div>
+                        <div class="contet-blog">
+                            <h3><a href="<%= linkDetail %>"><%= drNews["Name"].ToString() %></a></h3>
+                            <div class="desc">
+                                <p><%= drNews["Description"].ToString() %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%
+                        }
+                    }
+                %>
+            </div>
+            <%}
+                    }
+                } %>
         </div>
         <div class="right">
             <div class="container-sticky">
@@ -91,6 +147,26 @@
         <div class="clear"></div>
     </div>
 </article>
+
+<script id="product-template" type="text/template">
+    <div class="item">
+        <div class="cnt-item-article">
+            <div class="img">
+                <a href="{{Link}}">
+                    <img src="{{Image}}" alt="{{Name}}" /></a>
+            </div>
+            <div class="contet-blog">
+                <h3><a href="{{Link}}">{{Name}}</a></h3>
+                <div class="desc">
+                    <p>{{Description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+
 
 <script type="application/ld+json">
 {

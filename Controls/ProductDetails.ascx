@@ -9,275 +9,279 @@
             <div class="detail-product">
                 <div class="box-overview">
                     <div class="box-img-product">
-                        <div class="container-carousel">
-                            <div class="carousel-img-product">
-                                <%
-                                    if (!Utils.IsNullOrEmpty(dr["VideoGallery"]))
-                                    {
-                                        List<VideoGallery> videoGalleryList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<VideoGallery>>(ConvertUtility.ToString(dr["VideoGallery"]));
-                                        if (videoGalleryList.Count > 0)
-                                        {%>
-                                <div class="slide vid">
+                        <div class="box-images">
+                            <div class="container-carousel">
+                                <div class="carousel-img-product slider-for">
                                     <%
-                                        foreach (VideoGallery video in videoGalleryList)
+                                        if (!Utils.IsNullOrEmpty(dr["VideoGallery"]))
                                         {
-                                            if (!string.IsNullOrEmpty(video.IDYoutube))
-                                            {
-                                    %>
+                                            List<VideoGallery> videoGalleryList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<VideoGallery>>(ConvertUtility.ToString(dr["VideoGallery"]));
+                                            if (videoGalleryList.Count > 0)
+                                            {%>
                                     <div class="slide vid">
+                                        <%
+                                            foreach (VideoGallery video in videoGalleryList)
+                                            {
+                                                if (!string.IsNullOrEmpty(video.IDYoutube))
+                                                {
+                                        %>
+                                        <div class="slide vid">
 
-                                        <%--<iframe width="377" height="377" src="//www.youtube-nocookie.com/embed/<%= video.IDYoutube %>?rel=0?version=3&autoplay=0&controls=0&&showinfo=0&loop=1&mute=0" title="<%= dr["Name"].ToString() %>" frameborder="0" allow="autoplay; fullscreen"></iframe>--%>
-                                        <iframe width="377" height="377" src="https://www.youtube.com/embed/<%= video.IDYoutube %>?start=0&rel=0&autoplay=0&enablejsapi=1&origin=<%= Utils.UrlEncode(C.ROOT_URL) %>&widgetid=1" title="<%= dr["Name"].ToString() %>" frameborder="0" allow="autoplay; fullscreen"></iframe>
+                                            <%--<iframe width="377" height="377" src="//www.youtube-nocookie.com/embed/<%= video.IDYoutube %>?rel=0?version=3&autoplay=0&controls=0&&showinfo=0&loop=1&mute=0" title="<%= dr["Name"].ToString() %>" frameborder="0" allow="autoplay; fullscreen"></iframe>--%>
+                                            <iframe width="377" height="377" src="https://www.youtube.com/embed/<%= video.IDYoutube %>?start=0&rel=0&autoplay=0&enablejsapi=1&origin=<%= Utils.UrlEncode(C.ROOT_URL) %>&widgetid=1" title="<%= dr["Name"].ToString() %>" frameborder="0" allow="autoplay; fullscreen"></iframe>
 
+                                        </div>
+                                        <%}
+                                            }
+                                        %>
                                     </div>
-                                    <%}
-                                        }
-                                    %>
-                                </div>
-                                <%
-                                        }
-                                    }
-                                %>
-
-
-                                <%
-
-                                    if (galleryList != null && galleryList.Count > 0)
-                                    {
-                                        int count = 0;
-                                        foreach (GalleryImage gallery in galleryList)
-                                        {
-                                            string alt = dr["name"].ToString() + " " + count.ToString();
-                                            count++;
-                                %>
-                                <div class="slide">
-                                    <a href="<%= C.MAIN_URL %><%= gallery.Path %>?width=1000&height=1000&quality=100" data-fancybox="images">
-                                        <img src="<%= C.MAIN_URL %><%= gallery.Path %>?width=500&height=500&quality=100" alt="<%= alt %>" />
-                                    </a>
-                                </div>
-
-                                <%
-                                        }
-                                    }
-                                %>
-                            </div>
-                        </div>
-
-
-                        <%
-
-                            if (galleryList != null && galleryList.Count > 0)
-                            {
-                                int count = 0;
-                                foreach (GalleryImage gallery in galleryList)
-                                {
-                                    string alt = dr["name"].ToString() + " " + count.ToString();
-                                    count++;
-                                    imgList.Add(C.MAIN_URL + gallery.Path);
-                        %>
-                        <div class="thumb">
-                            <a href="<%= C.MAIN_URL %><%= gallery.Path %>?width=1000&height=1000&quality=100" data-fancybox="images">
-                                <img src="<%= C.MAIN_URL %><%= HttpUtility.UrlDecode(gallery.Path) %>?width=80&height=80&quality=100" alt="<%= alt %>" />
-                            </a>
-                        </div>
-
-                        <%
-                                }
-                            }
-                        %>
-
-
-                        <%
-                            //Piano Điện
-                            string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
-                            if (1 == 1)
-                            {
-                                if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
-                                {
-                                    if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
-                                    {
-                        %>
-
-                        <div class="thumb">
-                            <a href="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" data-fancybox="images">
-                                <img src="/assets/images/video-icon.jpg" />
-                            </a>
-                        </div>
-
-                        <% }
-                                }
-                            }%>
-
-
-
-
-
-                        <%
-                            //Piano Điện
-                            //string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
-
-                            if (Utils.isMobileBrowser)
-                            {
-                                if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
-                                {
-                                    if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
-                                    {
-                        %>
-                        <div class="video" style="margin-top: 10px">
-                            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" title="Piano Điện tại Nhạc cụ Tiến Đạt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <% }
-                                }
-                            }%>
-
-
-
-
-                        <%--<div class="box-option-show">
-                            <div class="option-show-item">
-                                <%
-                                    if (galleryList != null && galleryList.Count > 0)
-                                    {
-                                        int count = 0;
-                                %>
-                                <a href="<%= Utils.GetFirstImageInGallery_Json(dr["Gallery"].ToString()) %>"
-                                    data-fancybox="images-preview"
-                                    data-width="1500"
-                                    data-height="1000"
-                                    data-thumbs='{"autoStart":true}'>
-                                    <i class="fas fa-image"></i>
-                                </a>
-                                <p class="title">Bộ ảnh (14)</p>
-
-                                <div style="display: none">
                                     <%
-                                        foreach (GalleryImage gallery in galleryList)
-                                        {
-                                            string alt = dr["name"].ToString() + " " + count.ToString();
-                                            count++;
+                                            }
+                                        }
                                     %>
 
-                                    <a
-                                        href="<%= gallery.Path %>"
+
+                                    <%
+
+                                        if (galleryList != null && galleryList.Count > 0)
+                                        {
+                                            int count = 0;
+                                            foreach (GalleryImage gallery in galleryList)
+                                            {
+                                                string alt = dr["name"].ToString() + " " + count.ToString();
+                                                count++;
+                                    %>
+                                    <div class="slide">
+                                        <a href="<%= C.MAIN_URL %><%= gallery.Path %>?width=1000&height=1000&quality=100" data-fancybox="images">
+                                            <img src="<%= C.MAIN_URL %><%= gallery.Path %>?width=500&height=500&quality=100" alt="<%= alt %>" />
+                                        </a>
+                                    </div>
+
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </div>
+                            </div>
+                            <div class="thumbnail-child slider-nav">
+
+                            <%
+
+                                if (galleryList != null && galleryList.Count > 0)
+                                {
+                                    int count = 0;
+                                    foreach (GalleryImage gallery in galleryList)
+                                    {
+                                        string alt = dr["name"].ToString() + " " + count.ToString();
+                                        count++;
+                                        imgList.Add(C.MAIN_URL + gallery.Path);
+                            %>
+                            <div class="thumb">
+                                <a href="<%= C.MAIN_URL %><%= gallery.Path %>?width=1000&height=1000&quality=100" data-fancybox="images">
+                                    <img src="<%= C.MAIN_URL %><%= HttpUtility.UrlDecode(gallery.Path) %>?width=80&height=80&quality=100" alt="<%= alt %>" />
+                                </a>
+                            </div>
+
+                            <%
+                                    }
+                                }
+                            %>
+
+
+                            <%
+                                //Piano Điện
+                                string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
+                                if (1 == 1)
+                                {
+                                    if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
+                                    {
+                                        if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
+                                        {
+                            %>
+
+                            <div class="thumb">
+                                <a href="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" data-fancybox="images">
+                                    <img src="/assets/images/video-icon.jpg" />
+                                </a>
+                            </div>
+
+                            <% }
+                                    }
+                                }%>
+
+
+
+
+
+
+                            <%
+                                //Piano Điện
+                                //string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
+
+                                if (Utils.isMobileBrowser)
+                                {
+                                    if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
+                                    {
+                                        if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
+                                        {
+                            %>
+                            <div class="video" style="margin-top: 10px">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" title="Piano Điện tại Nhạc cụ Tiến Đạt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <% }
+                                    }
+                                }%>
+
+
+
+
+                            <%--<div class="box-option-show">
+                                <div class="option-show-item">
+                                    <%
+                                        if (galleryList != null && galleryList.Count > 0)
+                                        {
+                                            int count = 0;
+                                    %>
+                                    <a href="<%= Utils.GetFirstImageInGallery_Json(dr["Gallery"].ToString()) %>"
                                         data-fancybox="images-preview"
                                         data-width="1500"
                                         data-height="1000"
-                                        data-thumb="<%= gallery.Path %>"></a>
+                                        data-thumbs='{"autoStart":true}'>
+                                        <i class="fas fa-image"></i>
+                                    </a>
+                                    <p class="title">Bộ ảnh (14)</p>
+
+                                    <div style="display: none">
+                                        <%
+                                            foreach (GalleryImage gallery in galleryList)
+                                            {
+                                                string alt = dr["name"].ToString() + " " + count.ToString();
+                                                count++;
+                                        %>
+
+                                        <a
+                                            href="<%= gallery.Path %>"
+                                            data-fancybox="images-preview"
+                                            data-width="1500"
+                                            data-height="1000"
+                                            data-thumb="<%= gallery.Path %>"></a>
+
+                                        <% } %>
+                                    </div>
 
                                     <% } %>
                                 </div>
 
-                                <% } %>
-                            </div>
 
-
-                            <div class="option-show-item">
-                                <a href="https://www.youtube.com/watch?v=TTyDNCyoUeY"
-                                    data-fancybox="images-preview"
-                                    data-width="1500"
-                                    data-height="1000"
-                                    data-thumbs='{"autoStart":true}'>
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                                <p class="title">Video (2)</p>
-                                <div style="display: none">
+                                <div class="option-show-item">
                                     <a href="https://www.youtube.com/watch?v=TTyDNCyoUeY"
                                         data-fancybox="images-preview"
                                         data-width="1500"
-                                        data-height="1000"></a>
-                                    <a href="https://www.youtube.com/watch?v=Y4nRZfVnObg"
-                                        data-fancybox="images-preview"
-                                        data-width="1500"
-                                        data-height="1000"></a>
-                                    <a href="https://www.youtube.com/watch?v=TTyDNCyoUeY"
-                                        data-fancybox="images-preview"
-                                        data-width="1500"
-                                        data-height="1000"></a>
-                                    <a href="https://www.youtube.com/watch?v=Y4nRZfVnObg"
-                                        data-fancybox="images-preview"
-                                        data-width="1500"
-                                        data-height="1000"></a>
+                                        data-height="1000"
+                                        data-thumbs='{"autoStart":true}'>
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                    <p class="title">Video (2)</p>
+                                    <div style="display: none">
+                                        <a href="https://www.youtube.com/watch?v=TTyDNCyoUeY"
+                                            data-fancybox="images-preview"
+                                            data-width="1500"
+                                            data-height="1000"></a>
+                                        <a href="https://www.youtube.com/watch?v=Y4nRZfVnObg"
+                                            data-fancybox="images-preview"
+                                            data-width="1500"
+                                            data-height="1000"></a>
+                                        <a href="https://www.youtube.com/watch?v=TTyDNCyoUeY"
+                                            data-fancybox="images-preview"
+                                            data-width="1500"
+                                            data-height="1000"></a>
+                                        <a href="https://www.youtube.com/watch?v=Y4nRZfVnObg"
+                                            data-fancybox="images-preview"
+                                            data-width="1500"
+                                            data-height="1000"></a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <%
-                                if (Utils.CheckExist_DataTable(dtNews))
-                                {
-                            %>
-                            <div class="option-show-item">
-                                <a data-fancybox
-                                    data-src="#hidden-content-new"
-                                    href="javascript:;"
-                                    class="btn">
-                                    <i class="far fa-newspaper"></i>
-                                </a>
+                                <%
+                                    if (Utils.CheckExist_DataTable(dtNews))
+                                    {
+                                %>
+                                <div class="option-show-item">
+                                    <a data-fancybox
+                                        data-src="#hidden-content-new"
+                                        href="javascript:;"
+                                        class="btn">
+                                        <i class="far fa-newspaper"></i>
+                                    </a>
 
-                                <p class="title">Tin tức (<%= dtNews.Rows.Count %>)</p>
-                                <div class="container-new"
-                                    style="display: none; width: 100vw; height: 95vh"
-                                    id="hidden-content-new">
-                                    <div class="new-list">
-
-
-                                        <%
-                                            foreach (DataRow drNews in dtNews.Rows)
-                                            {
-                                                string linkNews = TextChanger.GetLinkRewrite_Article(drNews["FriendlyUrl"].ToString());
-                                                string imageNews = Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString());
-                                        %>
-
-                                        <div class="new-item">
-                                            <a href="<%= linkNews %>">
-                                                <div class="img">
-                                                    <img src="<%= imageNews %>?quality=100&width=300&height=150" alt="<%= drNews["Name"] %>" />
-                                                </div>
-                                                <h2 class="title"><%= drNews["Name"] %>
-                                                </h2>
-                                                <p class="text">
-                                                    <%= drNews["Description"] %>
-                                                </p>
-                                            </a>
-                                        </div>
-                                        <% } %>
+                                    <p class="title">Tin tức (<%= dtNews.Rows.Count %>)</p>
+                                    <div class="container-new"
+                                        style="display: none; width: 100vw; height: 95vh"
+                                        id="hidden-content-new">
+                                        <div class="new-list">
 
 
+                                            <%
+                                                foreach (DataRow drNews in dtNews.Rows)
+                                                {
+                                                    string linkNews = TextChanger.GetLinkRewrite_Article(drNews["FriendlyUrl"].ToString());
+                                                    string imageNews = Utils.GetFirstImageInGallery_Json(drNews["Gallery"].ToString());
+                                            %>
 
-                                        <div class="container-btn">
-                                            <button data-fancybox-close class="btn-close">
-                                                đóng
-                                            </button>
+                                            <div class="new-item">
+                                                <a href="<%= linkNews %>">
+                                                    <div class="img">
+                                                        <img src="<%= imageNews %>?quality=100&width=300&height=150" alt="<%= drNews["Name"] %>" />
+                                                    </div>
+                                                    <h2 class="title"><%= drNews["Name"] %>
+                                                    </h2>
+                                                    <p class="text">
+                                                        <%= drNews["Description"] %>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <% } %>
+
+
+
+                                            <div class="container-btn">
+                                                <button data-fancybox-close class="btn-close">
+                                                    đóng
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <% } %>
-                        </div>--%>
+                                <% } %>
+                            </div>--%>
+
+                                </div>
+
+                            <div class="clear"></div>
 
 
 
-                        <div class="clear"></div>
-
-
-
-                        <%--<div class="commitment">
-                            <h4 class="title">TIENDATNHACCU CAM KẾT</h4>
-                            <p class="text">
-                                - Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        Dignissimos eos omnis quaerat voluptatibus nulla ipsa
-                            </p>
-                            <p class="text">
-                                - Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        Dignissimos eos omnis quaerat voluptatibus nulla ipsa
-                            </p>
-                            <div class="icon">
-                                <i class="far fa-award"></i>
-                            </div>
-                        </div>--%>
+                            <%--<div class="commitment">
+                                <h4 class="title">TIENDATNHACCU CAM KẾT</h4>
+                                <p class="text">
+                                    - Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                            Dignissimos eos omnis quaerat voluptatibus nulla ipsa
+                                </p>
+                                <p class="text">
+                                    - Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                            Dignissimos eos omnis quaerat voluptatibus nulla ipsa
+                                </p>
+                                <div class="icon">
+                                    <i class="far fa-award"></i>
+                                </div>
+                            </div>--%>
+                        </div>
+                        
                     </div>
                     <div class="box-order">
                         <div class="heading-box">
                             <h1 class="title"><%= dr["Name"] %></h1>
-                            <div class="container-name">
+                            <div class="container-names">
                                 <%--  <div class="box-name">
                                     <p class="name">Acoustic guitar</p>
                                     <p class="brand">Thương hiệu: <a href="#">Yamaha</a></p>
@@ -294,6 +298,45 @@
                                             <a href="#">(123 đánh giá)</a>
                                         </p>
                                     </div>--%>
+                                <div class="content-chose-color">
+                                    <div class="title-color">
+                                        Color
+                                    </div>
+                                    <ul class="list-color">
+                                        <li>
+                                            <a href="#">
+                                                <img src="/assets/images/mau1.png" alt="màu 1" />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="/assets/images/mau2.png" alt="màu 2" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-title-combo">
+                                    <div class="combo">
+	                                    <div class="title-color">Tiêu đề:</div>
+	                                    <div class="list-option-product">  
+		                                    <div data-value="PIANO YAMAHA YDP 105B" class="item piano-ydp">
+			                                    <label data-name="option1" data-value="PIANO YAMAHA YDP 105B" data-vhandle="piano-ydp" id="piano-ydp" class="active">
+								                    <span>Piano yamaha ydp 105b</span>
+			                                    </label>
+		                                    </div>
+		                                    <div data-value="PIANO YAMAHA YDP 105B + Chân" class="item piano-ydp-chan">
+			                                    <label data-name="option1" data-value="PIANO YAMAHA YDP 105B + Chân" data-vhandle="piano-ydp-chan" id="swatch-0-psr-f52-chan" class="">
+								                    <span>Piano yamaha ydp 105b + Chân</span>
+			                                    </label>
+		                                    </div>
+		                                    <div data-value="PIANO YAMAHA YDP 105B + Bao" class="item piano-ydp-bao">
+			                                    <label data-name="option1" data-value="PSR F52 + Bao" data-vhandle="piano-ydp-bao" id="swatch-0-psr-f52-bao" class="">
+								                     <span>Piano yamaha ydp 105b + Bao</span>
+			                                    </label>
+		                                    </div>
+	                                    </div>
+                                    </div>
+								</div>
                             </div>
                         </div>
 
@@ -443,6 +486,75 @@
                             </div>--%>
                     </div>
                 </div>
+                <div class="box-content-cross-sell">
+    <div class="">
+        Frequently bought together
+    </div>
+    <div class="box-top-img-add">
+        <div class="box-images">
+            <ul>
+                <li>
+                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
+                </li>
+                <li>
+                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
+                </li>
+                <li>
+                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
+                </li>
+            </ul>
+        </div>
+        <div class="box-add">
+            <div class="title-price">Tổng tiền</div>
+            <div class="price-all">20 000 000đ</div>
+             <div class="container-button">
+                 <a href="javascript:;" id="btnSubmit_giohang" class="button btn-red">
+                    Thêm vào giỏ hàng
+                 </a>
+                 <%--  <a href="#" class="button btn-blue">
+                     <i class="fas fa-sack-dollar"></i>trả góp
+                 </a>
+                 <a href="#" class="button btn-green">
+                     <i class="fas fa-headset"></i>tư vấn
+                 </a>--%>
+             </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="list-checkbox">
+            <form>
+                <div class="item-prd">
+                     <div class="form-group">
+                       <input type="checkbox" id="piano_ydp">
+                       <label for="piano_ydp">ĐÀN PIANO YAMAHA YDP 105B</label>
+                     </div>
+                    <div class="price">
+                        <span class="price-real">20.350.000 VNĐ</span>
+                        <span class="price-sale">17.290.000 VNĐ</span>
+                    </div>
+                </div>
+               <div class="item-prd">
+                    <div class="form-group">
+                      <input type="checkbox" id="chan">
+                      <label for="chan">Chân đàn</label>
+                    </div>
+                   <div class="price">
+                           1.290.000 VNĐ
+                    </div>
+                </div>
+                <div class="item-prd">
+                    <div class="form-group">
+                      <input type="checkbox" id="tuidung">
+                      <label for="tuidung">Túi đựng</label>
+                    </div>
+                    <div class="price">
+                        290.000 VNĐ
+                    </div>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
                 <div class="box-detail">
                     <div class="tab-menu">
                         <ul>
@@ -571,7 +683,7 @@
                         {
                     %>
                     <div class="Ad-special">
-                        <h5 class="title">Quà tặng</h5>
+                        <div class="title">Quà tặng</div>
                         <ul class="Ad-special-list">
                             <%= dr["Gift"].ToString() %>
                         </ul>
@@ -587,7 +699,7 @@
                             {
                     %>
                     <div class="Ad-special">
-                        <h5 class="title">Quà tặng khi mua đàn Piano điện</h5>
+                        <div class="title">Quà tặng khi mua đàn Piano điện</div>
                         <div class="Ad-special-list">
 
                             <img src="/upload/banner/tangtainghe.jpg" alt="Tặng tai nghe" />
@@ -600,15 +712,47 @@
                 <div class="container-sticky">
                     <%=Utils.LoadUserControl("~/Controls/WidgetSupport.ascx") %>
                 </div>
+
             </div>
             <div class="clear"></div>
+            <div class="box-content-comment">
+                 <form id="frmrating" class="form_rating" action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+                    <div class="comment-post">
+                        <div class="clear"></div>
+                        <input type="text" value='' name="articleid" id="txtArticleID" style="display: none" />
+                        <input type="text" id="hdfRating" name="hdfRating" style="display: none" />
+                        <div class="box-comment">
+                            <div class="title-cmt">
+                                Bình luận
+                            </div>
+                            <div class="box-name-phone">
+                                <div>
+                                    <input type="text" name="name" id="name" placeholder="Tên" required />
+                                </div>
+                                <div>
+                                     <input type="text" name="phone" id="name" placeholder="Số điện thoại" required />
+                                </div>
+                            </div>
+            
+                            <div style="padding: 5px 0">
+                                <textarea name="comment" id="comment" placeholder="Nội dung" rows="5" required></textarea>
+                            </div>
+
+                            <div id="dvCaptchaComment">
+                            </div>
+                            <input id="btnSubmitComment" type="submit" value="Gửi đánh giá" />
+                         </div>
+                    </div>
+                </form>
+            </div>
+           <div class="clear"></div>
             <%if (ConvertUtility.ToInt32(PageInfo.CategoryID) > 0)
                 { %>
 
             <div class="heading">
-                <h2 class="title">
+                <div class="title">
                     <span>Sản phẩm cùng danh mục</span>
-                </h2>
+                </div>
             </div>
             <div class="clear"></div>
             <div class="product-list">
@@ -630,7 +774,7 @@
                             <img src="<%= Utils.GetFirstImageInGallery_Json(drProduct["Gallery"].ToString(), 300, 300) %>" alt="<%= drProduct["Name"].ToString() %>" />
                         </div>
                         <div class="cont">
-                            <h4 class="name"><%= drProduct["Name"].ToString() %></h4>
+                            <div class="name"><%= drProduct["Name"].ToString() %></div>
                             <div class="info">
 
                                 <ins><%= SqlHelper.GetPrice(ConvertUtility.ToInt32(drProduct["ID"]), "Price") %></ins>

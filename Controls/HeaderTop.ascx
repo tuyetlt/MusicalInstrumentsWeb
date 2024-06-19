@@ -3,10 +3,12 @@
 <header>
     <div class="over-lay"></div>
     <div class="container">
-        <div class="in"><% if (!Utils.isMobileBrowser)
+        <div class="in">
+            <% if (!Utils.isMobileBrowser)
                 { %>
-            <div class="item">
-                <div class="logo"><% if (PageInfo.CurrentControl == ControlCurrent.Home.ToString())
+            <div class="item item-pc">
+                <div class="logo">
+                    <% if (PageInfo.CurrentControl == ControlCurrent.Home.ToString())
                         { %>
                     <h1>
                         <a href="<%= C.ROOT_URL %>">
@@ -18,7 +20,7 @@
                         <img src="<%= C.ROOT_URL %><%= ConfigWeb.Logo %>" alt="<%= ConfigWeb.MetaTitle %>"></a><% } %>
                 </div>
             </div>
-            <div class="item">
+            <div class="item item-pc">
                 <div class="search">
                     <form method="GET" action="<%=C.ROOT_URL %>/tim-kiem.html" data-search="internal">
                         <input type="text" name="key" class="search_input" id="searchbox" autocomplete="off" placeholder="Tìm kiếm" />
@@ -34,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item item-update">
+            <div class="item item-update item-pc">
                 <div class="menu">
                     <ul>
                         <%
@@ -53,32 +55,27 @@
                                         if (SeoFlagINT == (int)SeoFlag.Nofollow)
                                             noffollow = @" rel=""nofollow""";
                         %><li>
-                            <a <%= Utils.CreateCategory_Target(dr_1["AttrMenuFlag"]) %> href="<%= link %>"<%= noffollow %>>
+                            <a <%= Utils.CreateCategory_Target(dr_1["AttrMenuFlag"]) %> href="<%= link %>" <%= noffollow %>>
                                 <img src="<%= dr_1["Icon"].ToString() %>" alt="<%= dr_1["Name"].ToString() %>" />
                                 <span><%= dr_1["Name"].ToString() %></span>
                             </a>
                         </li>
                         <% }
                                 }
-                            }%></ul>
+                            }%>
+                    </ul>
                 </div>
                 <div class="content-hotline">
-                   
-                        <div class="cnt-social-header">
-                            <div class="icon-social">
-                                <img src="/themes/image/hotline.png" alt="Alternate Text" />
-                            </div>
-                            <div class="cnt-hotline">
-                                <h3>Hotline - Zalo</h3>
-                                <a href="#">
-                                    <span>0123456789</span>
-                                </a>
-                                 <a href="#">
-                                    <span>0123456789</span>
-                                </a>
-                            </div>
+                    <div class="cnt-social-header">
+                        <div class="icon-social">
+                            <img src="/themes/image/hotline.png" alt="Alternate Text" />
                         </div>
-                    
+                        <div class="cnt-hotline">
+                            <p>Hotline - Zalo</p>
+                            Phía Bắc: <a href="tel:<%= ConfigWeb.Hotline1 %>" rel="nofollow"><%= ConfigWeb.Hotline1 %></a><br>
+                            Phía Nam <a href="tel:<%= ConfigWeb.Hotline2 %>" rel="nofollow"><%= ConfigWeb.Hotline2 %></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <%} %>
@@ -86,13 +83,13 @@
     </div>
     <% if (Utils.isMobileBrowser)
         { %>
-    <div class="item">
+    <div class="item item-mobile">
         <div class="logo">
             <a href="<%= C.ROOT_URL %>">
                 <img src="<%= ConfigWeb.Logo %>" alt="<%= ConfigWeb.MetaTitle %>"></a>
         </div>
     </div>
-    <div class="menu-mobile">
+    <div class="menu-mobile item-mobile">
         <div class="toggle_search">
             <i class="far fa-search"></i>
         </div>
@@ -122,13 +119,13 @@
                             {
                                 string link_1 = TextChanger.GetLinkRewrite_Category(dr_1["FriendlyUrl"].ToString());
                                 DataTable dt_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,SeoFlags", string.Format("ParentID={0} AND {1}", dr_1["ID"], filter), "Sort");
-                                 string noffollow1 = string.Empty;
-                                        int SeoFlagINT = ConvertUtility.ToInt32(dr_1["SeoFlags"]);
-                                        if (SeoFlagINT == (int)SeoFlag.Nofollow)
-                                            noffollow1 = @" rel=""nofollow""";
+                                string noffollow1 = string.Empty;
+                                int SeoFlagINT = ConvertUtility.ToInt32(dr_1["SeoFlags"]);
+                                if (SeoFlagINT == (int)SeoFlag.Nofollow)
+                                    noffollow1 = @" rel=""nofollow""";
                 %>
                 <li class="nav-item-mobile">
-                    <a class="nav-link" href="<%= link_1 %>"<%= noffollow1 %>><%= dr_1["Name"].ToString() %></a>
+                    <a class="nav-link" href="<%= link_1 %>" <%= noffollow1 %>><%= dr_1["Name"].ToString() %></a>
                     <%  if (Utils.CheckExist_DataTable(dt_2))
                         {
                     %>
@@ -145,10 +142,10 @@
                                 {
                                     string link_2 = TextChanger.GetLinkRewrite_Category(dr_2["FriendlyUrl"].ToString());
                                     DataTable dt_3 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,SeoFlags", string.Format("ParentID={0} AND {1}", dr_2["ID"], filter), "Sort");
-                                      string noffollow2 = string.Empty;
-                                        int SeoFlagINT2 = ConvertUtility.ToInt32(dr_2["SeoFlags"]);
-                                        if (SeoFlagINT2 == (int)SeoFlag.Nofollow)
-                                            noffollow2 = @" rel=""nofollow""";
+                                    string noffollow2 = string.Empty;
+                                    int SeoFlagINT2 = ConvertUtility.ToInt32(dr_2["SeoFlags"]);
+                                    if (SeoFlagINT2 == (int)SeoFlag.Nofollow)
+                                        noffollow2 = @" rel=""nofollow""";
                         %>
                         <li class="sub-menu-item">
                             <a class="category-item" href="<%= link_2 %>">
@@ -170,7 +167,7 @@
                                         {
                                             string link_3 = TextChanger.GetLinkRewrite_Category(dr_3["FriendlyUrl"].ToString());
                                 %>
-                                <a class="option-link" href="<%= link_3 %>"<%= noffollow2 %>><%= dr_3["Name"].ToString() %></a>
+                                <a class="option-link" href="<%= link_3 %>" <%= noffollow2 %>><%= dr_3["Name"].ToString() %></a>
                                 <% }
                                     } %>
                             </div>
@@ -195,6 +192,36 @@
                 <div class="loading-search"></div>
                 <div class="show_search_content"></div>
             </form>
+        </div>
+    </div>
+    <div class="list-menu-item-mb">
+        <div class="menu">
+            <ul>
+                <%
+                    if (1 == 1)
+                    {
+                        int menuFlag = (int)PositionMenuFlag.Top;
+                        string filter = string.Format("(Hide is null OR Hide=0) AND PositionMenuFlag & {0} <> 0", menuFlag);
+                        DataTable dt_1 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "Name,Icon,LinkTypeMenuFlag,AttrMenuFlag,FriendlyUrl,Link,SeoFlags", string.Format("ParentID=0 AND {0}", filter), "Sort");
+                        if (Utils.CheckExist_DataTable(dt_1))
+                        {
+                            foreach (DataRow dr_1 in dt_1.Rows)
+                            {
+                                string link = Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]);
+                                string noffollow = string.Empty;
+                                int SeoFlagINT = ConvertUtility.ToInt32(dr_1["SeoFlags"]);
+                                if (SeoFlagINT == (int)SeoFlag.Nofollow)
+                                    noffollow = @" rel=""nofollow""";
+                %><li>
+                    <a <%= Utils.CreateCategory_Target(dr_1["AttrMenuFlag"]) %> href="<%= link %>" <%= noffollow %>>
+                        <img src="<%= dr_1["Icon"].ToString() %>" alt="<%= dr_1["Name"].ToString() %>" />
+                        <span><%= dr_1["Name"].ToString() %></span>
+                    </a>
+                </li>
+                <% }
+                        }
+                    }%>
+            </ul>
         </div>
     </div>
     <%} %>

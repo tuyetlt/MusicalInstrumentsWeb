@@ -46,7 +46,7 @@
                         <div class="cont">
                             <div class="img">
                                 <a href="<%= TextChanger.GetLinkRewrite_Article(dtNews.Rows[i]["FriendlyUrl"].ToString()) %>">
-                                    <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 130, 100, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
+                                    <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString(), 280, 215, "crop") %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
                                 </a>
                             </div>
                             <div class="info">
@@ -74,7 +74,37 @@
         </div>
     </div>
 </div>
-
+<div class="section-up section_partner">
+  <div class="container">
+     <div class="in-partner">
+         <div class="title">
+             <h2>
+                 <span>ĐỐI TÁC HÀNG ĐẦU</span>
+             </h2>
+         </div>
+         <div class="list-partner">
+             <ul class="list-partner-slide">
+                 <li>
+                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
+                 </li>
+                 <li>
+                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
+                 </li>
+                 <li>
+                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
+                 </li>
+                 <li>
+                    <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
+                 </li>
+                 <li>
+                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
+                 </li>
+                       
+             </ul>
+         </div>
+     </div>
+   </div>
+</div>
 <%--<div class="section3 section_blog">
     <div class="container">
         <div class="in">

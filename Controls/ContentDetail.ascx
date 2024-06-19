@@ -12,12 +12,12 @@
                 %>
             <%= ContentHtml %>
         </div>
-          <div class="right">
+          <%--<div class="right">
             <div class="container-sticky">
                 <%=Utils.LoadUserControl("~/Controls/WidgetMenuNews.ascx") %>
                 <%=Utils.LoadUserControl("~/Controls/WidgetSupport.ascx") %>
             </div>
-        </div>
+        </div>--%>
     </div>
 </article>
 <div class="clear"></div>

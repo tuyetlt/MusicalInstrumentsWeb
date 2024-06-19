@@ -527,16 +527,138 @@ $(document).ready(function () {
             });
         });
     }
+    $('.list-product-new .product-list').slick({
+        loop: true,
+        nav: true,
+        margin: 10,
+        autoplay: true,
+        dots: false,
+        autoplaySpeed: 500000,
+        autoplayHoverPause: true,
+        infinite: true,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        nextArrow: '<i class="slick-button-prev"></i>',
+        prevArrow: '<i class="slick-button-next"></i>',
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 2,
+                    adaptiveHeight: true,
+                },
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    adaptiveHeight: true,
+                },
+            },
+            {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 420,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
+    $('.list-partner-slide').slick({
+        loop: true,
+        nav: true,
+        margin: 10,
+        autoplay: true,
+        dots: false,
+        autoplaySpeed: 5000,
+        autoplayHoverPause: true,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        nextArrow: '<i class="slick-button-prev"></i>',
+        prevArrow: '<i class="slick-button-next"></i>',
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                    adaptiveHeight: true,
+                },
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    adaptiveHeight: true,
+                },
+            },
+            {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 420,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
 
 
-
-
-    $(".carousel-img-product").slick({
+/*    $(".carousel-img-product").slick({
         dots: true,
         infinite: true,
         nextArrow: '<i class="slick-button-prev"></i>',
         prevArrow: '<i class="slick-button-next"></i>'
+    });*/
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
     });
+    $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        //centerMode: true,
+        focusOnSelect: true,
+        nextArrow: '<i class="slick-button-prev"></i>',
+        prevArrow: '<i class="slick-button-next"></i>'
+    });
+
     $("button.owl-prev").each(function (index, value) {
         $(this).html('<i class="button-prev"></i>');
     });
@@ -1310,262 +1432,152 @@ function hasScrolled() {
     lastScrollTop = st;
 }
 
+let tocId = "toc";
 
+let headings;
+let headingIds = [];
+let headingIntersectionData = {};
+let headerObserver;
 
-// Comment
+function setLinkActive(link) {
+    const links = document.querySelectorAll(`#${tocId} a`);
+    links.forEach((link) => link.classList.remove("active"));
+    if (link) {
+        link.classList.add("active");
+    }
+}
 
+function getProperListSection(heading, previousHeading, currentListElement) {
+    let listSection = currentListElement;
+    if (previousHeading) {
+        if (heading.tagName.slice(-1) > previousHeading.tagName.slice(-1)) {
+            let nextSection = document.createElement("ul");
+            listSection.appendChild(nextSection);
+            return nextSection;
+        } else if (heading.tagName.slice(-1) < previousHeading.tagName.slice(-1)) {
+            let indentationDiff =
+                parseInt(previousHeading.tagName.slice(-1)) -
+                parseInt(heading.tagName.slice(-1));
+            while (indentationDiff > 0) {
+                listSection = listSection.parentElement;
+                indentationDiff--;
+            }
+        }
+    }
+    return listSection;
+}
 
-//$(document).ready(function () {
-//    $(".comment-list").on("click", ".comment_like", function () {
-//        var currLike = $(this).attr("data-like");
-//        var id = $(this).attr("data-id");
-//        var currButton = $(this);
-//        var likeHtml = $(this).find("span");
-//        $.getJSON('/ajax/ajax.aspx', { control: "comment", action: 'like', id: id, currLike: currLike, t: Math.random() }, function (data) {
-//            $.each(data, function (key, value) {
-//                if (key == "active") {
-//                    if (value == "true")
-//                        currButton.addClass("active");
-//                    else
-//                        currButton.removeClass("active");
-//                }
-//                if (key == "currLike") {
-//                    currButton.attr('data-like', value);
-//                    likeHtml.html(value);
-//                }
-//            });
-//        });
-//    });
-//});
-//$("input[name='rating']").click(function () {
-//    var value = $(this).attr("data-value");
-//    var hdfRating = $("#hdfRating");
-//    hdfRating.val(value);
-//});
+function setIdFromContent(element, appendedId) {
+    if (!element.id) {
+        element.id = `${element.innerHTML
+            .replace(/:/g, "")
+            .trim()
+            .toLowerCase()
+            .split(" ")
+            .join("-")}-${appendedId}`;
+    }
+}
 
-//$(document).ready(function (e) {
-//    var rcres = grecaptcha.getResponse();
-//    if (rcres.length > 0) {
+function addNavigationLinkForHeading(heading, currentSectionList) {
+    let listItem = document.createElement("li");
+    let anchor = document.createElement("a");
+    anchor.innerHTML = heading.innerHTML;
+    anchor.id = `${heading.id}-link`;
+    anchor.href = `#${heading.id}`;
+    anchor.onclick = (e) => {
+        setTimeout(() => {
+            setLinkActive(anchor);
+        });
+    };
+    listItem.appendChild(anchor);
+    currentSectionList.appendChild(listItem);
+}
 
-//        $("#frmrating").on('submit', (function (e) {
-//            e.preventDefault();
-//            setCookie('fullname', $('#name').val(), '30');
-//            $.ajax({
-//                url: "ajax/ajax.aspx?control=comment&action=post",
-//                type: "POST",
-//                data: new FormData(this),
-//                contentType: false,
-//                cache: false,
-//                processData: false,
-//                beforeSend: function () {
-//                },
-//                success: function (data) {
-//                    if (data == 'invalid') {
-//                        console.log("Dữ liệu không hợp lệ");
-//                    }
-//                    else {
-//                        var retSplit = data.split('|');
-//                        if (retSplit.length > 1) {
-//                            var ckiesAvatar = retSplit[1];
-//                            if (ckiesAvatar != '') setCookie('avatar', ckiesAvatar, '30');
-//                        }
-//                        $('#name').val('');
-//                        $('#comment').val("");
-//                        $('#hdfRating').val("");
-//                        GetCommentList(1, 3, false);
-//                        console.log("Post thành công");
-//                    }
-//                },
-//                error: function (e) {
-//                    console.log("Có lỗi xảy ra");
-//                }
-//            });
-//        }));
-//    } else {
-//        alert('Check chọn xác thực');
-//    }
-//    //reply form
-//    $("#frm_reply_comment").on('submit', (function (e) {
-//        var rcres = grecaptcha.getResponse();
-//        if (rcres.length > 0) {
-//            var articleCurrent = $('#hdfCurrentComment').val();
-//            var modal = document.getElementById("model_reply_comment");
-//            setCookie('fullname', $('#name1').val(), '30');
-//            e.preventDefault();
-//            $.ajax({
-//                url: "ajax/ajax.aspx?control=comment&action=reply&currid=" + articleCurrent,
-//                type: "POST",
-//                data: new FormData(this),
-//                contentType: false,
-//                cache: false,
-//                processData: false,
-//                beforeSend: function () {
-//                },
-//                success: function (data) {
-//                    if (data == 'invalid') {
-//                        console.log("Dữ liệu không hợp lệ");
-//                    }
-//                    else {
-//                        var retSplit = data.split('|');
-//                        if (retSplit.length > 1) {
-//                            var ckiesAvatar = retSplit[1];
-//                            if (ckiesAvatar != '') setCookie('avatar', ckiesAvatar, '30');
-//                        }
-//                        modal.style.display = "none";
-//                        $('#name1').val('');
-//                        $('#comment1').val("");
-//                        $('#hdfRating1').val("");
-//                        GetCommentList(1, 3, false);
-//                        console.log("Post thành công");
-//                    }
-//                },
-//                error: function (e) {
-//                    console.log("Có lỗi xảy ra");
-//                }
-//            });
-//        }
-//        ParsteWeather();
-//        window.setInterval(ParsteWeather, 6000 * 2);
-//    }));
+function buildTableOfContentsFromHeadings() {
+    var detailPage = $(".news-detail");
+    if (detailPage.length) {
+        const tocElement = document.querySelector(`#${tocId}`);
+        const main = document.querySelector("article");
+        if (!main) {
+            throw Error("A `main` tag section is required to query headings from.");
+        }
+        headings = main.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        let previousHeading;
+        let currentSectionList = document.createElement("ul");
+        tocElement.appendChild(currentSectionList);
 
+        headings.forEach((heading, index) => {
+            currentSectionList = getProperListSection(
+                heading,
+                previousHeading,
+                currentSectionList
+            );
+            setIdFromContent(heading, index);
+            addNavigationLinkForHeading(heading, currentSectionList);
 
-//});
-//function ParsteWeather() {
-//    $.ajax({
-//        url: "ajax/ajax.aspx?control=comment&action=getweather",
-//        type: "POST",
-//        contentType: false,
-//        cache: false,
-//        processData: false,
-//        dataType: "json",
-//        beforeSend: function () {
-//        },
-//        success: function (data) {
-//            if (data.length > 0) {
-//                //for (var i = 0; i < data.length; i++) {
-//                var random_index = Math.floor(Math.random() * data.length);
-//                var dataobj = data[random_index];
-//                if (dataobj != null) {
-//                    var cityID = dataobj.Id;
-//                    var cityName = dataobj.name;
-//                    var temp = Math.round(parseFloat(dataobj.temp) - 273.15, 2);
-//                    var tempMin = Math.round(parseFloat(dataobj.temp_min) - 273.15, 2);
-//                    var tempMax = Math.round(parseFloat(dataobj.temp_max) - 273.15, 2);
-//                    var wmain = dataobj.weather_main;
-//                    var class_icon = 'icon-icon_ToiTroiQuang ic-wther';
-//                    if (wmain == "Rain") {
-//                        class_icon = 'icon-icon_DemMuaPhun-21 ic-wther';
-//                    } else if (wmain == "Clouds") {
-//                        class_icon = 'icon-icon_ToiNhieuMay ic-wther';
-//                    }
-//                    var html = "<div class='tag-top-right'>";
-//                    html += " <div class='tag-top-right-item weather-info' data-id='" + cityID + "'>";
-//                    html += "<a href='<%= C.ROOT_URL %>' class='tag-wther'>" + cityName + "</a>";
-//                    html += "<span class='" + class_icon + "'></span><span class='path1'></span><span class='path2'></span><span class='path3'></span>";
-//                    html += "<span class='path4' ></span><span class='path5'></span> <span class='path6'></span> <span class='path7'></span></span>";
-//                    html += "</div>";
-//                    html += "<div class='tag-top-right-item'>";
-//                    html += "<span title = 'Nhiệt độ trung bình' > " + temp + "°C</span > /";
-//                    html += "<span title='Nhiệt độ thấp nhất trong ngày'>" + tempMin + "°C</span>-<span title='Nhiệt độ cao nhất trong ngày'>" + tempMax + "°C</span></div>";
+            headingIds.push(heading.id);
+            headingIntersectionData[heading.id] = {
+                y: 0
+            };
+            previousHeading = heading;
+        });
+    }
+}
 
-//                    $('#home-weather').html(html);
-//                }
-//                //}
-//            }
-//        }
-//    });
-//}
-//window.addEventListener('load', function () {
-//    var fileAvar = $("#fileavatar")[0];
-//    if (typeof (fileAvar) != 'undefined') {
-//        $("#fileavatar")[0].addEventListener('change', function () {
-//            if (this.files && this.files[0]) {
-//                var img = $("#myAvatar")[0];
-//                img.src = URL.createObjectURL(this.files[0]);
-//                img.onload = imageIsLoaded;
+function updateActiveHeadingOnIntersection(entry) {
+    const previousY = headingIntersectionData[entry.target.id].y;
+    const currentY = entry.boundingClientRect.y;
+    const id = `#${entry.target.id}`;
+    const link = document.querySelector(id + "-link");
+    const index = headingIds.indexOf(entry.target.id);
 
-//                $("#hdfimg").val($("#fileavatar").val().split('\\').pop());
-//            }
-//        });
-//    }
+    if (entry.isIntersecting) {
+        if (currentY > previousY && index !== 0) {
+            console.log(id + ":1 enter top");
+        } else {
+            console.log(id + ":2 enter bottom");
+            setLinkActive(link);
+        }
+    } else {
+        if (currentY > previousY) {
+            console.log(id + ":3 leave bottom");
+            const lastLink = document.querySelector(`#${headingIds[index - 1]}-link`);
+            setLinkActive(lastLink);
+        } else {
+            console.log(id + ":4 leave top");
+        }
+    }
 
-//    var fileAvar1 = $("#fileavatar1")[0];
-//    if (typeof (fileAvar1) != 'undefined') {
-//        $("#fileavatar1")[0].addEventListener('change', function () {
-//            if (this.files && this.files[0]) {
-//                var img = $("#myAvatar1")[0];
-//                img.src = URL.createObjectURL(this.files[0]);
-//                img.onload = imageIsLoaded;
-//                $("#hdfimg1").val($("#fileavatar1").val().split('\\').pop());
-//            }
-//        });
-//    }
+    headingIntersectionData[entry.target.id].y = currentY;
+}
 
-//});
-//function imageIsLoaded(e) { }
+function observeHeadings() {
+    let options = {
+        root: document.querySelector("article"),
+        threshold: 0.1
+    };
+    headerObserver = new IntersectionObserver(
+        (entries) => entries.forEach(updateActiveHeadingOnIntersection),
+        options
+    );
+    Array.from(headings)
+        .reverse()
+        .forEach((heading) => headerObserver.observe(heading));
+}
 
-//function ImgLoading(show) {
-//    if (show) {
-//        $("#div-ajax-loading").show();
-//    }
-//    else {
-//        $("#div-ajax-loading").hide();
-//    }
-//}
-//function DelComment(del, parentid) {
-//    if (confirm("Xóa bình luận?")) {
-//        $.ajax({
-//            url: "ajax/ajax.aspx?control=comment",
-//            type: "POST",
-//            data: { action: "delete", delid: del, parent: parentid },
-//            contentType: false,
-//            cache: false,
-//            processData: false,
-//            beforeSend: function () {
-//            },
-//            success: function (data) {
-//                if (data == 'ok') {
-//                    alert("Xóa thành công");
-//                    GetCommentList(1, 3, false);
-//                }
-//            }
-//        });
-//    }
-//}
-//$('#viewmore').click(function (e) {
-//    var pageIndex = $('#hdfpageIndex').val();
-//    var totalRows = parseInt($('#hdfTotal').val());
-//    var pageSize = parseInt($('#hdfPageSize').val());
-//    pageSize += pageSize;
-//    GetCommentList(pageIndex, pageSize, false);
-//    $('#hdfpageIndex').val(parseInt(pageIndex));
-//    var total = totalRows;
-//    total = parseInt(total - pageSize);
-//    if (total > 3) {
-//        $('#viewmore').html("Xem thêm " + 3 + "/" + total);
-//    } else {
-//        $('#viewmore').hide();
-//        pageSize += total;
-//    }
-//});
-//function GetCommentList(PageIndex, pagesize, isAppend) {
-//    var articleID = $('#txtArticleID').val();
-//    var d = new Date();
-//    var n = d.getMilliseconds();
-//    ImgLoading(true);
-//    var xhr = $.ajax({
-//        url: "/ajax/ajax.aspx",
-//        data: { control: "commentlistdetail", article: articleID, pi: PageIndex, ps: pagesize, t: n },
-//        success: function (html) {
-//            if (html != "") {
-//                if (isAppend)
-//                    $(".comment-list").append(html);
-//                else
-//                    $(".comment-list").html(html);
-//            } else $('.view_more_comment').hide();
-//            ImgLoading(false);
+var detailPage = $(".news-detail");
+if (detailPage.length) {
+    window.addEventListener("load", (event) => {
+        buildTableOfContentsFromHeadings();
+        if ("IntersectionObserver" in window) {
+            observeHeadings();
+        }
+    });
+}
 
-//        }
-//    });
-//    console.log(xhr);
-//}
+window.addEventListener("unload", (event) => {
+    headerObserver.disconnect();
+});
+$('.title-header-cate .icon-list').click(function () {
+    $('#toc').toggleClass('view-content');
+});
