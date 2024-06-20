@@ -65,77 +65,77 @@
                             </div>
                             <div class="thumbnail-child slider-nav">
 
-                            <%
+                                <%
 
-                                if (galleryList != null && galleryList.Count > 0)
-                                {
-                                    int count = 0;
-                                    foreach (GalleryImage gallery in galleryList)
+                                    if (galleryList != null && galleryList.Count > 0)
                                     {
-                                        string alt = dr["name"].ToString() + " " + count.ToString();
-                                        count++;
-                                        imgList.Add(C.MAIN_URL + gallery.Path);
-                            %>
-                            <div class="thumb">
-                                <a href="<%= C.MAIN_URL %><%= gallery.Path %>?width=1000&height=1000&quality=100" data-fancybox="images">
-                                    <img src="<%= C.MAIN_URL %><%= HttpUtility.UrlDecode(gallery.Path) %>?width=80&height=80&quality=100" alt="<%= alt %>" />
-                                </a>
-                            </div>
-
-                            <%
-                                    }
-                                }
-                            %>
-
-
-                            <%
-                                //Piano Điện
-                                string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
-                                if (1 == 1)
-                                {
-                                    if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
-                                    {
-                                        if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
+                                        int count = 0;
+                                        foreach (GalleryImage gallery in galleryList)
                                         {
-                            %>
+                                            string alt = dr["name"].ToString() + " " + count.ToString();
+                                            count++;
+                                            imgList.Add(C.MAIN_URL + gallery.Path);
+                                %>
+                                <div class="thumb">
+                                    <a href="<%= C.MAIN_URL %><%= gallery.Path %>?width=1000&height=1000&quality=100" data-fancybox="images">
+                                        <img src="<%= C.MAIN_URL %><%= HttpUtility.UrlDecode(gallery.Path) %>?width=80&height=80&quality=100" alt="<%= alt %>" />
+                                    </a>
+                                </div>
 
-                            <div class="thumb">
-                                <a href="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" data-fancybox="images">
-                                    <img src="/assets/images/video-icon.jpg" />
-                                </a>
-                            </div>
-
-                            <% }
+                                <%
+                                        }
                                     }
-                                }%>
+                                %>
 
 
-
-
-
-
-                            <%
-                                //Piano Điện
-                                //string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
-
-                                if (Utils.isMobileBrowser)
-                                {
-                                    if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
+                                <%
+                                    //Piano Điện
+                                    string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
+                                    if (1 == 1)
                                     {
-                                        if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
+                                        if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
                                         {
-                            %>
-                            <div class="video" style="margin-top: 10px">
-                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" title="Piano Điện tại Nhạc cụ Tiến Đạt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                            <% }
-                                    }
-                                }%>
+                                            if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
+                                            {
+                                %>
+
+                                <div class="thumb">
+                                    <a href="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" data-fancybox="images">
+                                        <img src="/assets/images/video-icon.jpg" />
+                                    </a>
+                                </div>
+
+                                <% }
+                                        }
+                                    }%>
 
 
 
 
-                            <%--<div class="box-option-show">
+
+
+                                <%
+                                    //Piano Điện
+                                    //string CategoryIDParentList = dr["CategoryIDParentList"].ToString();
+
+                                    if (Utils.isMobileBrowser)
+                                    {
+                                        if (dr != null && CategoryIDParentList.Contains(",142,") && !CategoryIDParentList.Contains(",141,") && !dr["CategoryIDList"].ToString().Contains(",141,")) //Yamaha
+                                        {
+                                            if (!CategoryIDParentList.Contains(",44,") && !CategoryIDParentList.Contains(",45,") && !dr["CategoryIDList"].ToString().Contains(",44,") && !dr["CategoryIDList"].ToString().Contains(",45,"))
+                                            {
+                                %>
+                                <div class="video" style="margin-top: 10px">
+                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Sv_DhzuKVs0" title="Piano Điện tại Nhạc cụ Tiến Đạt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <% }
+                                        }
+                                    }%>
+
+
+
+
+                                <%--<div class="box-option-show">
                                 <div class="option-show-item">
                                     <%
                                         if (galleryList != null && galleryList.Count > 0)
@@ -254,8 +254,7 @@
                                 </div>
                                 <% } %>
                             </div>--%>
-
-                                </div>
+                            </div>
 
                             <div class="clear"></div>
 
@@ -276,7 +275,7 @@
                                 </div>
                             </div>--%>
                         </div>
-                        
+
                     </div>
                     <div class="box-order">
                         <div class="heading-box">
@@ -298,7 +297,7 @@
                                             <a href="#">(123 đánh giá)</a>
                                         </p>
                                     </div>--%>
-                                <div class="content-chose-color">
+                                <%--      <div class="content-chose-color">
                                     <div class="title-color">
                                         Color
                                     </div>
@@ -336,7 +335,7 @@
 		                                    </div>
 	                                    </div>
                                     </div>
-								</div>
+								</div>--%>
                             </div>
                         </div>
 
@@ -486,75 +485,69 @@
                             </div>--%>
                     </div>
                 </div>
-                <div class="box-content-cross-sell">
-    <div class="">
-        Frequently bought together
-    </div>
-    <div class="box-top-img-add">
-        <div class="box-images">
-            <ul>
-                <li>
-                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
-                </li>
-            </ul>
-        </div>
-        <div class="box-add">
-            <div class="title-price">Tổng tiền</div>
-            <div class="price-all">20 000 000đ</div>
-             <div class="container-button">
-                 <a href="javascript:;" id="btnSubmit_giohang" class="button btn-red">
-                    Thêm vào giỏ hàng
-                 </a>
-                 <%--  <a href="#" class="button btn-blue">
-                     <i class="fas fa-sack-dollar"></i>trả góp
-                 </a>
-                 <a href="#" class="button btn-green">
-                     <i class="fas fa-headset"></i>tư vấn
-                 </a>--%>
-             </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="list-checkbox">
-            <form>
-                <div class="item-prd">
-                     <div class="form-group">
-                       <input type="checkbox" id="piano_ydp">
-                       <label for="piano_ydp">ĐÀN PIANO YAMAHA YDP 105B</label>
-                     </div>
-                    <div class="price">
-                        <span class="price-real">20.350.000 VNĐ</span>
-                        <span class="price-sale">17.290.000 VNĐ</span>
+                <%--<div class="box-content-cross-sell">
+                    <div class="">
+                        Frequently bought together
                     </div>
-                </div>
-               <div class="item-prd">
-                    <div class="form-group">
-                      <input type="checkbox" id="chan">
-                      <label for="chan">Chân đàn</label>
+                    <div class="box-top-img-add">
+                        <div class="box-images">
+                            <ul>
+                                <li>
+                                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
+                                </li>
+                                <li>
+                                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
+                                </li>
+                                <li>
+                                    <img src="https://nhaccutiendat.vn/upload/img/dan-piano-yamaha-ydp-105b.jpg" alt="Alternate Text" />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="box-add">
+                            <div class="title-price">Tổng tiền</div>
+                            <div class="price-all">20 000 000đ</div>
+                            <div class="container-button">
+                                <a href="javascript:;" id="btnSubmit_giohang" class="button btn-red">Thêm vào giỏ hàng
+                                </a>
+                              
+                            </div>
+                        </div>
                     </div>
-                   <div class="price">
-                           1.290.000 VNĐ
+                    <div class="">
+                        <div class="list-checkbox">
+                            <form>
+                                <div class="item-prd">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="piano_ydp">
+                                        <label for="piano_ydp">ĐÀN PIANO YAMAHA YDP 105B</label>
+                                    </div>
+                                    <div class="price">
+                                        <span class="price-real">20.350.000 VNĐ</span>
+                                        <span class="price-sale">17.290.000 VNĐ</span>
+                                    </div>
+                                </div>
+                                <div class="item-prd">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="chan">
+                                        <label for="chan">Chân đàn</label>
+                                    </div>
+                                    <div class="price">
+                                        1.290.000 VNĐ
+                                    </div>
+                                </div>
+                                <div class="item-prd">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="tuidung">
+                                        <label for="tuidung">Túi đựng</label>
+                                    </div>
+                                    <div class="price">
+                                        290.000 VNĐ
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div class="item-prd">
-                    <div class="form-group">
-                      <input type="checkbox" id="tuidung">
-                      <label for="tuidung">Túi đựng</label>
-                    </div>
-                    <div class="price">
-                        290.000 VNĐ
-                    </div>
-                </div>
-              </form>
-        </div>
-    </div>
-</div>
+                </div>--%>
                 <div class="box-detail">
                     <div class="tab-menu">
                         <ul>
@@ -572,7 +565,7 @@
                             <% } %>
 
 
-                              <%
+                            <%
                                 bool tab3 = false;
                                 if (dr["Tab3"].ToString().Length > 5)
                                     tab3 = true;
@@ -629,7 +622,7 @@
 
                     <% } %>
 
-                     <% if (tab3)
+                    <% if (tab3)
                         { %>
                     <div class="tab" data-id="tab3">
                         <div class="container-content">
@@ -642,7 +635,7 @@
                     <% } %>
                 </div>
 
-<%--                <%
+                <%--                <%
                     string tags = string.Empty;
                     if (dr["TagIDList"].ToString().Length > 2)
                     {
@@ -715,8 +708,8 @@
 
             </div>
             <div class="clear"></div>
-            <div class="box-content-comment">
-                 <form id="frmrating" class="form_rating" action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+<%--            <div class="box-content-comment">
+                <form id="frmrating" class="form_rating" action="javascript:alert(grecaptcha.getResponse(widgetId1));">
                     <div class="comment-post">
                         <div class="clear"></div>
                         <input type="text" value='' name="articleid" id="txtArticleID" style="display: none" />
@@ -730,10 +723,10 @@
                                     <input type="text" name="name" id="name" placeholder="Tên" required />
                                 </div>
                                 <div>
-                                     <input type="text" name="phone" id="name" placeholder="Số điện thoại" required />
+                                    <input type="text" name="phone" id="name" placeholder="Số điện thoại" required />
                                 </div>
                             </div>
-            
+
                             <div style="padding: 5px 0">
                                 <textarea name="comment" id="comment" placeholder="Nội dung" rows="5" required></textarea>
                             </div>
@@ -741,11 +734,11 @@
                             <div id="dvCaptchaComment">
                             </div>
                             <input id="btnSubmitComment" type="submit" value="Gửi đánh giá" />
-                         </div>
+                        </div>
                     </div>
                 </form>
             </div>
-           <div class="clear"></div>
+            <div class="clear"></div>--%>
             <%if (ConvertUtility.ToInt32(PageInfo.CategoryID) > 0)
                 { %>
 
@@ -779,10 +772,10 @@
 
                                 <ins><%= SqlHelper.GetPrice(ConvertUtility.ToInt32(drProduct["ID"]), "Price") %></ins>
                                 <del><%= SqlHelper.GetPrice(ConvertUtility.ToInt32(drProduct["ID"]), "Price1") %></del>
-                                  <% if (!string.IsNullOrEmpty(SqlHelper.GetPricePercent(ConvertUtility.ToInt32(drProduct["ID"]))))
-                                        { %>
-                                    <span class="percent-sale"><%= SqlHelper.GetPricePercent(ConvertUtility.ToInt32(drProduct["ID"])) %></span>
-                                    <% } %>
+                                <% if (!string.IsNullOrEmpty(SqlHelper.GetPricePercent(ConvertUtility.ToInt32(drProduct["ID"]))))
+                                    { %>
+                                <span class="percent-sale"><%= SqlHelper.GetPricePercent(ConvertUtility.ToInt32(drProduct["ID"])) %></span>
+                                <% } %>
                             </div>
                         </div>
                     </a>

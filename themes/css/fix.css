@@ -3740,9 +3740,6 @@ a.liked, a.liked span, a.liked i {
 
 
 @media screen and (max-width: 600px) {
-
-
-
     .content_slider .content_ {
         height: 52.5vw;
     }
@@ -3773,4 +3770,11 @@ a.liked, a.liked span, a.liked i {
             display: -webkit-box;
             overflow: hidden;
         }
+}
+
+@media screen and (min-width:768px)
+{
+    .contactWidget .item.menu {
+        display: none;
+    }
 }

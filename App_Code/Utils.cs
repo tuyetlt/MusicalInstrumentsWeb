@@ -29,6 +29,7 @@ public class Utils
     private static Cache cache = HttpContext.Current.Cache;
     private static readonly System.Random randNum = new System.Random();
     public static bool Valid_Error = true;
+    public object __o;
     public Utils()
     {
 

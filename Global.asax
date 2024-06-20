@@ -8,7 +8,7 @@
 
     void Application_BeginRequest(Object sender, EventArgs e)
     {
-
+        
         //_logger.Info("IP: " + Utils.IPAddress);
 
         System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");

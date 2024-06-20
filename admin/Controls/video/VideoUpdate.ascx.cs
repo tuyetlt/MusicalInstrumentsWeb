@@ -109,8 +109,8 @@ public partial class admin_Controls_video_VideoUpdate : System.Web.UI.UserContro
         {
             Utils.GetAttrByID(Request.Form["categoryidlist"], "tblCategories", true, ref CatUrlList, ref CatNameList);
 
-            Utils.GetTagByName(Request.Form["tag_name"], "tblCategories", "tag", true, ref TagUrlList, ref TagIDList);
-            Utils.GetTagByName(Request.Form["hashtag_name"], "tblCategories", "hashtag", true, ref HashTagUrlList, ref HashTagIDList);
+            //Utils.GetTagByName(Request.Form["tag_name"], "tblCategories", "tag", true, ref TagUrlList, ref TagIDList);
+            //Utils.GetTagByName(Request.Form["hashtag_name"], "tblCategories", "hashtag", true, ref HashTagUrlList, ref HashTagIDList);
 
             /////////////////
 

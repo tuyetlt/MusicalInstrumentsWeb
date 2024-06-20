@@ -49,7 +49,7 @@
 <% var themes = ""; // "-" + ConfigWeb.Style.Replace(".css", ""); %>
 
 <div class="contactWidget">
-     <div class="item">
+     <div class="item menu">
          <div class="icon-menu-ft">
              <label for="navbar-toggler" class="toggle_menu_ft">
                 <i class="far fa-bars"></i>
