@@ -26,6 +26,14 @@ public partial class ajax_Controls_CategoryLoad : System.Web.UI.UserControl
 
         if (action == "product_list")
         {
+            string sort = ConfigWeb.SortProduct;
+            dtCat = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "", "ID=" + categoryID);
+            if(Utils.CheckExist_DataTable(dtCat))
+            {
+                drCat = dtCat.Rows[0];
+            }    
+
+
             if (!string.IsNullOrEmpty(attributeIDList))
             {
                 string filterAttr = string.Empty;
@@ -85,7 +93,6 @@ public partial class ajax_Controls_CategoryLoad : System.Web.UI.UserControl
                         filterAttrParent += ")";
                 }
 
-
                 //Get Root ID, Sort
                 string SortProduct = string.Empty;
                 DataRow drCatRoot = drCat;
@@ -114,8 +121,9 @@ public partial class ajax_Controls_CategoryLoad : System.Web.UI.UserControl
                 if (string.IsNullOrEmpty(SortProduct))
                     SortProduct = ConfigWeb.SortProduct;
 
+
                 string filterProduct = string.Format(@"(Hide is null OR Hide=0) AND (CategoryIDParentList LIKE '%,{0},%' OR CategoryIDList LIKE '%,{0},%' OR TagIDList Like N'%,{0},%') AND ({1})", categoryID, filterAttrParent);
-                dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "", filterProduct, SortProduct, pageIndex, C.ROWS_PRODUCTCATEGORY, out _totalProduct);
+                dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrl,FriendlyUrlCategory,Gallery,Price,Price1,HashTagUrlList", filterProduct, SortProduct, pageIndex, C.ROWS_PRODUCTCATEGORY, out _totalProduct);
                 CookieUtility.SetValueToCookie("TotalProduct", _totalProduct.ToString());
                 pageIndex += 1;
                 CookieUtility.SetValueToCookie("pageIndex_Category", pageIndex.ToString());
@@ -124,10 +132,43 @@ public partial class ajax_Controls_CategoryLoad : System.Web.UI.UserControl
             {
                 string filterProduct = "";
                 if (categoryID > 0)
+                {
+                    string thuonghieuParam = "";
+                    string thuonghieu = RequestHelper.GetString("thuonghieu", "");
+                    if (string.IsNullOrEmpty(thuonghieu))
+                    {
+                        thuonghieu = RequestHelper.GetString("thuong-hieu-may-lanh", "");
+                        if (string.IsNullOrEmpty(thuonghieu))
+                            thuonghieuParam = "?thuong-hieu-may-lanh=" + thuonghieu;
+                    }
+                    else
+                    {
+                        thuonghieuParam = "?thuong-hieu=" + thuonghieu;
+                    }
+                    DataRow drAttribute = null;
+                    DataTable dtAttribute = null;
+                    if (!string.IsNullOrEmpty(thuonghieu))
+                    {
+                        dtAttribute = SqlHelper.SQLToDataTable("tblAttributes", "ID, Name, FriendlyUrl", string.Format("FriendlyUrl=N'{0}'", thuonghieu));
+                        if (Utils.CheckExist_DataTable(dtAttribute))
+                        {
+                            drAttribute = dtAttribute.Rows[0];
+                        }
+                    }
+
+                   
+                    if (Utils.CheckExist_DataTable(dtAttribute))
+                    {
+                        sort = string.Format("(CASE WHEN {0}=N'{1}' THEN 1 ELSE 0 END) DESC", "Brand", drAttribute["Name"]);
+                        if (!string.IsNullOrEmpty(ConfigWeb.SortProduct))
+                            sort = string.Format("(CASE WHEN {0}=N'{1}' THEN 1 ELSE 0 END) DESC, {2}", "Brand", drAttribute["Name"], ConfigWeb.SortProduct);
+                    }
+
                     filterProduct = string.Format(@"(Hide is null OR Hide=0) AND (CategoryIDList Like N'%,{0},%' OR CategoryIDParentList Like N'%,{0},%' OR TagIDList Like N'%,{0},%')", categoryID);
+                }
                 else
                     filterProduct = string.Format(@"Name Like N'%{0}%' OR NameUnsign Like N'%{0}%'", keyword);
-                dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "", filterProduct, ConfigWeb.SortProduct, pageIndex, C.ROWS_PRODUCTCATEGORY, out _totalProduct);
+                dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "", filterProduct, sort, pageIndex, C.ROWS_PRODUCTCATEGORY, out _totalProduct);
                 CookieUtility.SetValueToCookie("TotalProduct", _totalProduct.ToString());
                 pageIndex += 1;
                 CookieUtility.SetValueToCookie("pageIndex_Category", pageIndex.ToString());
@@ -138,7 +179,7 @@ public partial class ajax_Controls_CategoryLoad : System.Web.UI.UserControl
             if (categoryID > 0)
             {
                 string filterProduct = string.Format(@"(Hide is null OR Hide=0) AND (CategoryIDList Like N'%,{0},%' OR CategoryaIDParentList Like N'%,{0},%')", categoryID);
-                dtArticle = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "", filterProduct, ConfigWeb.SortArticle, pageIndex, C.ROWS_PRODUCTCATEGORY, out _totalProduct);
+            dtArticle = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "", filterProduct, ConfigWeb.SortArticle, pageIndex, C.ROWS_PRODUCTCATEGORY, out _totalProduct);
             }
             else
             {

@@ -12,28 +12,28 @@ public partial class Tool_CountProductByCategory : System.Web.UI.Page
     {
         //string filter = string.Format("LinkTypeMenuFlag & {0} <> 0", (int)LinkTypeMenuFlag.Product);
 
-        //DataTable dt = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "ID,Name,FriendlyUrl", " ID IN (861,860,229,99,851)", "");
-        //foreach (DataRow dr in dt.Rows)
-        //{
-        //    DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", dr["FriendlyUrl"]));
-        //    if (!Utils.CheckExist_DataTable(dtU))
-        //    {
-        //        SqlHelper.Update_Url_Table(false, "article_detail", ConvertUtility.ToInt32(dr["ID"]), dr["Name"].ToString(), dr["FriendlyUrl"].ToString());
-        //        Response.Write("ok - ");
-        //    }
-        //}
-
-
-
-        DataTable dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrl", "ID IN (1551,1769)", "");
-        foreach (DataRow drProduct in dtProduct.Rows)
+        DataTable dt = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "ID,Name,FriendlyUrl", " ID IN (635,1026,1275,873,634,874,1183,880,879,1031,862,1034,2447,861,860,1178,2448,2449,636,1029,1277,878,881,877,875,1226,1225,1180,1184,1179,975,659,1033,658,2445,976,2,876,751,637,1028,2450,849,2435,1182,1278,642,640,2446,638,752,1107,837)", "");
+        foreach (DataRow dr in dt.Rows)
         {
-            DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", drProduct["FriendlyUrl"]));
+            DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", dr["FriendlyUrl"]));
             if (!Utils.CheckExist_DataTable(dtU))
             {
-                SqlHelper.Update_Url_Table(false, "product_detail", ConvertUtility.ToInt32(drProduct["ID"]), drProduct["Name"].ToString(), drProduct["FriendlyUrl"].ToString());
+                SqlHelper.Update_Url_Table(false, "article_detail", ConvertUtility.ToInt32(dr["ID"]), dr["Name"].ToString(), dr["FriendlyUrl"].ToString());
+                Response.Write("ok - ");
             }
         }
+
+
+
+        //DataTable dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrl", "ID IN (1551,1769)", "");
+        //foreach (DataRow drProduct in dtProduct.Rows)
+        //{
+        //    DataTable dtU = SqlHelper.SQLToDataTable("tblUrl", "", string.Format("FriendlyUrl=N'{0}'", drProduct["FriendlyUrl"]));
+        //    if (!Utils.CheckExist_DataTable(dtU))
+        //    {
+        //        SqlHelper.Update_Url_Table(false, "product_detail", ConvertUtility.ToInt32(drProduct["ID"]), drProduct["Name"].ToString(), drProduct["FriendlyUrl"].ToString());
+        //    }
+        //}
 
         //string filter = string.Format("(Hide is null OR Hide=0) AND (LinkTypeMenuFlag & {0} <> 0 OR LinkTypeMenuFlag=0)", (int)LinkTypeMenuFlag.Product);
 

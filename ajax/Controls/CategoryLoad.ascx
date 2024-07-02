@@ -15,12 +15,15 @@
         <div class="img">
             <img src="<%= Utils.GetFirstImageInGallery_Json(drProduct["Gallery"].ToString(), 300, 300) %>" alt="<%= drProduct["Name"].ToString() %>" />
         </div>
-        <%--<span class="sale">50%</span>--%>
+
+
+
+
         <div class="cont">
             <h4 class="name"><%= drProduct["Name"].ToString() %></h4>
             <div class="info">
-                <ins><%= SqlHelper.GetPrice(drProduct, "Price") %></ins>
-                <del><%= SqlHelper.GetPrice(drProduct, "Price1") %></del>
+                <ins><%= SqlHelper.GetPrice(ConvertUtility.ToInt32(drProduct["ID"]), "Price") %></ins>
+                <del><%= SqlHelper.GetPrice(ConvertUtility.ToInt32(drProduct["ID"]), "Price1") %></del>
             </div>
         </div>
     </a>

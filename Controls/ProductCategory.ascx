@@ -167,7 +167,12 @@
             </div>
             <div class="filter">
                 <div class="filted">
-                    <%-- <span>Lọc: </span>--%>
+                    <div class="header">
+                        <span>Bộ lọc sản phẩm</span>
+                        <span class="close">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
                     <div id="filted">
                     </div>
                 </div>
@@ -183,15 +188,15 @@
             <div id="description_cate" class="description_cate">
                 <%= ContentHtml %>
             </div>
-           
-      
+
+
 
             <%} %>
 
 
 
 
-<%--            <%
+            <%--            <%
                 string TagsList = drCat["TagIDList"].ToString().Trim(',');
                 if (!Utils.IsNullOrEmpty(TagsList))
                 {
@@ -224,8 +229,8 @@
     </div>
 </main>
 
- <input type="hidden" value="category" id="GG_Page" />
- <input type="hidden" value="<%= string.Format("{0:0}", 1000000) %>" id="GG_Price" />
+<input type="hidden" value="category" id="GG_Page" />
+<input type="hidden" value="<%= string.Format("{0:0}", 1000000) %>" id="GG_Price" />
 
 
 <script type="application/ld+json">

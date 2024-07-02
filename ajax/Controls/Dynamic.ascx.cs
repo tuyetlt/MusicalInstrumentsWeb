@@ -87,7 +87,7 @@ public partial class ajax_Controls_Dynamic : System.Web.UI.UserControl
                             if (RecordID > 0)
                             {
                                 if (Quantity > 0)
-                                    ShoppingCart.UpdateCart(RecordID, Quantity);
+                                    ShoppingCart.AddToCart(RecordID, Quantity);
                                 else
                                     ShoppingCart.DeleteProduct(RecordID);
                             }
@@ -107,7 +107,7 @@ public partial class ajax_Controls_Dynamic : System.Web.UI.UserControl
                                     if (count == orderInfoList.Count)
                                         dau_phay = string.Empty;
 
-                                    Items += string.Format(@"{{""id"":""{0}"",""productName"":""{1}"",""quantity"":""{2}""}}{3}", orderInfo.ProductID, orderInfo.Name, orderInfo.Quantity, dau_phay);
+                                    Items += string.Format(@"{{""id"":""{0}"",""productName"":""{1}"",""quantity"":""{2}"", ""price"":""{3}"", ""voucher_quantity"":""{4}""}}{5}", orderInfo.ProductID, orderInfo.Name, orderInfo.Quantity, orderInfo.Price, orderInfo.NumberApplyVoucher, dau_phay);
                                 }
                             }
                             Items += "]";

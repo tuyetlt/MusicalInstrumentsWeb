@@ -74,7 +74,7 @@
         </div>
     </div>
 </div>
-<div class="section-up section_partner">
+<%--<div class="section-up section_partner">
   <div class="container">
      <div class="in-partner">
          <div class="title">
@@ -104,54 +104,4 @@
          </div>
      </div>
    </div>
-</div>
-<%--<div class="section3 section_blog">
-    <div class="container">
-        <div class="in">
-            <div class="title">
-                <h2>
-                    <span>TIN TỨC</span>
-                </h2>
-            </div>
-
-            <%
-                DataTable dtNews = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "", "", "ID DESC", 1, 8);
-                if (Utils.CheckExist_DataTable(dtNews))
-                {
-                    int count = 0;
-            %>
-
-            <div class="list_blog">
-                <div class="insider">
-                    <% for (int i = 0; i < 4 && i < dtNews.Rows.Count; i++)
-                        {
-                    %>
-                    <a href="#"><span class="img">
-                        <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString()) %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" /></span></a>
-                    <% } %>
-                </div>
-            </div>
-
-            <div class="list_blog_info">
-                <div class="insider">
-                    <% for (int i = count; i < 8 && i < dtNews.Rows.Count; i++)
-                        { %>
-                    <article>
-                        <div class="cont">
-                            <div class="img">
-                                <img src="<%= Utils.GetFirstImageInGallery_Json(dtNews.Rows[i]["Gallery"].ToString()) %>" alt="<%= dtNews.Rows[i]["Name"].ToString() %>" />
-                            </div>
-                            <div class="info">
-                                <h3><%= dtNews.Rows[i]["Name"].ToString() %></h3>
-                            </div>
-                        </div>
-                    </article>
-                    <% } %>
-                </div>
-            </div>
-            <%
-                    count++;
-                } %>
-        </div>
-    </div>
 </div>--%>

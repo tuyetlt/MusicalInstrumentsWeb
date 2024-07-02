@@ -500,7 +500,9 @@ public class OrderInfo
     public string Image { get; set; }
     public string Name { get; set; }
     public int Quantity { get; set; }
+    public string CouponCode { get; set; }
     public decimal Price { get; set; }
+    public int NumberApplyVoucher { get; set; }
     public decimal TotalPrice { get; set; }
 }
 

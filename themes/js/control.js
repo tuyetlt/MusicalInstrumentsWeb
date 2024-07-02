@@ -971,7 +971,7 @@ $(document).ready(function () {
             $("#GG_Price").val(jsonContent.finalPrice);
             $("#GG_CountItems").val(jsonContent.quantity);
             cart_total_price.html(jsonContent.finalPriceVND);
-            hdfTotalPrice.val(jsonContent.finalPriceVND);
+            hdfTotalPrice.val(jsonContent.finalPrice);
 
             var item_rows_delete = $(".shopping-cart .item.item" + id);
             item_rows_delete.fadeOut("slow");
@@ -993,6 +993,7 @@ $(document).ready(function () {
 
     $(function () {
         $('.increment').click(function () {
+            var hdfTotalPrice = $("#hdfTotalPrice");
             var id = $(this).siblings('input').attr('id');
             var valueElement = $('#' + id);
             if ($(this).hasClass('plus')) {
@@ -1001,18 +1002,60 @@ $(document).ready(function () {
                 valueElement.val(Math.max(parseInt(valueElement.val()) - 1));
             }
             Loading(true);
+
             $.getJSON('/ajax/ajax.aspx', { control: "dynamic", services: "cart_update", id: id, quantity: valueElement.val() }, function (data) {
-                var jsonContent = JSON.parse(JSON.stringify(data));
-                $("#GG_Items").val(jsonContent.jsonProduct);
-                $("#GG_Price").val(jsonContent.finalPrice);
-                $(".cart_total_price").html(jsonContent.finalPriceVND);
-            });
-            Loading(false);
+                // Parse lại chuỗi JSON bên trong jsonProduct
+                data.jsonProduct = JSON.parse(data.jsonProduct);
+
+                var jsonContent = data;
+
+                // Cập nhật thông tin sản phẩm
+                for (var i = 0; i < jsonContent.jsonProduct.length; i++) {
+                    var product = jsonContent.jsonProduct[i];
+                    var productElement = $(".item" + product.id); // Sửa thành $(".item.item" + product.id)
+
+                    if (productElement.length > 0) {
+                        productElement.find(".quantity_cart").val(product.quantity);
+
+                        // Kiểm tra kiểu dữ liệu của giá và chuyển đổi sang số nếu cần
+                        var price = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+
+                        // Thêm dấu chấm ngăn cách hàng nghìn bằng cách sử dụng hàm tự định nghĩa
+                        var formattedPrice = formatNumberWithDot(price);
+                        productElement.find(".price_item_" + product.id + " span").text(formattedPrice + " VNĐ");
+
+                        productElement.find(".coupon_quantity_apply").text(product.voucher_quantity);
+                        productElement.find(".hdfPrice_" + product.id).val(price);
+                        hdfTotalPrice.val(jsonContent.finalPrice);
+                        var couponApplyElement = productElement.find(".couponapply");
+                        if (parseInt(product.voucher_quantity) > 0) {
+                            couponApplyElement.show();
+                        } else {
+                            couponApplyElement.hide();
+                        }
+                    }
+                }
+
+
+                // Cập nhật tổng tiền
+                $(".cart_total_price").html(data.finalPriceVND);
+            })
+                .done(function () {
+                    Loading(false);
+                })
+                .fail(function () {
+                    // Xử lý khi ajax thất bại (nếu cần)
+                    Loading(false);
+                });
+
+
             return false;
         });
     });
 
-
+    function formatNumberWithDot(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
 
 
@@ -1100,10 +1143,9 @@ $(document).ready(function () {
 });
 
 
-
-//$(document).ready(function () {
-//    GetAttributeProduct();
-//});
+$(document).ready(function () {
+    GetAttributeProduct();
+});
 
 
 
@@ -1120,7 +1162,9 @@ function GetAttributeProduct() {
             var jsonContent = JSON.parse(JSON.stringify(data));
             var divAttrAjax = $(".filter-ajax");
             for (var i = 0; i < jsonContent.length; i++) {
+
                 var item = jsonContent[i];
+
                 if (item.Name == "RootID") {
                     $("#rootFilterCategoryID").val(item.ID);
                 }
@@ -1144,7 +1188,7 @@ function GetAttributeProduct() {
                         }
                         //console.log(categoryName + " - " + itemChild.Name);
 
-                        htmlContent += "<input" + selected + " type='checkbox' class='checkboxAttr' onclick='GetValueFromAttr()' id='checkboxAttr_" + itemChild.ID + "' data-name='" + itemChild.Name + "' />";
+                        htmlContent += "<input" + selected + " type='checkbox' class='checkboxAttr' onclick='GetValueFromAttr()' id='checkboxAttr_" + itemChild.ID + "' data-url='" + itemChild.FriendlyUrl + "' data-url-parent='" + itemChild.FriendlyUrlParent + "' data-name='" + itemChild.Name + "' />";
                         if (itemChild.Image != '')
                             htmlContent += "<label style='cursor:pointer' for='checkboxAttr_" + itemChild.ID + "'><img src='" + itemChild.Image + "'></label><br />";
                         else
@@ -1188,13 +1232,39 @@ function BindDataToAttr() {
 }
 
 
+// Hàm lấy Param từ Url
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
+};
+
+
+
 // Load theo Attributes
 function GetValueFromAttr() {
     $("#loadByFilter").val("1");
-    
+
+    //console.log("đã chọn");
+
+
+
 
     var list_id = "";
     var filted_html = "";
+
+    var urlParam = "?";
+
     $('.checkboxAttr:checked').each(function () {
         if (list_id != null && list_id != '')
             list_id += ",";
@@ -1203,7 +1273,32 @@ function GetValueFromAttr() {
 
         var name = $(this).attr("data-name");
         filted_html += "<a href='javascript:;' onclick='RemoveAttr(" + checkboxValue.replace("checkboxAttr_", "") + ")' data-id='" + checkboxValue.replace("checkboxAttr_", "") + "'><span>" + name + "</span><i class='fas fa-times'></i></a>";
+
+
+        var url = $(this).attr("data-url");
+        var url_parent = $(this).attr("data-url-parent");
+        var current_url = window.location.href;
+
+        //if (current_url.indexOf(url_parent) != -1) { // Nếu Param đã tồn tại
+        //    urlParam.replace(url_parent + "=" + url, "");//Remove cái cũ
+        //    var currentParam = getUrlParameter(url_parent);
+        //    url = currentParam + "." + url;
+        //}
+
+
+        //alert(current_url);
+
+
+
+        //if (urlParam != "?")
+        //    urlParam += "&";
+
+        urlParam = "?" + url_parent + "=" + url;
+
     });
+
+    window.history.replaceState(null, null, urlParam);
+
     console.log(list_id);
     $("#attributeIDList").val(list_id);
     $("#filted").html(filted_html);
@@ -1271,6 +1366,8 @@ function RemoveAttr(data_id) {
     AttrList.val(array.toString());
 
     GetValueFromAttr();
+
+
 
 }
 
