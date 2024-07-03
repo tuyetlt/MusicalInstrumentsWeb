@@ -2182,7 +2182,23 @@ footer .fo1 .info .item ul li a {
             left: 68px;
             animation-delay: 0;
         }
-
+.list-cate-side{
+    padding-top:10px;
+}
+.list-cate-side .item-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.checkboxAttr {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    accent-color: #004ebd;
+}
+.products .full-content-cate .container-product {
+    width: 100%;
+}
 @keyframes div-ajax-loading {
     0% {
         top: 8px;
