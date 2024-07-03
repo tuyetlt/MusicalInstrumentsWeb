@@ -1687,3 +1687,19 @@ window.addEventListener("unload", (event) => {
 $('.title-header-cate .icon-list').click(function () {
     $('#toc').toggleClass('view-content');
 });
+$(document).on(event, ".btnNavigationMenu", function (e) {
+    e.preventDefault();
+
+    if ($('html').hasClass('nav-open')) {
+        $('html').removeClass('nav-open');
+    } else {
+        setTimeout(function () {
+            $('html').removeClass('sidebar-open').addClass('nav-open');
+        }, 100);
+    }
+});
+$('.btn-close-sidebar').on('click', function (e) {
+    e.preventDefault();
+
+    $('.btn-sidebar-filter').trigger('click');
+});

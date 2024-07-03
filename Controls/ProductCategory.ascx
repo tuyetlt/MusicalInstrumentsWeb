@@ -170,7 +170,7 @@
                 <div class="container-btn show-more"><a id="category_paging" class="btn-see-more">Xem thêm <i class="fas fa-sort-down"></i></a></div>
                 <%} %>
             </div>
-            <div class="filter" id="filter">
+            <div class="filter sidebar" id="filter">
                 <div class="filted">
                     <div class="header">
                         <span>Bộ lọc sản phẩm</span>
