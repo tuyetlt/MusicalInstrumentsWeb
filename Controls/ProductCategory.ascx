@@ -181,6 +181,10 @@
                 </div>
                 <div class="sidebar__inner filter-ajax">
                 </div>
+                 <div class="box-fillter-btn">
+                     <button class="btn-close-sidebar btn-remove-all hidden-md">Bỏ chọn</button>
+                     <button class="btn-close-sidebar btn-reader-more-fillter hidden-md">Xem 0 Sản phẩm</button>
+                 </div>
             </div>
             <% if (!Utils.IsNullOrEmpty(drCat["LongDescription"].ToString()))
                 { %>
@@ -191,9 +195,6 @@
             <div id="description_cate" class="description_cate">
                 <%= ContentHtml %>
             </div>
-
-
-
             <%} %>
 
 

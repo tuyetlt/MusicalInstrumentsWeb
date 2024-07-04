@@ -1349,6 +1349,7 @@ function GetValueFromAttr() {
                 });
                 $(".div-ajax-loading").hide();
                 ShowMore(pageIndexShowMore, false);
+                $(".btn-reader-more-fillter").html(" Xem " + $.cookie("TotalProduct") + " sản phẩm");
             }, 500);
         }
     });
@@ -1440,6 +1441,7 @@ $("#category_paging").click(function () {
                 });
                 $(".div-ajax-loading").hide();
                 ShowMore(pageIndexShowMore, false);
+                $(".btn-reader-more-fillter").html(" Xem " + $.cookie("TotalProduct") + " sản phẩm");
             }, 10);
         }
     });

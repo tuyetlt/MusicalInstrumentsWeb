@@ -2256,6 +2256,40 @@ html.sidebar-open .products .content .filter.sidebar {
     margin-bottom: 10px;
     font-size: 14px;
 }
+.box-fillter-btn {
+    position: fixed;
+    width: 100%;
+    left: -100%;
+    padding: 10px 0;
+    bottom: 0px;
+    display: flex;
+    background: #fff;
+    display: none;
+}
+.sidebar-open .box-fillter-btn {
+    display: flex;
+    transition: left 350ms ease;
+    left: 0;
+}
+.contactWidget{
+    z-index:10;
+}
+.box-fillter-btn button {
+    width: 50%;
+    margin: 0 10px;
+    padding: 10px;
+}
+.box-fillter-btn button:first-child {
+    border: 1px solid #960100;
+    color: #960100;
+    font-weight: bold;
+}
+.box-fillter-btn button:last-child {
+    border: 1px solid #0fa80f;
+    color: #fff;
+    background: #0fa80f;
+    font-weight: bold;
+}
 @media only screen and (min-width: 1024px) {
     .hidden-md {
         display: none !important;
