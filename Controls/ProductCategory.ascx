@@ -85,7 +85,7 @@
         </div>
 
         <% } %>
-        <div class="content">
+        <div class="content content-update">
             <div class="container-product">
                 <div class="heading">
                     <h1 class="title">
@@ -122,6 +122,11 @@
                     </div>
 
                     <% } %>
+                </div>
+                 <div class="col">
+                    <div class="d-flex justify-content-between justify-content-end align-items-center">
+                        <button type="button" class="btn btn-primary btn-sidebar-filter hidden-md"><i class="fa fa-filter"></i>LỌC TÌM SẢN PHẨM</button>
+                    </div>
                 </div>
                 <div class="product-list">
                     <% 
@@ -165,7 +170,7 @@
                 <div class="container-btn show-more"><a id="category_paging" class="btn-see-more">Xem thêm <i class="fas fa-sort-down"></i></a></div>
                 <%} %>
             </div>
-            <div class="filter">
+            <div class="filter" id="filter">
                 <div class="filted">
                     <div class="header">
                         <span>Bộ lọc sản phẩm</span>
@@ -176,7 +181,7 @@
                     <div id="filted">
                     </div>
                 </div>
-                <div class="filter-ajax">
+                <div class="sidebar__inner filter-ajax">
                 </div>
             </div>
             <% if (!Utils.IsNullOrEmpty(drCat["LongDescription"].ToString()))

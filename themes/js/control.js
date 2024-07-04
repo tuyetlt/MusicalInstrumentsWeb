@@ -1162,7 +1162,7 @@ function GetAttributeProduct() {
             var jsonContent = JSON.parse(JSON.stringify(data));
             var divAttrAjax = $(".filter-ajax");
             for (var i = 0; i < jsonContent.length; i++) {
-
+               
                 var item = jsonContent[i];
 
                 if (item.Name == "RootID") {
@@ -1171,9 +1171,9 @@ function GetAttributeProduct() {
                 else {
                     count++;
 
-                    htmlContent += "<div>"
+                    htmlContent += "<div class='box-section-list-cate'>"
                     htmlContent += "<h3>" + item.Name + "</h3>";
-
+                    htmlContent += "<div class='list-cate-side'>"
                     var jsonChild = JSON.parse(JSON.stringify(item.attributeProductChild));
                     for (var j = 0; j < jsonChild.length; j++) {
                         var itemChild = jsonChild[j];
@@ -1188,29 +1188,38 @@ function GetAttributeProduct() {
                         }
                         //console.log(categoryName + " - " + itemChild.Name);
 
-                        htmlContent += "<input" + selected + " type='checkbox' class='checkboxAttr' onclick='GetValueFromAttr()' id='checkboxAttr_" + itemChild.ID + "' data-url='" + itemChild.FriendlyUrl + "' data-url-parent='" + itemChild.FriendlyUrlParent + "' data-name='" + itemChild.Name + "' />";
+                        htmlContent += "<div class='item-filter'><input" + selected + " type='checkbox' class='checkboxAttr' onclick='GetValueFromAttr()' id='checkboxAttr_" + itemChild.ID + "' data-url='" + itemChild.FriendlyUrl + "' data-url-parent='" + itemChild.FriendlyUrlParent + "' data-name='" + itemChild.Name + "' />";
                         if (itemChild.Image != '')
-                            htmlContent += "<label style='cursor:pointer' for='checkboxAttr_" + itemChild.ID + "'><img src='" + itemChild.Image + "'></label><br />";
+                            htmlContent += "<label style='cursor:pointer' for='checkboxAttr_" + itemChild.ID + "'><img src='" + itemChild.Image + "'></label></div>";
                         else
-                            htmlContent += "<label style='cursor:pointer' for='checkboxAttr_" + itemChild.ID + "'>" + itemChild.Name + "</label><br />";
+                            htmlContent += "<label style='cursor:pointer' for='checkboxAttr_" + itemChild.ID + "'>" + itemChild.Name + "</label></div>";
 
 
                         //console.log(categoryName + " - " + itemChild.Name);
 
                     }
-                    htmlContent += "</div>"
+                    htmlContent += "</div></div>"
+                    console.log('Haha', count);
+                    if (count == 0) {
+                        $(".filter").hide();
+                    }
+                    else {
+                        $(".filter").show();
+                        $(".content-update").removeClass('full-content-cate');
+                    }
                 }
             }
             if (data.length) {
-
                 divAttrAjax.show();
                 divAttrAjax.html(htmlContent);
                 BindDataToAttr();
             }
         });
-
+        
         if (count == 0) {
             $(".filter-ajax").hide();
+            $(".filter").hide();
+            $(".content-update").addClass('full-content-cate');
         }
         else {
             $(".filter-ajax").show();
