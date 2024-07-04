@@ -1178,7 +1178,7 @@ function GetAttributeProduct() {
                     for (var j = 0; j < jsonChild.length; j++) {
                         var itemChild = jsonChild[j];
                         var selected = "";
-
+                        console.log(itemChild);
                         var categoryName = $("#categoryName").val();
                         if (itemChild.Name == categoryName) {
                             var filted_html = "<a href='javascript:;' onclick='RemoveAttr(" + itemChild.ID + ")' data-id='" + itemChild.ID + "'><span>" + itemChild.Name + "</span><i class='fas fa-times'></i></a>";
@@ -1199,7 +1199,7 @@ function GetAttributeProduct() {
 
                     }
                     htmlContent += "</div></div>"
-                    console.log('Haha', count);
+                    
                     if (count == 0) {
                         $(".filter").hide();
                     }

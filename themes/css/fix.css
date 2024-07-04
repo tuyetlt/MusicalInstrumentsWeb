@@ -2290,6 +2290,10 @@ html.sidebar-open .products .content .filter.sidebar {
     background: #0fa80f;
     font-weight: bold;
 }
+.number-cart {
+    display: flex;
+    justify-content: space-around;
+}
 @media only screen and (min-width: 1024px) {
     .hidden-md {
         display: none !important;

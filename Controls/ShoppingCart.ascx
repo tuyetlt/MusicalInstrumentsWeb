@@ -69,7 +69,7 @@
                         <div>
                             <a href="<%=link %>"><%= orderInfo.Name %></a>
                         </div>
-                        <div>
+                        <div class="number-cart">
                             <a class="minus increment" href="javascript:;">-</a>
                             <input type="text" class="quantity_cart" readonly="readonly" id="<%= orderInfo.ProductID %>" value="<%= orderInfo.Quantity %>" />
                             <a class="plus increment" href="javascript:;">+</a>
