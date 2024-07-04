@@ -174,10 +174,8 @@
                 <div class="filted">
                     <div class="header">
                         <span>Bộ lọc sản phẩm</span>
-                        <span class="close">
-                            <i class="fas fa-times"></i>
-                        </span>
                     </div>
+                    <button class="btn-close btn-close-sidebar hidden-md"></button>
                     <div id="filted">
                     </div>
                 </div>

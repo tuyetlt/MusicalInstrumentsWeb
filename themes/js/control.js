@@ -1687,14 +1687,13 @@ window.addEventListener("unload", (event) => {
 $('.title-header-cate .icon-list').click(function () {
     $('#toc').toggleClass('view-content');
 });
-$(document).on(event, ".btnNavigationMenu", function (e) {
-    e.preventDefault();
-
-    if ($('html').hasClass('nav-open')) {
-        $('html').removeClass('nav-open');
+// Js open list category
+$(".btn-sidebar-filter").on('click',function (e) {
+    if ($('html').hasClass('sidebar-open')) {
+        $('html').removeClass('sidebar-open');
     } else {
         setTimeout(function () {
-            $('html').removeClass('sidebar-open').addClass('nav-open');
+            $('html').removeClass('nav-open').addClass('sidebar-open');
         }, 100);
     }
 });
