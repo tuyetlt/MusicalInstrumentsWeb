@@ -1,32 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:60634/tin-tuc-su-kien/</loc>
-    <lastmod>2024-05-21T22:46:55+07:00</lastmod>
+    <loc>http://localhost:57042/tuyen-dung/</loc>
+    <lastmod>2024-06-22T17:06:58+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:60634/blog-nhac-cu/</loc>
-    <lastmod>2024-05-10T09:25:06+07:00</lastmod>
+    <loc>http://localhost:57042/tin-moi/</loc>
+    <lastmod>2022-12-21T17:30:16+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:60634/tin-tuc-dan-piano/</loc>
-    <lastmod>2010-01-01T00:00:00+07:00</lastmod>
+    <loc>http://localhost:57042/tin-khuyen-mai/</loc>
+    <lastmod>2022-12-21T17:30:44+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:60634/khuyen-mai/</loc>
-    <lastmod>2010-01-01T00:00:00+07:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://localhost:60634/tin-tuc/</loc>
-    <lastmod>2020-09-22T16:25:55+07:00</lastmod>
+    <loc>http://localhost:57042/tin-thadaco/</loc>
+    <lastmod>2022-12-21T18:42:16+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

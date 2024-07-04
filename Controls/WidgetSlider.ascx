@@ -148,6 +148,20 @@
                         </div>
 
                         <% } %>--%>
+
+
+                        <%
+                            if (C.DOMAIN_BANNER_DISPLAY == "mayvesinh.vn")
+                            {
+                            %>
+                            
+
+                        <% }
+                            else if (C.DOMAIN_BANNER_DISPLAY == "nhaccutiendat.vn")
+                            {  %>
+
+                        <% } %>
+
                         <div class="banner">
                             <div class="item-images">
                             <img src="/themes/image/banner/baohanh.jpg" alt="Alternate Text" />
