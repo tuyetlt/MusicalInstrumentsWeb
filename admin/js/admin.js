@@ -257,6 +257,8 @@ $(document).ready(function () {
  */
 
 if ($('#drCategory') && $('#categoryname') && $('#categoryid')) {
+    //console.log("ok");
+
     var text_value = $('#categoryname');
     var id_value = $('#categoryid');
     var multilevel = $('#drCategory').attr("data-level");
@@ -304,22 +306,15 @@ if ($('#drCategory') && $('#categoryname') && $('#categoryid')) {
     $('#drCategory').change(function () {
         var idSelect = $(this).select2("val");
         $('#categoryid').val(idSelect);
-
-        //if ($("#attrCheckValue").lengh)
-
-
         if ($(".tableData").length) {
             $("#loadpaging").val("true");
             getval(0);
         }
         else {
+            //console.log("ok " + idSelect);
             GetAttributeProduct(idSelect);
         }
-
-        //var textSelect = $("#drCategory option:selected").text();
-        //$('#categoryname').val(textSelect);
     });
-
 }
 
 
