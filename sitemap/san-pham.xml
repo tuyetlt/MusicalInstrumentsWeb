@@ -1,6 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://localhost:57042/dan-organ-roland-juno-x/</loc>
+    <lastmod>2024-07-04T18:14:04+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-gokeys3/</loc>
+    <lastmod>2024-07-03T19:10:37+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-jd-xi/</loc>
+    <lastmod>2024-07-03T18:58:27+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-go-61k/</loc>
+    <lastmod>2024-07-03T18:38:33+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-jupiter-x/</loc>
+    <lastmod>2024-07-03T18:31:50+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-go-61r/</loc>
+    <lastmod>2024-07-03T18:33:37+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-juno-ds61/</loc>
+    <lastmod>2024-07-03T17:43:39+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-ax-edge-w-b/</loc>
+    <lastmod>2024-07-03T17:28:28+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-fr-1x/</loc>
+    <lastmod>2024-07-03T16:59:43+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-fr-8x/</loc>
+    <lastmod>2024-07-03T16:50:08+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/dan-organ-roland-fr-4x/</loc>
+    <lastmod>2024-07-03T16:25:56+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:57042/dan-organ-roland-jd-xa/</loc>
     <lastmod>2024-07-03T16:07:38+07:00</lastmod>
     <changefreq>daily</changefreq>
@@ -26,7 +92,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-organ-roland-juno-ds76/</loc>
-    <lastmod>2024-07-03T15:16:44+07:00</lastmod>
+    <lastmod>2024-07-03T17:30:16+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -212,55 +278,55 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf830gce/</loc>
-    <lastmod>2024-06-29T22:15:46+07:00</lastmod>
+    <lastmod>2024-07-04T17:31:16+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf830gc/</loc>
-    <lastmod>2024-06-29T22:36:12+07:00</lastmod>
+    <lastmod>2024-07-04T17:58:39+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf830e/</loc>
-    <lastmod>2024-06-29T22:08:09+07:00</lastmod>
+    <lastmod>2024-07-04T18:05:07+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf830ce/</loc>
-    <lastmod>2024-06-29T22:03:47+07:00</lastmod>
+    <lastmod>2024-07-04T16:27:33+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf830c/</loc>
-    <lastmod>2024-06-29T21:59:57+07:00</lastmod>
+    <lastmod>2024-07-04T17:56:34+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf830/</loc>
-    <lastmod>2024-06-29T17:43:11+07:00</lastmod>
+    <lastmod>2024-07-04T16:37:58+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sa830ce/</loc>
-    <lastmod>2024-06-29T17:32:47+07:00</lastmod>
+    <lastmod>2024-07-04T18:09:44+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sa830c/</loc>
-    <lastmod>2024-06-29T17:25:13+07:00</lastmod>
+    <lastmod>2024-07-04T16:10:58+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf800gce/</loc>
-    <lastmod>2024-06-29T17:08:58+07:00</lastmod>
+    <lastmod>2024-07-04T14:13:50+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -272,13 +338,13 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf800e/</loc>
-    <lastmod>2024-06-29T17:08:30+07:00</lastmod>
+    <lastmod>2024-07-04T15:36:02+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:57042/dan-guitar-acoustic-saga-sf800ce/</loc>
-    <lastmod>2024-06-29T17:08:02+07:00</lastmod>
+    <lastmod>2024-07-04T16:04:01+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -332,7 +398,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/bo-thu-phat-tin-hieu-khong-day-micro-aroma-arc2/</loc>
-    <lastmod>2024-06-26T15:29:24+07:00</lastmod>
+    <lastmod>2024-07-04T11:14:51+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1574,7 +1640,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-ukulele-tenor-sqoe-bs-10t/</loc>
-    <lastmod>2023-10-24T09:37:39+07:00</lastmod>
+    <lastmod>2024-07-04T16:50:15+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3212,7 +3278,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-piano-yamaha-ydp-105b/</loc>
-    <lastmod>2024-05-30T10:09:54+07:00</lastmod>
+    <lastmod>2024-07-04T10:28:32+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -3494,7 +3560,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-organ-yamaha-psr-ew425/</loc>
-    <lastmod>2024-04-01T16:50:03+07:00</lastmod>
+    <lastmod>2024-07-04T13:52:17+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -4466,7 +4532,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-ukulele-sqoe-sq-uk-2430c/</loc>
-    <lastmod>2022-06-23T16:58:37+07:00</lastmod>
+    <lastmod>2024-07-04T16:48:06+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5360,7 +5426,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-organ-arranger-roland-e-x20a/</loc>
-    <lastmod>2024-05-06T10:42:00+07:00</lastmod>
+    <lastmod>2024-07-03T17:10:42+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6008,7 +6074,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-organ-roland-e-x30/</loc>
-    <lastmod>2024-05-06T10:45:59+07:00</lastmod>
+    <lastmod>2024-07-03T18:42:52+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7436,7 +7502,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-organ-roland-e-a7/</loc>
-    <lastmod>2024-05-06T10:48:19+07:00</lastmod>
+    <lastmod>2024-07-03T18:01:34+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9542,7 +9608,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-organ-roland-bk3-wh/</loc>
-    <lastmod>2024-05-06T10:46:46+07:00</lastmod>
+    <lastmod>2024-07-03T18:41:20+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9626,7 +9692,7 @@
   </url>
   <url>
     <loc>http://localhost:57042/dan-piano-yamaha-u1j-pe/</loc>
-    <lastmod>2024-06-10T09:29:00+07:00</lastmod>
+    <lastmod>2024-07-04T12:07:41+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

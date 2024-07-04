@@ -323,8 +323,17 @@ public partial class admin_Controls_ProductUpdate : System.Web.UI.UserControl
             hashtable["Tab2"] = Utils.KillChars(Request.Form["tab2"]);
             hashtable["Tab3"] = Utils.KillChars(Request.Form["tab3"]);
 
-            hashtable["Description"] = Utils.KillChars(Request.Form["description"]);
-            hashtable["LongDescription"] = Utils.KillChars(Request.Form["longdescription"]);
+            //hashtable["Description"] = Utils.KillChars(Request.Form["description"]);
+            //hashtable["LongDescription"] = Utils.KillChars(Request.Form["longdescription"]);
+
+            string description = Utils.SaveImageToServer(Request.Form["description"]);
+            hashtable["Description"] = description;
+
+            string longDescription = Utils.SaveImageToServer(Request.Form["longdescription"]);
+            hashtable["LongDescription"] = longDescription;
+
+
+
             hashtable["Tags"] = Utils.KillChars(Request.Form["tags"]);
             hashtable["Image"] = Utils.KillChars(Request.Form["image_1"]);
             hashtable["Gallery"] = Utils.ValidJsonGallery(Request.Form["gallery"]);

@@ -192,6 +192,8 @@ public partial class _default : System.Web.UI.Page
                         PageUtility.AddDefaultMetaTag(this.Page);
                     }
                 }
+
+                PlaceHolder.Controls.Add(mainControl);
             }
             catch (Exception ex)
             {
@@ -199,7 +201,7 @@ public partial class _default : System.Web.UI.Page
                 Response.Write(ex.Message);
 
             }
-            PlaceHolder.Controls.Add(mainControl);
+            
 
 
             string cache = RequestHelper.GetString("cache", "");
