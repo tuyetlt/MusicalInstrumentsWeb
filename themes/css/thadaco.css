@@ -375,9 +375,6 @@ footer .fo1 .info .item .cnt-item .cnt-icon-up i {
 .product-item .percent-sale, .section-product .percent-sale {
     top: 10%;
 }
-.main .news-detail .container .left {
-    width:100%;
-}
 .product-detail .container-detail-product .detail-product .box-overview .box-order .container-button .button.btn-red {
     background: #005ca1;
 }
@@ -412,6 +409,32 @@ footer .fo1 .info .item .cnt-item .cnt-icon-up i {
     }
 .main .news-list .right aside .category-new {
     background: #005ca1;
+}
+.section_partner .title h2:after{
+    background:#005ca1;
+}
+
+.floor-menu-fixed{
+    z-index:1;
+}
+.list-certification-slide .slick-slide {
+    opacity:0.5;
+}
+.slick-current.slick-active.slick-center {
+    transform: scale(1.1);
+    opacity:1;
+}
+.list-certification-slide .slick-list {
+    padding-bottom:50px!important;
+    padding-top:50px!important;
+}
+.list-images-slide .slick-slide {
+    padding-left:10px;
+    padding-right:10px;
+}
+.list-partner ul.list-images-slide li img {
+    min-height:400px;
+    object-fit:cover;
 }
 @media(max-width:1400px) {
     .leftbannertet, .rightbannertet {
