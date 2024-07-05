@@ -390,6 +390,12 @@ footer .fo1 .info .item .cnt-item .cnt-icon-up i {
 .product-detail .product-list .product-item .info ins {
     color: #005ca1;
 }
+.icon-menu-ft {
+    background: #005ca1;
+}
+.btn-sidebar-filter {
+    background: #005ca1;
+}
 @media(max-width:1400px) {
     .leftbannertet, .rightbannertet {
         display: none;
