@@ -396,6 +396,9 @@ footer .fo1 .info .item .cnt-item .cnt-icon-up i {
 .btn-sidebar-filter {
     background: #005ca1;
 }
+.products .brand-option .brand-list .brand-item.selected {
+    border-color: #005ca1;
+}
 @media(max-width:1400px) {
     .leftbannertet, .rightbannertet {
         display: none;
