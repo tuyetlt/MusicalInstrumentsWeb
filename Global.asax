@@ -8,7 +8,7 @@
 
     void Application_BeginRequest(Object sender, EventArgs e)
     {
-        
+
         //_logger.Info("IP: " + Utils.IPAddress);
 
         System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");
@@ -116,8 +116,11 @@
         routes.MapPageRoute("ajax_search", "ajax/search", "~/Default.aspx", true, new RouteValueDictionary { { "ajax", "product_search" } });
         routes.MapPageRoute("ajax", "ajax/{control}/", "~/Default.aspx");
 
+        if (Utils.CheckDomain == "mayvesinh.vn")
+            routes.MapPageRoute("tin index", "tin-tuc/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
 
-        if (Utils.CheckDomain == "mayvesinh.vn"||Utils.CheckDomain == "nhaccutiendat.vn")
+
+        if (Utils.CheckDomain == "mayvesinh.vn" || Utils.CheckDomain == "nhaccutiendat.vn")
             routes.MapPageRoute("url chung", "{url}/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "urlchung" } });
         else
             routes.MapPageRoute("dm sp", "{caturl}/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "productcategory" } });

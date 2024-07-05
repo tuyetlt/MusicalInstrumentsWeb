@@ -23,16 +23,6 @@ public partial class Controls_NewsCategory : System.Web.UI.UserControl
         }
     }
 
-    public void LoadData()
-    {
-        if (!IsPostBack)
-        {
-            BindData();
-            SetSeo();
-        }
-    }
-
-
     protected void ProccessParameter()
     {
         caturl = ConvertUtility.ToString(Page.RouteData.Values["caturl"]);
