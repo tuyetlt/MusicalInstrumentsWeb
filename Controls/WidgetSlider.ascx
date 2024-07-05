@@ -164,16 +164,16 @@
 
                         <div class="banner">
                             <div class="item-images">
-                            <img src="/themes/image/banner/baohanh.jpg" alt="Alternate Text" />
+                            <img src="/themes/image/4banner/baohanh.jpg" alt="Alternate Text" />
                             </div>
                             <div class="item-images">
-                                <img src="/themes/image/banner/daily.jpg" alt="Alternate Text" />
+                                <img src="/themes/image/4banner/daily.jpg" alt="Alternate Text" />
                             </div>
                             <div class="item-images">
-                                <img src="/themes/image/banner/laisuat.jpg" alt="Alternate Text" />
+                                <img src="/themes/image/4banner/laisuat.jpg" alt="Alternate Text" />
                             </div>
                             <div class="item-images">
-                                 <img src="/themes/image/banner/vanchuyen.jpg" alt="Alternate Text" />
+                                 <img src="/themes/image/4banner/vanchuyen.jpg" alt="Alternate Text" />
                              </div>
                         </div>
                    <%-- <div class="in">
