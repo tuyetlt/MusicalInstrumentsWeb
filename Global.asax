@@ -116,8 +116,8 @@
         routes.MapPageRoute("ajax_search", "ajax/search", "~/Default.aspx", true, new RouteValueDictionary { { "ajax", "product_search" } });
         routes.MapPageRoute("ajax", "ajax/{control}/", "~/Default.aspx");
 
-        if (Utils.CheckDomain == "mayvesinh.vn")
-            routes.MapPageRoute("tin index", "tin-tuc/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
+        //if (Utils.CheckDomain == "mayvesinh.vn")
+        //    routes.MapPageRoute("tin index", "tin-tuc/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
 
 
         if (Utils.CheckDomain == "mayvesinh.vn" || Utils.CheckDomain == "nhaccutiendat.vn")

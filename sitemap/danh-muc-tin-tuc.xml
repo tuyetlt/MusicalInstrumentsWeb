@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://localhost:57042/tuyen-dung/</loc>
-    <lastmod>2024-06-22T17:06:58+07:00</lastmod>
+    <lastmod>2024-07-05T16:47:02+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -21,6 +21,12 @@
   <url>
     <loc>http://localhost:57042/tin-thadaco/</loc>
     <lastmod>2022-12-21T18:42:16+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/tin-tuc/</loc>
+    <lastmod>2024-07-05T16:50:35+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
