@@ -98,7 +98,7 @@
                         {
             %>
             <div class="title">
-             <a href="<%=TextChanger.GetLinkRewrite_CategoryArticle(drChild["FriendlyUrl"].ToString()) %>"><h2><%=drChild["Name"].ToString() %></h2></a>
+             <a href="<%=TextChanger.GetLinkRewrite_CategoryArticle(drChild["FriendlyUrl"].ToString()) %>"><span class="title-page-up"><%=drChild["Name"].ToString() %></span></a>
             <a href="<%=TextChanger.GetLinkRewrite_CategoryArticle(drChild["FriendlyUrl"].ToString()) %>" class="showall">Xem tất cả <i class="fad fa-external-link"></i></a></div>
             <div class="clear"></div>
             <div class="article-list">
