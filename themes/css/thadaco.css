@@ -396,16 +396,21 @@ footer .fo1 .info .item .cnt-item .cnt-icon-up i {
 .products .brand-option .brand-list .brand-item.selected {
     border-color: #005ca1;
 }
-.main .news-list .left>.title {
+.main .news-list .left > .title {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
+    background: #005ca1;
+    padding: 10px;
 }
+    .main .news-list .left > .title a{
+        color:#fff;
+    }
     .main .news-list .title .title-page-up {
         display: block;
         font-size: 1.5em;
-        font-weight:bold;
+        font-weight: bold;
     }
 .main .news-list .right aside .category-new {
     background: #005ca1;
