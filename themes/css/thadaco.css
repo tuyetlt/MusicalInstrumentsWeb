@@ -401,12 +401,13 @@ footer .fo1 .info .item .cnt-item .cnt-icon-up i {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
-    background: #005ca1;
-    padding: 10px;
+    padding: 7px 0;
+    border-bottom:2px solid #005ca1;
 }
-    .main .news-list .left > .title a{
-        color:#fff;
+    .main .news-list .left > .title a {
+        color: #005ca1;
     }
+
     .main .news-list .title .title-page-up {
         display: block;
         font-size: 1.5em;
