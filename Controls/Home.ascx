@@ -2,5 +2,8 @@
 <%@ Import Namespace="System.Data" %>
 <%= Utils.LoadUserControl("~/Controls/WidgetSlider.ascx") %>
 <%= Utils.LoadUserControl("~/Controls/HomeProduct.ascx") %>
+<%= Utils.LoadUserControl("~/Controls/WidgetCertificate.ascx") %>
 <%= Utils.LoadUserControl("~/Controls/WidgetNews.ascx") %>
+<%= Utils.LoadUserControl("~/Controls/WidgetManufacturer.ascx") %>
+<%= Utils.LoadUserControl("~/Controls/WidgetPartner.ascx") %>
 <%= Utils.LoadUserControl("~/Controls/WidgetRegister.ascx") %>
