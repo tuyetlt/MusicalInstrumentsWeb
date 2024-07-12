@@ -283,14 +283,14 @@ public partial class admin_ajax_Controls_ObjectListAjax : System.Web.UI.UserCont
 
             if (action == "getTotalRecord")
             {
-                if (Utils.CommaSQLAdd(fieldSql).ToLower().Contains(",parentid,"))
-                {
-                    if (!string.IsNullOrEmpty(filter))
-                        filter += " AND ";
-                    else
-                        filter += " WHERE ";
-                    filter += "ParentID=0";
-                }
+                //if (Utils.CommaSQLAdd(fieldSql).ToLower().Contains(",parentid,"))
+                //{
+                //    if (!string.IsNullOrEmpty(filter))
+                //        filter += " AND ";
+                //    else
+                //        filter += " WHERE ";
+                //    filter += "ParentID=0";
+                //}
 
                 int count = 0;
                 using (var dbx = SqlService.GetSqlService())
