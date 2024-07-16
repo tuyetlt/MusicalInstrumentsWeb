@@ -259,7 +259,7 @@
 
 
 <script>
-    var onloadCallback = function () {
+   <%-- var onloadCallback = function () {
         var widgetId1 = grecaptcha.render('dvCaptchaComment', {
             'sitekey': '<%= C.GoogleCaptcha_SiteKey %>',
             'theme': 'light'
@@ -268,7 +268,7 @@
             'sitekey': '<%= C.GoogleCaptcha_SiteKey %>',
             'theme': 'light'
         });
-    };
+    };--%>
 
     //$('#countdown').countdown('2021/02/12', function (event) {
     //    $(this).html(event.strftime('<div class="item"><span>%D</span><div>ngày</div></div ><div class="item"><span>%H</span><div>giờ</div></div><div class="item"><span>%M</span><div>phút</div></div><div class="item"><span>%S</span><div>giây</div></div>'));

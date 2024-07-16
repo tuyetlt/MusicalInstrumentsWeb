@@ -135,6 +135,12 @@
                                     <% } %>
                                 </div>
                                 <div class="social-up">
+
+                                    <%
+                                        if (Utils.CheckDomain == "nhaccutiendat.vn")
+                                        {
+                                    %>
+
                                     <ul>
                                         <li>
                                             <a rel="nofollow" href="https://www.facebook.com/nhaccutiendat" target="_blank">
@@ -152,8 +158,26 @@
                                             <a rel="nofollow" href="https://www.tiktok.com/@nhaccu.tiendat" target="_blank">
                                                 <img src="/assets/images/tiktok.png" alt="tiktok" /></a>
                                         </li>
-
                                     </ul>
+                                    <%}
+                                        else
+                                        {  %>
+                                    <ul>
+                                        <li>
+                                            <a rel="nofollow" href="https://www.facebook.com/thadaco" target="_blank">
+                                                <img src="/assets/images/facebook.png" alt="facebook" /></a>
+                                        </li>
+                                      
+                                        <li>
+                                            <a rel="nofollow" href="https://www.youtube.com/@nhaccutienat2074" target="_blank">
+                                                <img src="/assets/images/youtube.png" alt="youtube" /></a>
+                                        </li>
+                                        <li>
+                                            <a rel="nofollow" href="https://www.tiktok.com/@thadaco" target="_blank">
+                                                <img src="/assets/images/tiktok.png" alt="tiktok" /></a>
+                                        </li>
+                                    </ul>
+                                    <% }  %>
                                 </div>
                             </div>
                         </div>

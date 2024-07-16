@@ -13,6 +13,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:57042/gioi-thieu-doanh-nghiep/</loc>
+    <lastmod>2024-07-10T22:19:37+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/gioi-thieu/</loc>
+    <lastmod>2024-07-10T09:51:02+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:57042/chinh-sach-ban-hang-va-chat-luong-hang-hoa/</loc>
     <lastmod>2022-12-21T18:39:18+07:00</lastmod>
     <changefreq>daily</changefreq>
@@ -25,12 +37,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:57042/gioi-thieu/</loc>
-    <lastmod>2024-06-13T17:37:20+07:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:57042/huong-dan-mua-hang/</loc>
     <lastmod>2022-12-21T18:37:08+07:00</lastmod>
     <changefreq>daily</changefreq>
@@ -39,6 +45,18 @@
   <url>
     <loc>http://localhost:57042/chinh-sach-bao-mat-thong-tin/</loc>
     <lastmod>2024-02-19T09:08:51+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/doi-tac-khach-hang/</loc>
+    <lastmod>2024-07-10T22:20:58+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/he-thong-kho-hang-link/</loc>
+    <lastmod>2024-07-10T22:22:06+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -61,6 +79,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:57042/he-thong-cua-hang-link/</loc>
+    <lastmod>2024-07-10T22:22:35+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:57042/chinh-sach-van-chuyen-giao-nhan-hang-hoa/</loc>
     <lastmod>2022-12-21T18:40:01+07:00</lastmod>
     <changefreq>daily</changefreq>
@@ -69,6 +93,12 @@
   <url>
     <loc>http://localhost:57042/lien-he-voi-chung-toi/</loc>
     <lastmod>2022-12-20T19:11:26+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:57042/ho-so-nang-luc-link/</loc>
+    <lastmod>2024-07-10T22:23:15+07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

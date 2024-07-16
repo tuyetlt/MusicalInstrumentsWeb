@@ -1,42 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="WidgetNews.ascx.cs" Inherits="Controls_WidgetNews" %>
 <%@ Import Namespace="System.Data" %>
 
-<div class="section-up section_partner">
-
-    <div class="in-partner">
-        <div class="title">
-            <h2>
-                <span>Chứng nhận giải thưởng của THADACO</span>
-            </h2>
-        </div>
-        <div class="list-partner">
-            <ul class="list-certification-slide">
-                <li>
-                    <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                   <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li>
-                <li>
-                    <img src="https://hismartmilk.vn/wp-content/uploads/2021/09/Giay-dang-ky-hismart1-300x400.jpg" alt="Alternate Text" />
-                </li> 
-            </ul>
-        </div>
-    </div>
-   
-</div>
 <div class="section3 section_blog">
     <div class="container">
         <div class="in">
@@ -109,65 +73,5 @@
         </div>
     </div>
 </div>
-<div class="section-up section_partner">
-  <div class="container">
-     <div class="in-partner">
-         <div class="title">
-             <h2>
-                 <span>ĐỐI TÁC HÀNG ĐẦU</span>
-             </h2>
-         </div>
-         <div class="list-partner">
-             <ul class="list-partner-slide">
-                 <li>
-                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
-                 </li>
-                 <li>
-                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
-                 </li>
-                 <li>
-                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
-                 </li>
-                 <li>
-                    <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
-                 </li>
-                 <li>
-                     <img src="https://kinhmatnhunghieu.com/wp-content/uploads/2023/08/akp-group.png" alt="Alternate Text" />
-                 </li>
-                       
-             </ul>
-         </div>
-     </div>
-   </div>
-</div>
-<div class="section-up section_partner">
-  <div class="container">
-     <div class="in-partner">
-         <div class="title">
-             <h2>
-                 <span>nhà xưởng, kho hàng vận chuyển hàng</span>
-             </h2>
-         </div>
-         <div class="list-partner">
-             <ul class="list-images-slide">
-                 <li>
-                     <img src="https://avaco.com.vn/uploads/images/thiet-ke-nha-xuong(1).jpg" alt="Alternate Text" />
-                 </li>
-                 <li>
-                     <img src="https://avaco.com.vn/uploads/images/thiet-ke-nha-xuong(1).jpg" alt="Alternate Text" />
-                 </li>
-                 <li>
-                     <img src="https://avaco.com.vn/uploads/images/thiet-ke-nha-xuong(1).jpg" alt="Alternate Text" />
-                 </li>
-                 <li>
-                    <img src="https://avaco.com.vn/uploads/images/thiet-ke-nha-xuong(1).jpg" alt="Alternate Text" />
-                 </li>
-                 <li>
-                     <img src="https://avaco.com.vn/uploads/images/thiet-ke-nha-xuong(1).jpg" alt="Alternate Text" />
-                 </li>
-                       
-             </ul>
-         </div>
-     </div>
-   </div>
-</div>
+
+
