@@ -121,9 +121,8 @@
                     </div>
 
 
-                    <!--- Tags -->
 
-                    <div class="form-group">
+<%--                    <div class="form-group">
                         <div>Tags</div>
                         <div>
                             <%
@@ -136,8 +135,6 @@
                         </div>
                     </div>
 
-
-                    <!--- Tag Ẩn -->
                     <div class="form-group">
                         <div>Tags Ẩn</div>
                         <div>
@@ -145,7 +142,7 @@
                             <input type="text" id="hashtag_name" name="hashtag_name" value="<%= Utils.CommaSQLRemove(dr["HashTagNameList"].ToString()) %>" style="display: none" />
                             <select id="drHashTag" data-idreturn="Name" multiple data-level="0" data-folder="<%= Utils.GetFolderControlAdmin() %>"></select>
                         </div>
-                    </div>
+                    </div>--%>
 
 
 

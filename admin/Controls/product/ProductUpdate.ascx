@@ -170,8 +170,8 @@
 
 
 
-                    <!--- Tags -->
-                    <div class="form-group">
+                
+                    <%--<div class="form-group">
                         <div>Tags</div>
                         <div>
                             <%
@@ -180,22 +180,16 @@
                             %>
                             <textarea id="tag_name" style="height: 250px" name="tag_name"><%= TagNameList %></textarea>
                             <input type="text" id="tag_id" name="tagidlist" value="<%= Utils.CommaSQLRemove(dr["TagIDList"].ToString()) %>" style="display: none" />
-                            <%--<input type="text" id="tag_name" name="tag_name" value="<%= Utils.CommaSQLRemove(dr["TagNameList"].ToString()) %>" style="display: none" />
-                            <select id="drTag" data-idreturn="Name" multiple data-level="0" data-folder="<%= Utils.GetFolderControlAdmin() %>"></select>--%>
                         </div>
                     </div>
-
-
-                    <!--- Tag Ẩn -->
                     <div class="form-group">
                         <div>Tags Ẩn</div>
                         <div>
                             <input type="text" id="hashtag_id" name="hashtagidlist" value="<%= Utils.CommaSQLRemove(dr["HashTagIDList"].ToString()) %>" style="display: none" />
                             <input type="text" id="hashtag_name" name="hashtag_name" value="<%= Utils.CommaSQLRemove(dr["HashTagNameList"].ToString()) %>" style="display: none" />
-
                             <select id="drHashTag" data-idreturn="Name" multiple data-level="0" data-folder="<%= Utils.GetFolderControlAdmin() %>"></select>
                         </div>
-                    </div>
+                    </div>--%>
 
 
                     <!-- Bảo hành -->
