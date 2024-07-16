@@ -2009,21 +2009,34 @@ footer .fo1 .info > .item:nth-child(2) {
     }
 
         footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(1),
-        footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(2){
-            width: 50%;
+        footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(2),
+        footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(3) {
+            width: 33.33%;
         }
-        footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(n+3) {
+        footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(4) {
             width: 33.33%;
             margin-top:30px
         }
-            footer .fo2 h3 {
-                font-size: 20px;
-                text-transform: uppercase;
-                color: #FFF;
-                white-space: nowrap;
-                margin-bottom: 10px;
-                margin-top: 0
-            }
+        footer .fo1 .info > .item:nth-child(2) > .in .item:nth-child(5) {
+            width: 60%;
+        }
+.gg-map iframe {
+    height:200px!important;
+}
+.products .full-content-cate .container-product {
+    width: 100%;
+}
+.products .full-content-cate .btn-sidebar-filter{
+    display:none;
+}
+footer .fo2 h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #FFF;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    margin-top: 0
+}
 
 footer .fo1 .info .fo2 .social img {
     width: 210px
@@ -3484,7 +3497,7 @@ header .list-menu-item-mb .menu ul {
     }
 
     footer .fo1 .info .item {
-        width: 100%
+        width: 100%!important;
     }
 
     footer .fo2 .item {

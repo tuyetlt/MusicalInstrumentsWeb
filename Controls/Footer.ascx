@@ -181,13 +181,16 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cnt-pay">
-                        <div class="cnt-h4">Chấp nhận thanh toán</div>
-                        <div class="social">
-                            <img src="/themes/img/payment.png" alt="Payment method" />
+                        <div class="item">
+                             <div class="cnt-pay">
+                                 <div class="cnt-h4">Chấp nhận thanh toán</div>
+                                 <div class="social">
+                                     <img src="/themes/img/payment.png" alt="Payment method" />
+                                 </div>
+                             </div>
                         </div>
                     </div>
+                   
                 </div>
             </div>
         </div>
