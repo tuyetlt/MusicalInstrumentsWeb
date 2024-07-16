@@ -2023,6 +2023,12 @@ footer .fo1 .info > .item:nth-child(2) {
 .gg-map iframe {
     height:200px!important;
 }
+.products .full-content-cate .container-product {
+    width: 100%;
+}
+.products .full-content-cate .btn-sidebar-filter{
+    display:none;
+}
 footer .fo2 h3 {
     font-size: 20px;
     text-transform: uppercase;
