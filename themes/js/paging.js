@@ -196,9 +196,10 @@
     }
 
 
-
+    var idCategory = $("#idCategory").val();
+    var modul = $("#modul").val();
     function fetchData(page) {
-        smoothScrollingTo(".page__title", function () {
+        smoothScrollingTo(".article-list", function () {
             $(".div-ajax-loading").show();
             clearAndPrepareProductWrapper()
             $.ajax({
@@ -206,15 +207,19 @@
                 method: 'GET',
                 dataType: 'json',
                 data: {
+                    catid: idCategory,
+                    modul:modul,
                     control: 'paging',
-                    page: page
+                    page: page,
                 },
                 success: function (data) {
                     setTimeout(function () {
+                        //$('.product-list').html(data.responseText);
                         renderProducts(data);
+                        //alert(data);
                         $(".div-ajax-loading").hide();
                         handleAjaxSuccess();
-                    }, 600);
+                    }, 20);
                 },
                 error: function () {
                     console.error('Failed to fetch data');
@@ -226,7 +231,7 @@
     }
 
 
-    var productWrapper = $('.product__wrapper');
+    var productWrapper = $('.article-list');
 
     function clearAndPrepareProductWrapper() {
         //var currentHeight = productWrapper.height();
@@ -241,7 +246,7 @@
 
 
     function renderProducts(data) {
-        var productsContainer = $('#products-container');
+        var productsContainer = $('#content-container');
         var template = $('#product-template').html();
 
         productsContainer.empty();
@@ -257,13 +262,14 @@
 
 
     function smoothScrollingTo(target, callback) {
-        if (target.length) {
+        if (target && target.length && $(target).offset()) {
             $('html, body').animate({
                 scrollTop: $(target).offset().top
             }, 50, 'swing', callback);
             return false;
         }
     }
+
 
 
 

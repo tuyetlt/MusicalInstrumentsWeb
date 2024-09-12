@@ -1,0 +1,1 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="GenCode.ascx.cs" Inherits="Tool_ajax_Controls_GenCode" %>

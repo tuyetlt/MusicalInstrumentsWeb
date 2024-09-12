@@ -33,7 +33,7 @@ public partial class ajax_Controls_AttributeProduct : System.Web.UI.UserControl
                     DataRow dr;
                     DataTable dt;
 
-                    dt = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID, ParentID, FilterJson", string.Format("(Hide is null OR Hide=0) AND ID='{0}'", CategoryID));
+                    dt = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID, ParentID, FilterJson", string.Format("(Hide is null OR Hide=0) AND ID='{0}'", CategoryID), "Sort");
                     if (Utils.CheckExist_DataTable(dt))
                     {
                         dr = dt.Rows[0];
@@ -51,17 +51,17 @@ public partial class ajax_Controls_AttributeProduct : System.Web.UI.UserControl
                                     drRoot = dtRoot.Rows[0];
                                     RootID = ConvertUtility.ToInt32(drRoot["ID"]);
 
-                                    if (drRoot["FilterJson"].ToString().Length>10)
+                                    if (drRoot["FilterJson"].ToString().Length > 10)
                                     {
                                         jsonString = drRoot["FilterJson"].ToString();
                                     }
                                 }
                             }
                         }
-                        while (ConvertUtility.ToInt32(drRoot["ParentID"]) > 0 && jsonString.Length>10);
+                        while (ConvertUtility.ToInt32(drRoot["ParentID"]) > 0 && jsonString.Length > 10);
                     }
                 }
-            }  
+            }
         }
 
 

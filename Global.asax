@@ -87,6 +87,7 @@
         routes.MapPageRoute("review", "review.html", "~/Default.aspx", true, new RouteValueDictionary { { "m", "customerreview" } });
         routes.MapPageRoute("loi 404", "404.html", "~/Default.aspx", true, new RouteValueDictionary { { "m", "404" } });
         routes.MapPageRoute("rss", "feed", "~/Default.aspx", true, new RouteValueDictionary { { "m", "rss" } });
+        routes.MapPageRoute("test", "test.html", "~/Default.aspx", true, new RouteValueDictionary { { "m", "footerload" } });
 
         //blog
         routes.MapPageRoute("tin", "tin/{seo_title}.html", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newsdetail" } });
@@ -98,7 +99,7 @@
         routes.MapPageRoute("danh muc tin1", "tin-tuc/{caturl}/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
 
         routes.MapPageRoute("tinindex", "tin/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
-        routes.MapPageRoute("tinindex1", "tin-tuc/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
+        //routes.MapPageRoute("tinindex1", "tin-tuc/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
 
         routes.MapPageRoute("hoan-tat-vnpay", "hoan-tat-vnpay.html", "~/Default.aspx", true, new RouteValueDictionary { { "m", "Vnpayfinish" } });
 
@@ -115,8 +116,11 @@
         routes.MapPageRoute("ajax_search", "ajax/search", "~/Default.aspx", true, new RouteValueDictionary { { "ajax", "product_search" } });
         routes.MapPageRoute("ajax", "ajax/{control}/", "~/Default.aspx");
 
+        //if (Utils.CheckDomain == "mayvesinh.vn")
+        //    routes.MapPageRoute("tin index", "tin-tuc/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "newscategory" } });
 
-        if (Utils.CheckDomain == "mayvesinh.vn"||Utils.CheckDomain == "nhaccutiendat.vn")
+
+        if (Utils.CheckDomain == "mayvesinh.vn" || Utils.CheckDomain == "nhaccutiendat.vn")
             routes.MapPageRoute("url chung", "{url}/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "urlchung" } });
         else
             routes.MapPageRoute("dm sp", "{caturl}/", "~/Default.aspx", true, new RouteValueDictionary { { "m", "productcategory" } });

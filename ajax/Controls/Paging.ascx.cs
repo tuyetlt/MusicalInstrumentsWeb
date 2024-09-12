@@ -28,9 +28,12 @@ public partial class ajax_Controls_Paging : System.Web.UI.UserControl
     {
         Response.Clear();
         Response.Headers.Add("Content-type", "application/json");
-        List<Product> productList = new List<Product>();
+
+        
+
         if (modul == "product")
         {
+            List<Product> productList = new List<Product>();
             DataTable dt = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrl,FriendlyUrlCategory,Gallery,Price,Price1,HashTagUrlList", "", "", pageIndex, pageSize);
             if(Utils.CheckExist_DataTable(dt))
             {
@@ -50,13 +53,30 @@ public partial class ajax_Controls_Paging : System.Web.UI.UserControl
                     product.Link = TextChanger.GetLinkRewrite_Products(dr["FriendlyUrlCategory"], dr["FriendlyUrl"]);
                     productList.Add(product);
                 }
-            }    
+            }
+            Response.Write(JSONHelper.ToJSON(productList));
         }
         else if(modul=="article")
         {
-
-        }    
-        Response.Write(JSONHelper.ToJSON(productList));
+            List<Article> articleList = new List<Article>();
+            string filterNews = string.Format(@"(CategoryIDList Like N'%,{0},%' OR CategoryaIDParentList Like N'%,{0},%') AND {1} AND StartDate<=getdate() AND {2}", categoryID, Utils.CreateFilterDate, Utils.CreateFilterHide);
+            DataTable dt = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "ID,Gallery,Name,FriendlyUrl,Description,SeoFlags", filterNews, ConfigWeb.SortArticle, pageIndex, pageSize);
+            if (Utils.CheckExist_DataTable(dt))
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string image = Utils.GetFirstImageInGallery_Json(ConvertUtility.ToString(dr["Gallery"]), 300, 300);
+                    Article article = new Article();
+                    article.ID = ConvertUtility.ToInt32(dr["ID"]);
+                    article.Name = ConvertUtility.ToString(dr["Name"]);
+                    article.FriendlyUrl = ConvertUtility.ToString(dr["FriendlyUrl"]);
+                    article.Description = ConvertUtility.ToString(dr["Description"]);
+                    article.Image = image;
+                    articleList.Add(article);
+                }
+            }
+            Response.Write(JSONHelper.ToJSON(articleList));
+        }
         Response.End();
     }
 }

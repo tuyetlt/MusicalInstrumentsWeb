@@ -48,7 +48,7 @@ public class GenSitemap
     {
         try
         {
-            DataTable dataTable = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "FriendlyUrl,EditedDate", string.Format(@"{0} AND StartDate<=getdate() AND {1}", Utils.CreateFilterDate, Utils.CreateFilterHide), ConfigWeb.SortProduct);
+            DataTable dataTable = SqlHelper.SQLToDataTable(C.ARTICLE_TABLE, "FriendlyUrl,EditedDate", string.Format(@"{0} AND StartDate<=getdate() AND {1}", Utils.CreateFilterDate, Utils.CreateFilterHide), "ID DESC");
             if (Utils.CheckExist_DataTable(dataTable))
             {
                 XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
@@ -72,7 +72,7 @@ public class GenSitemap
                         new XElement(ns + "loc", TextChanger.GetLinkRewrite_Article(dr["FriendlyUrl"].ToString())),
                         new XElement(ns + "lastmod", formattedDate),
                         new XElement(ns + "changefreq", "daily"),
-                        new XElement(ns + "priority", "0.5")
+                        new XElement(ns + "priority", "0.6")
                     );
                     urlSet.Add(urlElement);
                 }
@@ -118,7 +118,7 @@ public class GenSitemap
                         new XElement(ns + "loc", TextChanger.GetLinkRewrite_Products(dr["FriendlyUrlCategory"].ToString(), dr["FriendlyUrl"].ToString())),
                         new XElement(ns + "lastmod", formattedDate),
                         new XElement(ns + "changefreq", "daily"),
-                        new XElement(ns + "priority", "0.6")
+                        new XElement(ns + "priority", "0.5")
                     );
                     urlSet.Add(urlElement);
                 }

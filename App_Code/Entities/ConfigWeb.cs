@@ -648,7 +648,53 @@ public class ConfigWeb
         }
     }
 
+    public static string FooterDescription
+    {
+        get
+        {
+            string strReturn = string.Empty;
+            DataTable dt = SqlHelper.SQLToDataTable("dbo.tblConfigs", "FooterDescription", "");
+            if (dt != null && dt.Rows.Count > 0)
+                strReturn = dt.Rows[0][0].ToString();
+            return strReturn;
+        }
+    }
 
+    public static string Copyright
+    {
+        get
+        {
+            string strReturn = string.Empty;
+            DataTable dt = SqlHelper.SQLToDataTable("dbo.tblConfigs", "Copyright", "");
+            if (dt != null && dt.Rows.Count > 0)
+                strReturn = dt.Rows[0][0].ToString();
+            return strReturn;
+        }
+    }
+
+    public static string Hotline1
+    {
+        get
+        {
+            string strReturn = string.Empty;
+            DataTable dt = SqlHelper.SQLToDataTable("dbo.tblConfigs", "Hotline1", "");
+            if (dt != null && dt.Rows.Count > 0)
+                strReturn = dt.Rows[0][0].ToString();
+            return strReturn;
+        }
+    }
+
+    public static string Hotline2
+    {
+        get
+        {
+            string strReturn = string.Empty;
+            DataTable dt = SqlHelper.SQLToDataTable("dbo.tblConfigs", "Hotline2", "");
+            if (dt != null && dt.Rows.Count > 0)
+                strReturn = dt.Rows[0][0].ToString();
+            return strReturn;
+        }
+    }
 
 
 }

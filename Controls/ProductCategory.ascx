@@ -85,7 +85,7 @@
         </div>
 
         <% } %>
-        <div class="content">
+        <div class="content content-update">
             <div class="container-product">
                 <div class="heading">
                     <h1 class="title">
@@ -123,6 +123,11 @@
 
                     <% } %>
                 </div>
+                 <div class="col">
+                    <div class="d-flex justify-content-between justify-content-end align-items-center">
+                        <button type="button" class="btn btn-primary btn-sidebar-filter hidden-md"><i class="fa fa-filter"></i>LỌC TÌM SẢN PHẨM</button>
+                    </div>
+                </div>
                 <div class="product-list">
                     <% 
                         if (Utils.CheckExist_DataTable(dtProduct))
@@ -139,7 +144,7 @@
                             </div>
                             <%--<span class="sale">50%</span>--%>
                             <div class="cont">
-                                <h4 class="name"><%= drProduct["Name"].ToString() %></h4>
+                                <h3 class="name"><%= drProduct["Name"].ToString() %></h3>
                                 <div class="info">
 
                                     <ins><%= SqlHelper.GetPrice(drProduct, "Price") %></ins>
@@ -152,6 +157,9 @@
                                 </div>
                             </div>
                         </a>
+                        <div class="cnt-buy-now">
+                            <a href="<%= linkDetail %>">Xem thêm</a>
+                        </div>
                     </div>
                     <%}
                         } %>
@@ -162,14 +170,21 @@
                 <div class="container-btn show-more"><a id="category_paging" class="btn-see-more">Xem thêm <i class="fas fa-sort-down"></i></a></div>
                 <%} %>
             </div>
-            <div class="filter">
+            <div class="filter sidebar" id="filter">
                 <div class="filted">
-                    <%-- <span>Lọc: </span>--%>
+                    <div class="header">
+                        <span>Bộ lọc sản phẩm</span>
+                    </div>
+                    <button class="btn-close btn-close-sidebar hidden-md"></button>
                     <div id="filted">
                     </div>
                 </div>
-                <div class="filter-ajax">
+                <div class="sidebar__inner filter-ajax">
                 </div>
+                 <div class="box-fillter-btn">
+                     <button class="btn-close-sidebar btn-remove-all hidden-md">Bỏ chọn</button>
+                     <button class="btn-close-sidebar btn-reader-more-fillter hidden-md">Xem 0 Sản phẩm</button>
+                 </div>
             </div>
             <% if (!Utils.IsNullOrEmpty(drCat["LongDescription"].ToString()))
                 { %>
@@ -180,15 +195,12 @@
             <div id="description_cate" class="description_cate">
                 <%= ContentHtml %>
             </div>
-           
-      
-
             <%} %>
 
 
 
 
-<%--            <%
+            <%--            <%
                 string TagsList = drCat["TagIDList"].ToString().Trim(',');
                 if (!Utils.IsNullOrEmpty(TagsList))
                 {
@@ -221,8 +233,8 @@
     </div>
 </main>
 
- <input type="hidden" value="category" id="GG_Page" />
- <input type="hidden" value="<%= string.Format("{0:0}", 1000000) %>" id="GG_Price" />
+<input type="hidden" value="category" id="GG_Page" />
+<input type="hidden" value="<%= string.Format("{0:0}", 1000000) %>" id="GG_Price" />
 
 
 <script type="application/ld+json">

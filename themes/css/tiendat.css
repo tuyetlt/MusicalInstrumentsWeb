@@ -1,11 +1,11 @@
-﻿.products .content .container-product {
+﻿/*.products .content .container-product {
     width: 100%;
-}
+}*/
 
-.products .content .filter {
+/*.products .content .filter {
     display: none;
 }
-
+*/
 .products .content .container-product .product-list .product-item {
     width: calc(20% + 1px);
 }

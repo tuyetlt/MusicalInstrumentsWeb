@@ -1,6 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ShoppingCart.ascx.cs" Inherits="Controls_ShoppingCart" %>
 <%@ Import Namespace="Newtonsoft.Json" %>
 <%@ Import Namespace="System.Data" %>
+
+
+<%--<% 
+
+    Response.Write(ConvertUtility.ToString(CookieUtility.GetValueFromCookie("utm_source")) + "<br />");
+    Response.Write(ConvertUtility.ToString(CookieUtility.GetValueFromCookie("utm_medium")) + "<br />");
+    Response.Write(ConvertUtility.ToString(CookieUtility.GetValueFromCookie("utm_campaign")) + "<br />");
+    Response.Write(ConvertUtility.ToString(CookieUtility.GetValueFromCookie("utm_adgroup")) + "<br />");
+    Response.Write(ConvertUtility.ToString(CookieUtility.GetValueFromCookie("utm_term")) + "<br />");
+    Response.Write(ConvertUtility.ToString(CookieUtility.GetValueFromCookie("utm_content")) + "<br />");
+
+
+%>--%>
+
+
+
 <% decimal finalPrice = 0; %>
 
 <%
@@ -53,15 +69,22 @@
                         <div>
                             <a href="<%=link %>"><%= orderInfo.Name %></a>
                         </div>
-                        <div>
+                        <div class="number-cart">
                             <a class="minus increment" href="javascript:;">-</a>
                             <input type="text" class="quantity_cart" readonly="readonly" id="<%= orderInfo.ProductID %>" value="<%= orderInfo.Quantity %>" />
                             <a class="plus increment" href="javascript:;">+</a>
                         </div>
                         <div class="price_item_<%= orderInfo.ProductID %>">
-                            <%=string.Format("{0:N0}", orderInfo.TotalPrice) %> VNĐ
+                            <span>
+                            <%=string.Format("{0:N0}", orderInfo.TotalPrice) %> VNĐ</span>
+                            <%
+                                if (orderInfo.NumberApplyVoucher > 0)
+                                    Response.Write(string.Format(@"<p class=""couponapply"">(đã áp dụng mã giảm giá <b class=""coupon_code"">{0}</b> cho <b class=""coupon_quantity_apply"">{1}</b> sản phẩm)<p>", orderInfo.CouponCode, orderInfo.NumberApplyVoucher));
+
+                                %>
                         </div>
                         <div><a href="javascript:;" class="del_cart" data-id="<%= orderInfo.ProductID %>"><i class="fad fa-trash-alt"></i></a></div>
+                        <input class="hdfPrice_<%= orderInfo.ProductID %>" value="<%= orderInfo.TotalPrice %>" type="hidden" />
                     </div>
 
                     <%
@@ -80,26 +103,20 @@
 
                     <div class="clear"></div>
 
-                    <%
+
+<%--                    <div class="coupon">
+                        Nhập mã Coupon (nếu có)
+                        <input type="text" id="coupon_code" value="test" />
+                        <input type="button" id="coupon_button" value="Áp dụng" />
+                    </div>--%>
+
+
+                    <%--   <%
                         DateTime today = DateTime.Now;
                         DateTime answer = today.AddDays(3);
 
                     %>
-                    <%--<p>Thời gian giao hàng dự kiến <b><%= answer.ToString("hh:mm tt dd/MM/yyyy") %></b></p>--%>
-
-
-                    <% if (finalPrice < 1200000 && C.ROOT_URL.Contains("nhaccutiendat"))
-                        {
-                            %>
-                    <p><b>Lưu ý: </b>Chi phí này chưa bao gồm phí vận chuyển</p>
-                    <%
-                        }
-
-
-                            %>
-
-
-
+                    <p>Thời gian giao hàng dự kiến <b><%= answer.ToString("hh:mm tt dd/MM/yyyy") %></b></p>--%>
                 </div>
                 <div class="checkout-info">
                     <h2><i class="fad fa-address-card"></i>Thông Tin Người Nhận</h2>
@@ -143,7 +160,7 @@
                             <li>
                                 <input type="radio" name="option_payment" id="chuyenkhoan" value="chuyenkhoan">
                                 <label for="chuyenkhoan">Liên hệ chuyển khoản trực tiếp với nhân viên tư vấn</label>
-                               
+
                             </li>
 
                             <li>
@@ -172,6 +189,11 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        SaveUTMData('ShoppingCart', "");
+    });
+</script>
 
 <%
     int count = 0;
@@ -191,7 +213,7 @@
     Items += "]";
 %>
 
- <input type="hidden" value="cart" id="GG_Page" />
- <input type="hidden" value="<%= string.Format("{0:0}", finalPrice) %>" id="GG_Price" />
- <input type="hidden" value='<%= Items %>' id="GG_Items" />
- <input type="hidden" value="<%= count %>" id="GG_CountItems" />
+<input type="hidden" value="cart" id="GG_Page" />
+<input type="hidden" value="<%= string.Format("{0:0}", finalPrice) %>" id="GG_Price" />
+<input type="hidden" value='<%= Items %>' id="GG_Items" />
+<input type="hidden" value="<%= count %>" id="GG_CountItems" />

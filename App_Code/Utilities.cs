@@ -2277,11 +2277,15 @@ public class SqlHelper
 
     public static void Update_Url_Table(bool IsUpdate, string modul, int ID, string Name, string FriendlyUrl)
     {
+        DataTable tblCheck = SQLToDataTable("tblUrl", "ID", string.Format("ContentID='{0}' AND Moduls='{1}'", ID, modul));
+        if (!Utils.CheckExist_DataTable(tblCheck))
+            IsUpdate = false;
+
         using (var db = MetaNET.DataHelper.SqlService.GetSqlService())
         {
             string sqlQuery = string.Empty;
             if (IsUpdate)
-                sqlQuery = @"UPDATE[dbo].[tblUrl] SET [Name]=@Name,[FriendlyUrl]=@FriendlyUrl,[Moduls]=@Moduls,[ContentID]=@ContentID,[EditedDate]=@EditedDate,[EditedBy]=@EditedBy WHERE [ContentID] = @ID";
+                sqlQuery = @"UPDATE[dbo].[tblUrl] SET [Name]=@Name,[FriendlyUrl]=@FriendlyUrl,[EditedDate]=@EditedDate,[EditedBy]=@EditedBy WHERE [ContentID] = @ID AND [Moduls]=@Moduls";
             else
                 sqlQuery = @"INSERT INTO [dbo].[tblUrl]([Name],[FriendlyUrl],[Moduls],[ContentID],[CreatedDate],[EditedDate],[CreatedBy],[EditedBy]) OUTPUT INSERTED.ID VALUES (@Name,@FriendlyUrl,@Moduls,@ContentID,@CreatedDate,@EditedDate,@CreatedBy,@EditedBy)";
 
@@ -2325,37 +2329,91 @@ public class ShoppingCart
     public static void AddToCart(object ProductID, int Quantity)
     {
         Hashtable hashtable = new Hashtable();
-        bool IsUpdate = false;
-        DataTable dt = SqlHelper.SQLToDataTable("tblCart", "ID,Quantity", string.Format("CartID=N'{0}' AND ProductID={1}", CartID, ProductID));
-        if (Utils.CheckExist_DataTable(dt))
-        {
-            Quantity += ConvertUtility.ToInt32(dt.Rows[0]["Quantity"]);
-            IsUpdate = true;
-            hashtable["ID"] = ConvertUtility.ToInt32(dt.Rows[0]["ID"]);
-        }
-
+        string CouponCode = "";
         int PID = ConvertUtility.ToInt32(ProductID);
         CacheUtility.PurgeCacheItems("tblCart");
         hashtable["CartID"] = CartID;
         hashtable["Quantity"] = Quantity;
         hashtable["ProductID"] = PID;
-        hashtable["Token"] = "";
+        hashtable["Token"] = Utils.IPAddress;
+
+        int VoucheLeft = 0;
+        int PriceDiscount = 0;
+        int Price = 0;
+        int TotalPrice = 0;
+        int QuantityDiscount = 0;
+
+        DataTable dtProduct = SqlHelper.SQLToDataTable("tblProducts", "Price", "ID=" + PID);
+        if (Utils.CheckExist_DataTable(dtProduct))
+        {
+            Price = ConvertUtility.ToInt32(dtProduct.Rows[0]["Price"]);
+            TotalPrice = Price * Quantity;
+
+            //Lưu ý: chỉ đúng khi số lượng thêm vào giỏ hàng = 1
+
+            DataTable dtCoupon = SqlHelper.SQLToDataTable("tblCoupon", "ValueVND,MaxUsing,Using,Name", string.Format("ProductIDList like N'%,{0},%' AND ExpireDate>= GETDATE() AND [Using]<[MaxUsing]", PID));
+            if (Utils.CheckExist_DataTable(dtCoupon))
+            {
+                CouponCode = dtCoupon.Rows[0]["Name"].ToString();
+                VoucheLeft = ConvertUtility.ToInt32(dtCoupon.Rows[0]["MaxUsing"]) - ConvertUtility.ToInt32(dtCoupon.Rows[0]["Using"]);
+                PriceDiscount = Price - ConvertUtility.ToInt32(dtCoupon.Rows[0]["ValueVND"]);
+                TotalPrice = PriceDiscount * Quantity;
+                QuantityDiscount = VoucheLeft;
+
+                if (VoucheLeft > 0 && VoucheLeft > Quantity)
+                    QuantityDiscount = Quantity;
+            }
+        }
+
+
+
+        bool IsUpdate = false;
+        DataTable dt = SqlHelper.SQLToDataTable("tblCart", "ID,Quantity", string.Format("CartID=N'{0}' AND ProductID={1}", CartID, ProductID));
+        if (Utils.CheckExist_DataTable(dt)) //Nếu đã tồn tại trong giỏ hàng thì cộng thêm số lượng
+        {
+            //Quantity += ConvertUtility.ToInt32(dt.Rows[0]["Quantity"]);
+            if (VoucheLeft > 0)
+            {
+                if (VoucheLeft <= Quantity)
+                {
+                    int TotalPriceDiscount = VoucheLeft * PriceDiscount; // Lấy toàn bộ số voucher còn lại * giá sản phẩm
+                    int NomalQuantity = Quantity - VoucheLeft;
+                    int TotalPriceNomal = NomalQuantity * Price;
+
+                    TotalPrice = TotalPriceDiscount + TotalPriceNomal;
+                    QuantityDiscount = VoucheLeft;
+                }
+                else
+                {
+                    TotalPrice = Quantity * PriceDiscount;
+                    QuantityDiscount = Quantity;
+                }
+            }
+
+            IsUpdate = true;
+            hashtable["ID"] = ConvertUtility.ToInt32(dt.Rows[0]["ID"]);
+        }
+
 
         using (var db = MetaNET.DataHelper.SqlService.GetSqlService())
         {
             string sqlQuery = string.Empty;
             if (IsUpdate)
             {
-                sqlQuery = @"UPDATE [dbo].[tblCart] SET [CartID]=@CartID, [Quantity]=@Quantity, [ProductID]=@ProductID, [Token]=@Token WHERE [ID] = @ID";
+                sqlQuery = @"UPDATE [dbo].[tblCart] SET [CartID]=@CartID, [Quantity]=@Quantity, [QuantityDiscount]=@QuantityDiscount, [CouponCode]=@CouponCode, [ProductID]=@ProductID, [Token]=@Token, [Price]=@Price WHERE [ID] = @ID";
                 db.AddParameter("@ID", System.Data.SqlDbType.Int, hashtable["ID"].ToString());
             }
             else
             {
-                sqlQuery = @"INSERT INTO [dbo].[tblCart] ([CartID],[Quantity],[ProductID],[CreatedDate],[Token]) OUTPUT INSERTED.ID VALUES (@CartID,@Quantity,@ProductID,@CreatedDate,@Token)";
+                sqlQuery = @"INSERT INTO [dbo].[tblCart] ([CartID],[Quantity],[QuantityDiscount],[CouponCode],[ProductID],[Price],[CreatedDate],[Token]) OUTPUT INSERTED.ID VALUES (@CartID,@Quantity,@QuantityDiscount,@CouponCode,@ProductID,@Price,@CreatedDate,@Token)";
             }
+
+            db.AddParameter("@Price", System.Data.SqlDbType.Int, TotalPrice);
             db.AddParameter("@CartID", System.Data.SqlDbType.NVarChar, hashtable["CartID"].ToString());
             db.AddParameter("@Quantity", System.Data.SqlDbType.Int, hashtable["Quantity"].ToString());
             db.AddParameter("@ProductID", System.Data.SqlDbType.Int, hashtable["ProductID"].ToString());
+            db.AddParameter("@QuantityDiscount", System.Data.SqlDbType.Int, QuantityDiscount);
+            db.AddParameter("@CouponCode", System.Data.SqlDbType.NVarChar, CouponCode);
             db.AddParameter("@Token", System.Data.SqlDbType.NVarChar, hashtable["Token"].ToString());
             db.AddParameter("@CreatedDate", System.Data.SqlDbType.DateTime, DateTime.Now);
             db.ExecuteSql(sqlQuery);

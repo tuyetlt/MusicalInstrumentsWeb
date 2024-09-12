@@ -13,6 +13,8 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
     public string payment_status_mail = "";
     public string payment_bank = "";
 
+    public decimal finalPrice = 0;
+
     public Hashtable hashtable = new Hashtable();
     log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Controls_ShoppingCart).Name);
 
@@ -151,7 +153,6 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
 
         }
     }
-
     protected void SetSEO()
     {
         string Title = "Xem lại giỏ hàng và thanh toán";
@@ -167,9 +168,10 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
         PageUtility.AddDefaultMetaTag(this.Page);
     }
 
+
     protected void UpdateDatabase()
     {
-        string token = ShoppingCart.CartToOrder(hashtable["Name"], hashtable["Tel"], hashtable["Address"],  hashtable["Email"], hashtable["PaymentMethod"], hashtable["Note"], hashtable["MailTemplate"]);
+        string token = ShoppingCart.CartToOrder(hashtable["Name"], hashtable["Tel"], hashtable["Address"], hashtable["Email"], hashtable["PaymentMethod"], hashtable["Note"], hashtable["MailTemplate"]);
         hashtable["OrderID"] = token;
     }
 
@@ -205,17 +207,17 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
     protected string GetProductList()
     {
         string strProductList = string.Empty;
-        decimal finalPrice = 0;
+        finalPrice = 0;
+        string Items = "[";
         List<OrderInfo> orderInfoList = ShoppingCart.GetOrderInfo(out finalPrice);
         if (orderInfoList.Count > 0)
         {
             foreach (OrderInfo orderInfo in orderInfoList)
             {
-                DataTable dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "", "ID=" + orderInfo.ProductID);
+                DataTable dtProduct = SqlHelper.SQLToDataTable(C.PRODUCT_TABLE, "ID,Name,FriendlyUrlCategory,FriendlyUrl", "ID=" + orderInfo.ProductID);
                 if (Utils.CheckExist_DataTable(dtProduct))
                 {
                     string link = TextChanger.GetLinkRewrite_Products(dtProduct.Rows[0]["FriendlyUrlCategory"], dtProduct.Rows[0]["FriendlyUrl"]);
-
                     strProductList += string.Format(@"<tr align=""center"">
                                                         <td>
                                                             <a href=""{0}""><img src=""{1}"" /></a>
@@ -238,9 +240,10 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
                 }
             }
         }
-
+        Items += "]";
         return strProductList;
     }
+
     protected void SendMail()
     {
         try
@@ -252,7 +255,7 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
 
             string[] Email_Receiving_List = ConfigWeb.Email_Receiving.Split(';');
             content = content.Replace("{OrderID}", ConvertUtility.ToString(hashtable["OrderID"]));
-            
+
             string SMTPServer = C.SMTP_SERVER;
             string SMTPUser = C.SMTP_USERNAME;
             string SMTPPass = Crypto.DecryptData(Crypto.KeyCrypto, C.SMTP_PASSWORD);
@@ -261,12 +264,12 @@ public partial class Controls_ShoppingCart : System.Web.UI.UserControl
             using (MailMessage emailMessage = new MailMessage())
             {
                 emailMessage.From = new MailAddress(from, ConfigWeb.SiteName);
-                if(!string.IsNullOrEmpty(to))
+                if (!string.IsNullOrEmpty(to))
                     emailMessage.To.Add(new MailAddress(to, hashtable["Name"].ToString()));
 
-                if(Email_Receiving_List != null && Email_Receiving_List.Length>0)
+                if (Email_Receiving_List != null && Email_Receiving_List.Length > 0)
                 {
-                    foreach(string EmailReciving in Email_Receiving_List)
+                    foreach (string EmailReciving in Email_Receiving_List)
                     {
                         emailMessage.CC.Add(new MailAddress(EmailReciving));
                     }

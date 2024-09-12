@@ -500,7 +500,9 @@ public class OrderInfo
     public string Image { get; set; }
     public string Name { get; set; }
     public int Quantity { get; set; }
+    public string CouponCode { get; set; }
     public decimal Price { get; set; }
+    public int NumberApplyVoucher { get; set; }
     public decimal TotalPrice { get; set; }
 }
 
@@ -600,4 +602,26 @@ public class GalleryItem
     public string Name { get; set; }
     public string Path { get; set; }
     public long Size { get; set; }
+}
+
+public class Article
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public string FriendlyUrl { get; set; }
+    public string Description { get; set; }
+    public string Image { get; set; }
+}
+public class Product
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public string FriendlyUrl { get; set; }
+    public string FriendlyUrlCategory { get; set; }
+    public string Image { get; set; }
+    public int Price { get; set; }
+    public int Price1 { get; set; }
+    public string PricePercent { get; set; }
+    public string HashTagUrlList { get; set; }
+    public string Link { get; set; }
 }

@@ -16,6 +16,7 @@ public partial class ajax_Controls_Comment : System.Web.UI.UserControl
         action = RequestHelper.GetString("action", string.Empty);
         if (action == "post")
         {
+            
             int star = 0;
             string hdfRating = RequestHelper.GetString("hdfRating", ""); 
             if(!string.IsNullOrWhiteSpace(hdfRating))

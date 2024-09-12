@@ -22,24 +22,24 @@ public partial class ajax_Controls_CommentList : System.Web.UI.UserControl
         {
             ArticleID = ConvertUtility.ToInt32(Request["article"]);
         } 
-        if (!Page.IsPostBack)
-        {
-            LoadComment();
-        }
+        //if (!Page.IsPostBack)
+        //{
+        //    LoadComment();
+        //}
 
         if (CookieUtility.GetValueFromCookie("LikeCommentIDList") != null)
             cookieValue = CookieUtility.GetValueFromCookie("LikeCommentIDList");
     }
-    protected void LoadComment()
-    {
-        dtComment = SqlHelper.SQLToDataTable(C.COMMENT_TABLE, "", string.Format("ArticleID={0} AND Hide=0", ArticleID),"ID DESC",pageIndex,pageSize,out totalRows);
-        if(dtComment.Rows.Count==0)
-        {
-            Response.Clear();
-            Response.Write(string.Empty);
-            Response.End(); 
-        }
-    }
+    //protected void LoadComment()
+    //{
+    //    dtComment = SqlHelper.SQLToDataTable(C.COMMENT_TABLE, "", string.Format("ArticleID={0} AND Hide=0", ArticleID),"ID DESC",pageIndex,pageSize,out totalRows);
+    //    if(dtComment.Rows.Count==0)
+    //    {
+    //        Response.Clear();
+    //        Response.Write(string.Empty);
+    //        Response.End(); 
+    //    }
+    //}
     public DataTable LoadSubComment(int parentiD)
     {
         return SqlHelper.SQLToDataTable(C.COMMENT_TABLE, "", string.Format("ParentID={0} AND Hide=0", parentiD),"ID DESC");

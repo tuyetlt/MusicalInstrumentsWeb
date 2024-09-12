@@ -44,8 +44,8 @@
                 string alt = dr["Alt"].ToString();
                 string cssClass = "";
 
-                string img = string.Format(@"<a{0} href=""{1}""{2}><img src=""{3}"" alt=""{4}"" /></a>", cssClass, link, newTab, image_1, alt);
-                string img_mobile = string.Format(@"<a{0} href=""{1}""{2}><img src=""{3}"" alt=""{4}"" /></a>", cssClass, link, newTab, image_2, alt);
+                string img = string.Format(@"<a{0} href=""{1}""{2} rel=""nofollow""><img src=""{3}"" alt=""{4}"" /></a>", cssClass, link, newTab, image_1, alt);
+                string img_mobile = string.Format(@"<a{0} href=""{1}""{2} rel=""nofollow""><img src=""{3}"" alt=""{4}"" /></a>", cssClass, link, newTab, image_2, alt);
                 if (!Utils.isMobileBrowser)
                     Response.Write(img);
                 else

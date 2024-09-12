@@ -29,6 +29,7 @@ public class Utils
     private static Cache cache = HttpContext.Current.Cache;
     private static readonly System.Random randNum = new System.Random();
     public static bool Valid_Error = true;
+    public object __o;
     public Utils()
     {
 
@@ -3387,7 +3388,14 @@ public class Utils
         return _return;
     }
 
-
+    public static string GetNoFollow(object Flag)
+    {
+        string nofollow = string.Empty;
+        int SeoFlagINT = ConvertUtility.ToInt32(Flag);
+        if (SeoFlagINT == (int)SeoFlag.Nofollow)
+            nofollow = @" rel=""nofollow""";
+        return nofollow;
+    }
 
     public static string CheckDomain
     {
@@ -3403,5 +3411,160 @@ public class Utils
             return C.DOMAIN_BANNER_DISPLAY;
         }
     }
+    public static string BadTextFilter(string input)
+    {
+        string[] badWords = new[] { "buồi", "lồn", "cặc", "dái", "sex", "bím", "đít", "địt", "đù má", "địt mẹ", "cứt", "đái", "tình dục", "dương vật", "âm đạo", "vcl", "fuck", "ass", "wtf", "script" };
+
+        var re = new Regex(
+            @"\b("
+            + string.Join("|", badWords.Select(word =>
+                string.Join(@"\s*", word.ToCharArray())))
+            + @")\b", RegexOptions.IgnoreCase);
+        return re.Replace(input, match =>
+        {
+            return new string('*', match.Length);
+        });
+    }
+
+    #region Save Image To Host
+
+
+    public static string SaveImageToServer(string contentHTML)
+    {
+        string tempData = contentHTML;
+
+        string pathToCreate = "/upload/img/" + DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString() + "/";
+        if (!Directory.Exists(HttpContext.Current.Server.MapPath(pathToCreate)))
+        {
+            Directory.CreateDirectory(HttpContext.Current.Server.MapPath(pathToCreate));
+        }
+
+        return ProcessHtmlData(tempData, pathToCreate);
+    }
+    private static string GetImageThumbnail(string htmlText, string saveToFolder)
+    {
+        var doc = new HtmlAgilityPack.HtmlDocument();
+        doc.LoadHtml(htmlText);
+
+        // Tìm tất cả các tag img trong nội dung
+        var images = doc.DocumentNode.SelectNodes("//img[@src]");
+        if (images != null)
+        {
+            if (images.Any())
+            {
+                foreach (var img in images)
+                {
+                    // Lấy link hình trong thuộc tính 'src'
+                    var attrSrc = img.Attributes["src"];
+
+                    // Tải các file này về host
+                    string file = DownloadFile(attrSrc.Value, saveToFolder);
+
+                    // Thay thế link hình bằng các hình vừa tải (Các hình không tải được sẽ giữ nguyên link gốc)
+                    if (!string.IsNullOrEmpty(file))
+                    {
+                        //attrSrc.Value = saveToFolder + file;
+                        return saveToFolder + file;
+                    }
+                }
+            }
+        }
+        return C.NO_IMG_PATH;
+    }
+
+
+    /// <summary>
+    /// Xử lý dữ liệu html
+    /// </summary>
+    /// <param name="htmlText">Nội dung html</param>
+    /// <param name="saveToFolder">Thư mục chứa hình ảnh</param>
+    /// <returns></returns>
+    private static string ProcessHtmlData(string htmlText, string saveToFolder)
+    {
+        var doc = new HtmlAgilityPack.HtmlDocument();
+        doc.LoadHtml(htmlText);
+
+        // Tìm tất cả các tag img trong nội dung
+        HtmlAgilityPack.HtmlNodeCollection images = doc.DocumentNode.SelectNodes("//img[@src]");
+
+        if (images != null)
+        {
+            if (images.Any())
+            {
+                foreach (HtmlAgilityPack.HtmlNode img in images)
+                {
+                    if (img.Attributes["src"] == null)
+                        continue;
+                    HtmlAgilityPack.HtmlAttribute attrSrc1 = img.Attributes["src"];// Lấy link hình trong thuộc tính 'src'
+
+
+                    string attrSrc = ConvertUtility.ToString(attrSrc1.Value);
+
+                    bool isHttp = attrSrc.IndexOf("http:", StringComparison.OrdinalIgnoreCase) >= 0;
+                    bool isHttps = attrSrc.IndexOf("https:", StringComparison.OrdinalIgnoreCase) >= 0;
+                    bool isNotCurrentWeb = attrSrc.IndexOf(C.ROOT_URL, StringComparison.OrdinalIgnoreCase) < 0;
+
+
+                    if ((isHttp || isHttps) && isNotCurrentWeb)
+                    {
+                        // Tải các file này về host
+                        string file = DownloadFile(attrSrc, saveToFolder);
+
+                        // Thay thế link hình bằng các hình vừa tải (Các hình không tải được sẽ giữ nguyên link gốc)
+                        if (!string.IsNullOrEmpty(file))
+                        {
+                            attrSrc = saveToFolder + file;
+                            htmlText = htmlText.Replace(attrSrc1.Value, attrSrc);
+                        }
+                    }
+                }
+            }
+        }
+        return htmlText;
+    }
+
+    /// <summary>
+    /// Tải tập tin
+    /// </summary>
+    /// <param name="urlFile">Đường dẫn tập tin</param> //cai nay la image link ak anh?yes ok
+    /// <param name="saveToFolder">Thư mục lưu tập tin</param>
+    /// <returns>Đường dẫn tập tin trên host</returns>
+    public static string DownloadFile(string urlFile, string saveToFolder)
+    {
+        try
+        {
+            int index = urlFile.IndexOf("?");
+            if (index > 0)
+                urlFile = urlFile.Substring(0, index);
+            var webClient = new WebClient();
+            string filename = string.Format("{0}", Path.GetFileName(urlFile));
+            string duongdan = Path.Combine(HttpContext.Current.Server.MapPath(saveToFolder), filename);
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                   | SecurityProtocolType.Tls11
+                   | SecurityProtocolType.Tls12
+                   | SecurityProtocolType.Ssl3;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlFile);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            System.Drawing.Image img = System.Drawing.Image.FromStream(response.GetResponseStream());
+            img.Save(duongdan);
+            return filename;
+        }
+        catch (Exception e)
+        {
+            return "";
+        }
+    }
+
+
+    #endregion
+
 }
 

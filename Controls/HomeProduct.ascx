@@ -4,17 +4,17 @@
     <%
         int mainMenu = (int)PositionMenuFlag.MenuSubMainHome;
         string filterWidget = string.Format("PositionMenuFlag & {0} <> 0", mainMenu);
-        DataTable dtWidget_1 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,ParentID,Link,PositionMenuFlag,LinkTypeMenuFlag,Image_2,Icon", string.Format("ParentID=0 AND {0} AND {1}", filterWidget, Utils.CreateFilterHide), "Sort", 1, C.MAX_ITEM_CATEGORY_HOME);
+        DataTable dtWidget_1 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,ParentID,Link,PositionMenuFlag,LinkTypeMenuFlag,Image_2,Icon,SeoFlags", string.Format("ParentID=0 AND {0} AND {1}", filterWidget, Utils.CreateFilterHide), "Sort", 1, C.MAX_ITEM_CATEGORY_HOME);
         if (Utils.CheckExist_DataTable(dtWidget_1))
         {
             foreach (DataRow dr_1 in dtWidget_1.Rows)
             {
-                DataTable dtWidget_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,ParentID,Link,PositionMenuFlag,LinkTypeMenuFlag,Image_2,Icon", string.Format("ParentID={0} AND {1} AND {2}", dr_1["ID"], string.Format("PositionMenuFlag & {0} <> 0", (int)PositionMenuFlag.MenuSubMainHome), Utils.CreateFilterHide), "Sort", 1, 4);
+                DataTable dtWidget_2 = SqlHelper.SQLToDataTable(C.CATEGORY_TABLE, "ID,Name,FriendlyUrl,ParentID,Link,PositionMenuFlag,LinkTypeMenuFlag,Image_2,Icon,SeoFlags", string.Format("ParentID={0} AND {1} AND {2}", dr_1["ID"], string.Format("PositionMenuFlag & {0} <> 0", (int)PositionMenuFlag.MenuSubMainHome), Utils.CreateFilterHide), "Sort", 1, 4);
     %>
     <div class="home-product" id="sec_<%= dr_1["ID"] %>">
         <div class="title">
             <h2>
-                <a href="<%= Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]) %>"><%= dr_1["Name"] %></a></h2>
+                <a href="<%= Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]) %>"<%=Utils.GetNoFollow(dr_1["SeoFlags"]) %>><%= dr_1["Name"] %></a></h2>
 
             <%
                 if (Utils.CheckExist_DataTable(dtWidget_2))
@@ -25,7 +25,7 @@
                         string split = "";
                         if (c > 0)
                             split = "<span>|</span>";
-                        Response.Write(string.Format(@"{0}<a href=""{1}"">{2}</a>", split, Utils.CreateCategoryLink(dr_2["LinkTypeMenuFlag"], dr_2["FriendlyUrl"], dr_2["Link"]), dr_2["Name"], dr_2["Link"]));
+                        Response.Write(string.Format(@"{0}<a href=""{1}""{2}>{3}</a>", split, Utils.CreateCategoryLink(dr_2["LinkTypeMenuFlag"], dr_2["FriendlyUrl"], dr_2["Link"]),Utils.GetNoFollow(dr_2["SeoFlags"]), dr_2["Name"], dr_2["Link"]));
                         c++;
                     }
 
@@ -33,7 +33,7 @@
             %>
 
 
-            <a href="<%= Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]) %>" class="more">Xem tất cả <i class="fal fa-arrow-right"></i></a>
+            <a href="<%= Utils.CreateCategoryLink(dr_1["LinkTypeMenuFlag"], dr_1["FriendlyUrl"], dr_1["Link"]) %>" class="more" <%=Utils.GetNoFollow(dr_1["SeoFlags"]) %>>Xem tất cả <i class="fal fa-arrow-right"></i></a>
         </div>
         <div class="clear"></div>
         <div class="section">

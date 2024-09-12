@@ -47,7 +47,7 @@ public partial class Controls_NewsDetail : System.Web.UI.UserControl
         if (Utils.CheckExist_DataTable(dt))
         {
             dr = dt.Rows[0];
-
+            ID = ConvertUtility.ToInt32(dr["ID"]);
             int SEOFlags = ConvertUtility.ToInt32(dt.Rows[0]["SeoFlags"]);
             SeoFlag seoFlag = (SeoFlag)SEOFlags;
             NoIndex = seoFlag.HasFlag(SeoFlag.NoIndex);
